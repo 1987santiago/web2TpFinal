@@ -4,7 +4,7 @@
 - Rusticcini Alejandro
 - Daranno Facundo
 
-Proyecto web2TpFinal - [consigna](../blob/master/tpf-consigna.doc)
+Proyecto web2TpFinal - [consigna](../master/tpf-consigna.doc)
 ----
 
 #### Integrantes
