@@ -1,0 +1,5 @@
+/*
+ * Pendientes
+ */
+
+// Para ie8 y menor, agregar js para seleccionar asiento (pintar el asiento de verde agregando una clase eg. 'selected')
