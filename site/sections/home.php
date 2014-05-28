@@ -23,7 +23,6 @@
                 <section id="home">
 
                     Home
-                    <button id="but">load.php</button>
 
                 </section>
 
@@ -33,16 +32,6 @@
 
         <!-- se incluye el <header> -->
         <?php require $SITE_PATH . '/components/footer.php'; ?> 
-
-        <script type="text/javascript">
-
-            $('#but').on('click', function(){
-                $('#home').load('/unlam/web2/tpFinal/web2TpFinal/site/components/load.php #content', {caca: 'fea'}, function(res){
-                    console.log('load.php has loaded');
-                });
-            });
-
-        </script>
 
     </body>
 

@@ -17,10 +17,28 @@
     // Obtenemos el código ingresado por usuario
     $reservation_code = $_POST['reservationCode']; 
 
+    // Evaluamos que el codigo ingresado es valido
     if ($reservation_code == $hardcode_valid_code) {
         echo 'true';
+
+        // Chequamos que la reserva este pagada
+        if ($reservationPay) {
+
+            // chequeamos que la hora servidor se encuentre entre 48 y 2 horas antes de la partida
+            // if (getDate())
+
+            // else 
+            // Notificar que no se encuentra dentro del horario válido (debe esperar.. o durmió)
+
+        } else {
+
+            // Notificar que no se pago
+
+        }
+
     } else {
         echo 'false';
+        // Notificar que no es un código valido
     }
 
     // Con el codigo, generamos una consulta a la DB correspondiente

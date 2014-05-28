@@ -62,7 +62,7 @@
 
                         <h3>Selección de asiento</h3>
 
-                        <form id="seatSelection" action="" method="post">
+                        <form id="seatSelection" action="seatConfirm.php" method="post">
 
                             <fieldset>
 
