@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS aeropuerto (
 
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAAC', 'Aeropuerto Comodoro Pierrestegui', 'Concordia', 'Entre Rios');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAAJ', 'Aeropuerto de Junin', 'Junin', 'Buenos Aires');
-INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAAK', 'Aeropuerto Isla Martín Garcia', 'Isla Martin Garcia', 'Buenos Aires');
+INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAAK', 'Aeropuerto Isla Martin Garcia', 'Isla Martin Garcia', 'Buenos Aires');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAAP', 'Aeropuerto General Justo Jose de Urquiza', 'Parana', 'Entre Rios');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAAR', 'Aeropuerto Internacional Rosario Islas Malvinas', 'Rosario', 'Santa Fe');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAAU', 'Aeropuerto de Villaguay', 'Villaguay', 'Entre Rios');

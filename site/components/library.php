@@ -21,14 +21,14 @@
 	{
 		$binario = decbin($diasVuelo);
 		$binario = substr("00000000",0,8 - strlen($binario)) . $binario;
-		return str_aplit($binario);
+		return str_split($binario);
 	}
 	
 	// Convierte la fecha del formato dd/mm/aaaa a aaaa-mm-dd
 	// Devuelve un string
 	function formatearFecha($fecha)
 	{
-		return $fecha.split("/").reverse().join("-");
+		return implode("-", array_reverse(explode("/", $fecha)));
 	}
 	
 	// Genera un codigo unico para la reserva
