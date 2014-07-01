@@ -1,22 +1,20 @@
 <?php
+    session_start();
     // guardamos la nueva ruta base del site
-    $SITE_PATH = "/Applications/XAMPP/htdocs/unlam/web2/tpFinal/web2TpFinal/site";
+    $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
-    $static_url = "/unlam/web2/tpFinal/web2TpFinal/site";
+    $statics_path = $_SESSION["statics_path"];
 ?>
 
-<!doctype html>
-<html>
-
-    <!-- se incluye el <head> -->
-    <?php require $SITE_PATH . '/components/head.php'; ?>
+<!-- se incluye el inicio del html <!doctype html>...</head> -->
+<?php require $local_path . '/components/head.php'; ?>
     
     <body>
 
         <div class="wrapper">
     
-        <!-- se incluye el <header> -->
-        <?php require $SITE_PATH . '/components/header.php'; ?> 
+            <!-- se incluye el <header> -->
+            <?php require $local_path . '/components/header.php'; ?> 
 
             <main id="main" role="main">
 
@@ -35,7 +33,7 @@
                             <label for="dbSelector">Seleccionar DB </label>
                             <select id="dbSelector">
                                 <option value="test">test</option>
-                                <option value="autos">autos</option>
+                                <option value="reserva">reserva</option>
                                 <option value="phpmyadmin">phpmyadmin</option>
                             </select>
                             <input id="selectDB" name="selectDB" type="button" value="Seleccionar" />
@@ -51,7 +49,7 @@
         </div><!-- [end] wrapper -->
 
         <!-- se incluye el <header> -->
-        <?php require $SITE_PATH . '/components/footer.php'; ?> 
+        <?php require $local_path . '/components/footer.php'; ?> 
 
         <script type="text/javascript">
 
@@ -71,7 +69,7 @@
                 // parametros que necesitamos para hacerl el request por ajax
                     params = {
                         data : data,
-                        url : "<?php echo $static_url; ?>/processors/testConnectToServer.php",
+                        url : "<?php echo $statics_path; ?>/processors/testConnectToServer.php",
                         type : 'POST', 
                         callback : showResponse
                     };
@@ -95,12 +93,13 @@
                 // parametros que necesitamos para hacerl el request por ajax
                     params = {
                         data : data,
-                        url : "<?php echo $static_url; ?>/processors/testSelectDataBase.php",
+                        url : "<?php echo $statics_path; ?>/processors/testSelectDataBase.php",
                         type : 'POST', 
                         callback : showResponse
                     };
 
                 function showResponse(response, status, requestObj) {
+                    console.log(response)
                     event.target.nextElementSibling.innerHTML = response;
                 }
 

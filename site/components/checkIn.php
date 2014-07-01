@@ -1,22 +1,20 @@
 <?php
+    session_start();
     // guardamos la nueva ruta base del site
-    $SITE_PATH = "/Applications/XAMPP/htdocs/unlam/web2/tpFinal/web2TpFinal/site";
+    $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
-    $static_url = "/unlam/web2/tpFinal/web2TpFinal/site";
+    $statics_path = $_SESSION["statics_path"];
 ?>
 
-<!doctype html>
-<html>
-
-    <!-- se incluye el <head> -->
-    <?php require $SITE_PATH . '/components/head.php'; ?>
+<!-- se incluye el inicio del html <!doctype html>...</head> -->
+<?php require $local_path . '/components/head.php'; ?>
     
     <body>
 
         <div class="wrapper">
     
-        <!-- se incluye el <header> -->
-        <?php require $SITE_PATH . '/components/header.php'; ?> 
+            <!-- se incluye el <header> -->
+            <?php require $local_path . '/components/header.php'; ?> 
 
             <main id="main" role="main">
 
@@ -24,14 +22,20 @@
                     
                     <h2>Check In</h2>
 
+                    <?php 
+                        if ( isset($_COOKIE['error']) ) {
+                            echo '<p class="box box-error">$_COOKIE[\'error\']</p>';
+                        }
+                    ?>
+
                     <form action="seatSelection.php" method="post" >
 
-                        <input name="static_url" value="<?php echo $static_url; ?>" type="hidden" />
+                        <input name="statics_path" value="<?php echo $statics_path; ?>" type="hidden" />
 
                         <label for="reservationCode">Ingrese su código de reserva: </label>
                         <input id="reservationCode" name="reservationCode" type="text" />
 
-                        <input type="submit" value="Verificar">
+                        <input type="submit" value="Verificar" />
 
                     </form>
 
@@ -42,51 +46,38 @@
         </div><!-- [end] wrapper -->
 
         <!-- se incluye el <header> -->
-        <?php require $SITE_PATH . '/components/footer.php'; ?> 
+        <?php require $local_path . '/components/footer.php'; ?> 
 
         <script type="text/javascript">
 
-            var form = document.querySelectorAll('#checkIn form'),
-                reservationCode = document.getElementById('reservationCode');
+            var form = document.querySelector('#checkIn form'),
+                reservationCode = form.reservationCode;
 
             reservationCode.onchange = function(event) {
 
                 // datos que le pasamos al achivo que valida el codigo
                 var data = {
-                    reservationCode : reservationCode.value
-                },
+                        reservationCode : reservationCode.value
+                    },
 
-                // parametros que necesitamos para hacerl el request por ajax
+                    // parametros que necesitamos para hacerl el request por ajax
                     params = {
                         data : data,
-                        url : "<?php echo $static_url; ?>/processors/reservationCheckIn.php",
+                        url : "<?php echo $statics_path; ?>/processors/reservationCheckIn.php",
                         type : 'POST', 
                         callback : skinField
                     };
 
                 function skinField(response, status, requestObj) {
-                    console.log('skinField: response --> ', response);
 
-                    if (response === 'true') { // si valida 
+                    if (response) { // si valida 
                         inputClass = 'valid';
-                        // seteamos los datos necesarios para hacer la llamada al componente
-                        // component = {
-                        //     name : 'seatSelection',
-                        //     data : data
-                        // };
+                        form.querySelector('[type=submit]').removeAttribute('disabled');
                     } else {
                         inputClass = 'invalid';
-                        // seteamos los datos necesarios para hacer la llamada al componente e informar el error
-                        // data['errorMsg'] = 'Código inválido';
-                        // component = {
-                        //     name : 'checkIn',
-                        //     data : data
-                        // }
+                        form.querySelector('[type=submit]').setAttribute('disabled',true);
                     }
                     reservationCode.setAttribute('class', inputClass);
-
-                    // llamamos al componente correspondiente
-                    // window.skynet.request.getComponent(component);
 
                 }
 

@@ -123,7 +123,7 @@ insert into vuelo values
 (0007,'SAHE','Caviahue','SAZO','Necochea',3,1575.63,1281,false,true,false,false,true,false,false),		
 (0008,'SANW','Ceres','SAZN','Neuquén',2,2564.55,2085,true,true,false,true,false,false,false),			
 (0009,'SACT','Chamical','SAZM','Mar del Plata',3,2036.88,1656,false,true,true,true,false,false,true),
-(0010,'SACP','Chepes','SAZL','Santa Teresita',2,2437.86,1982,false,true,true,false,false,true),	
+(0010,'SACP','Chepes','SAZL','Santa Teresita',2,2437.86,1982,false,true,true,false,false,true,false),	
 (0011,'SANO','Chilecito','SAZI','Bolívar',1,1136.52,924,false,true,true,false,false,false,false),			
 (0012,'SATC','Clorinda','SAZH','Tres Arroyos',4,2592.84,2108,true,false,false,false,true,false,true),
 (0013,'SAVC','Comodoro Rivadavia','SAZG','General Pico',2,1125.45,915,true,true,true,false,false,true,true),
@@ -184,7 +184,6 @@ insert into vuelo values
 (0068,'SAWE','Río Grande','SAMR','San Rafael',1,2790.87,2269,true,false,true,true,true,true,false),						
 (0069,'SAWT','Río Turbio','SAMM','Malargüe',2,2712.15,2205,true,true,true,false,false,true,true),	
 (0070,'SAAR','Rosario','SAME','Mendoza',1,1349.31,1097,false,false,false,true,true,false,true),
-/* (0071,'SASA','Presidencia Roque Saenz Peña','SAMA','General Alvear',1,1216.47,989,false,true,true,false,false,true), No se puede insertar. Key duplicada	*/
 (0072,'SADF','San Fernando','SAHZ','Zapala',3,2899.11,2357,true,true,true,true,true,false,false),								
 (0073,'SANC','San Fernando del Valle de Catamarca','SAHR','General Roca',4,2110.68,1716,false,true,true,true,true,false,true),
 (0074,'SANU','San Juan','SAHE','Caviahue',4,1706.01,1387,false,false,false,true,true,false,true),		

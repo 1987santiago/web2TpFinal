@@ -13,6 +13,7 @@
     $testDB_selection_status = $selectTestDataBase->getSelectionStatus();
     $testDB_selection_status_msg = ($testDB_selection_status? 'Seleccionada con éxito' : 'Error en la conexión');
     // imprimimos el estado
-    echo $db_name . ' : ' . $testDB_selection_status_msg;
+    // echo $db_name . ' : ' . $testDB_selection_status_msg;
+    var_dump($testDB_selection_status);
 
 ?>

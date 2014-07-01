@@ -1,33 +1,35 @@
+
 <?php
-	// guardamos la nueva ruta base del site
-	$SITE_PATH = "/Applications/XAMPP/htdocs/unlam/web2/tpFinal/web2TpFinal/site";
+	session_start();
+
+	$PATHS = parse_ini_file("paths.ini");
+
+	// guardamos la nueva ruta base del sit
+	$local_path = $PATHS["local_path"];
 	// guardamos la url de los recursos estaticos
-	$static_url = "/unlam/web2/tpFinal/web2TpFinal/site";
+	$statics_path = $PATHS["statics_path"];
+
+	$_SESSION["local_path"] = $local_path;
+	$_SESSION["statics_path"] = $statics_path;
+
 ?>
 
-<!doctype html>
-<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
-<!--[if IE 7]>	<html class="no-js  lt-ie10 lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
-<!--[if IE 8]>	<html class="no-js lt-ie10 lt-ie9 ie8" lang="en"> <![endif]-->
-<!--[if IE 9]>	<html class="no-js lt-ie10 ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="es"> <!--<![endif]-->
-
-	<!-- se incluye el <head> -->
-	<?php require $SITE_PATH . '/components/head.php'; ?>
-	
+<!-- se incluye el <head> -->
+<?php require $local_path . '/components/head.php'; ?>
+		
 	<body>
 
 	    <div class="wrapper">
     
 		<!-- se incluye el <header> -->
-		<?php require $SITE_PATH . '/components/header.php'; ?> 
+		<?php require $local_path . '/components/header.php'; ?> 
 
 			<main id="main" role="main"></main><!-- [end] main -->
 
 		</div><!-- [end] wrapper -->
 
 		<!-- se incluye el <header> -->
-		<?php require $SITE_PATH . '/components/footer.php'; ?> 
+		<?php require $local_path . '/components/footer.php'; ?> 
 
 	</body>
 

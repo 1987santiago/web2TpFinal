@@ -1,22 +1,20 @@
 <?php
+    session_start();
     // guardamos la nueva ruta base del site
-    $SITE_PATH = "/Applications/XAMPP/htdocs/unlam/web2/tpFinal/web2TpFinal/site";
+    $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
-    $static_url = "/unlam/web2/tpFinal/web2TpFinal/site";
+    $statics_path = $_SESSION["statics_path"];
 ?>
 
-<!doctype html>
-<html>
-
-    <!-- se incluye el <head> -->
-    <?php require $SITE_PATH . '/components/head.php'; ?>
+<!-- se incluye el inicio del html <!doctype html>...</head> -->
+<?php require $local_path . '/components/head.php'; ?>
     
     <body>
 
         <div class="wrapper">
     
-        <!-- se incluye el <header> -->
-        <?php require $SITE_PATH . '/components/header.php'; ?> 
+            <!-- se incluye el <header> -->
+            <?php require $local_path . '/components/header.php'; ?> 
 
             <main id="main" role="main">
 
@@ -31,7 +29,7 @@
         </div><!-- [end] wrapper -->
 
         <!-- se incluye el <header> -->
-        <?php require $SITE_PATH . '/components/footer.php'; ?> 
+        <?php require $local_path . '/components/footer.php'; ?> 
 
     </body>
 

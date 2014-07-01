@@ -9,6 +9,7 @@
     border-radius: 40% 40% 30% 30%;
     display: inline-block;
     padding: 4em 2em 5em 0; 
+    text-align: center;
 }
 .seat-selection legend {
     display: none;
@@ -40,6 +41,9 @@
     overflow: hidden;
     text-indent: 9999px;
     width: 18px;
+}
+.seat-selection .seat-premium-class .seat {
+    margin: 4px 10px;
 }
 .seat-selection .disabled,
 .seat-selection .reserved {

@@ -10,7 +10,7 @@
     var request = skynet.request || {}; 
 
     // CONSTANTS
-    var STATIC_URL = '/unlam/web2/tpFinal/web2TpFinal/site'; 
+    var STATIC_URL = '/unlam/web2/gitLab/tpweb2/site'; 
 
     /**
      * @param component {JSON} with
