@@ -253,7 +253,9 @@ CREATE TABLE IF NOT EXISTS pago (
   forma_pago varchar(15) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   numero_tarjeta varchar(20) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   monto float NOT NULL,
-  PRIMARY KEY (id_pago)
+  codigo_reserva varchar(30) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
+  PRIMARY KEY (id_pago),
+  KEY fk_codigo_reserva (codigo_reserva)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -289,12 +291,10 @@ CREATE TABLE IF NOT EXISTS reserva (
   fecha_partida date NOT NULL,
   esta_en_espera tinyint(1) NOT NULL,
   dni varchar(8) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
-  id_pago int(11) NOT NULL,
   numero_vuelo int(11) NOT NULL,
   id_categoria int(11) NOT NULL,
   PRIMARY KEY (codigo_reserva),
   KEY fk_dni (dni),
-  KEY fk_id_pago (id_pago),
   KEY fk_numero_vuelo (numero_vuelo),
   KEY fk_id_categoria2 (id_categoria)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -605,9 +605,8 @@ ALTER TABLE asiento
 --
 ALTER TABLE reserva
   ADD CONSTRAINT reserva_ibfk_1 FOREIGN KEY (dni) REFERENCES pasajero (dni),
-  ADD CONSTRAINT reserva_ibfk_2 FOREIGN KEY (id_pago) REFERENCES pago (id_pago),
-  ADD CONSTRAINT reserva_ibfk_3 FOREIGN KEY (numero_vuelo) REFERENCES vuelo (numero_vuelo),
-  ADD CONSTRAINT reserva_ibfk_4 FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria);
+  ADD CONSTRAINT reserva_ibfk_2 FOREIGN KEY (numero_vuelo) REFERENCES vuelo (numero_vuelo),
+  ADD CONSTRAINT reserva_ibfk_3 FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria);
 
 --
 -- Filtros para la tabla vuelo
@@ -616,6 +615,12 @@ ALTER TABLE vuelo
   ADD CONSTRAINT vuelo_ibfk_1 FOREIGN KEY (oaci_origen) REFERENCES aeropuerto (codigo_oaci),
   ADD CONSTRAINT vuelo_ibfk_2 FOREIGN KEY (oaci_destino) REFERENCES aeropuerto (codigo_oaci),
   ADD CONSTRAINT vuelo_ibfk_3 FOREIGN KEY (codigo_avion) REFERENCES avion (codigo_avion);
+
+--
+-- Filtros para la tabla pago
+--  
+ALTER TABLE pago
+  ADD CONSTRAINT pago_ibfk_1 FOREIGN KEY (codigo_reserva) REFERENCES reserva (codigo_reserva);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

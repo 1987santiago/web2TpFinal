@@ -17,7 +17,7 @@
 	 * 6 sabado
 	 * 7 domingo
 	 * */
-	function diasVueloEnBinario($diasVuelo)
+	function getDiasVueloBin($diasVuelo)
 	{
 		$binario = decbin($diasVuelo);
 		$binario = substr("00000000",0,8 - strlen($binario)) . $binario;
@@ -26,20 +26,20 @@
 	
 	// Convierte la fecha del formato dd/mm/aaaa a aaaa-mm-dd
 	// Devuelve un string
-	function formatearFecha($fecha)
+	function getFechaFormateada($fecha)
 	{
 		return implode("-", array_reverse(explode("/", $fecha)));
 	}
 	
 	// Genera un codigo unico para la reserva
-	function codigoUnicoReserva() 
+	function getCodigoUnicoReserva() 
 	{
 		$idReserva = uniqid();
 		return $idReserva;
 	}
 	
 	// Devuelve el dia de la semana de una fecha formateada como aaaa-mm-dd
-	function diaDeLaSemana($fecha) 
+	function getDiaDeLaSemana($fecha) 
 	{
 		return date('N', strtotime($fecha));
 	}
