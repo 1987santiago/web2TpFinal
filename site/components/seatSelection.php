@@ -5,28 +5,23 @@
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
 
-    include '../processors/ConnectToServer.php';
-    include '../processors/selectDataBase.php';
-    include '../processors/AskData.php';
+    include '../processors/Database.php';
+    include '../processors/ProccessData.php';
 
     // Establecemos una conexión con el servidor
-    $connect_to_localhost_server = new ConnectToServer('localhost', 'root', 'root');
-    $connect_to_localhost_server->connect();
-    $connect_link = $connect_to_localhost_server->getConnectionLink();
-
-    // Seleccionamos una base de datos
-    $select_reserva_db = new selectDataBase('skynet');
-    $select_reserva_db->select();
-    $selected_db = $select_reserva_db->getSelectionStatus();
+    $connect = new Database();
     
     // Obtenemos el código ingresado por usuario
     $reservation_code = $_POST['reservationCode']; 
 
+    // Generamos la consulta
     $query_sql = "SELECT * FROM reserva WHERE (codigo_reserva = '$reservation_code');";
-    $response_sql = mysql_query($query_sql, $connect_link);
+
+    // Ejecutamos la consulta y guardamos la respuesta de la base
+    $response_sql = $connect->executeSelect($query_sql);
 
     // Si el codigo de reserva no pertenece a ningun registro
-    if (!mysql_fetch_array($response_sql, MYSQL_ASSOC)) {
+    if (!$response_sql) {
         // redirigimos al usuario al inicio del checkIn
         setcookie('error', 'Codigo_reserva_invalido');
         header("Location: $statics_path/components/checkIn.php");
@@ -62,52 +57,51 @@
     var_dump($flight_data);
     echo "\n<br><br>";
 
-    $plane_code = getValue($flight_data, 'codigo_avion');
+    $flight_proccess_data = new ProccessData($flight_data);
+
+    $plane_code = $flight_proccess_data->getValue('codigo_avion');
+    echo '$plane_code : ' . $plane_code;
 
     // Generamos la query para buscar el ID de pago de la reserva en la tabla de pagos
     $plane_query_sql = "SELECT * FROM avion WHERE (codigo_avion = $plane_code)";
-    // Instanciamos un objeto del tipo AskData 
-    // y le pasamos los valores de la consulta a realizar a futuro
-    $planeData = new AskData($plane_query_sql, $connect_link);
 
-    // Realizamos la consulta a la tabla
-    $planeData->executeQuery();
-
-    // $response_sql = mysql_query($query_sql, $connect_link);
-    $response_sql = $planeData->getResponse();
+    // Ehecutamos la consulta y guardamos la respuesta (array assoc)
+    $plane_data = $connect->executeSelect($plane_query_sql);
 
     // Si la consulta fue exitosa entra 
-    if ($response_sql) { 
-
-        // guarda un array asociativo
-        // $data_fetch_array_assoc = mysql_fetch_array($response_sql, MYSQL_ASSOC); 
-        $data_fetch_array_assoc = $planeData->getAssociativeArrayResponse(); 
+    if ($plane_data) { 
 
         // si el registro está vacío retornamos falso 
-        if (!$data_fetch_array_assoc) {
+        if (!$plane_data) {
             return false;
         }
 
         echo "\nAsientos: <br>\n";
 
-        $planeData->printData($data_fetch_array_assoc); 
+        $plane_proccess_data = new ProccessData($plane_data);
+        $plane_proccess_data->printData(); 
 
         echo "<br>\n";
 
-        // $premium_seat_colums = $planeData->getValue($data_fetch_array_assoc, 'columnas_primera');
-        // $premium_seat_rows = $planeData->getValue($data_fetch_array_assoc, 'filas_primera');
-        // $economy_seat_colums = $planeData->getValue($data_fetch_array_assoc, 'columnas_economy');
-        // $economy_seat_rows = $planeData->getValue($data_fetch_array_assoc, 'filas_economy');
-        // $total_premium_seat = $planeData->getValue($data_fetch_array_assoc, 'asientos_primera');
-        // $total_economy_seat = $planeData->getValue($data_fetch_array_assoc, 'asientos_economy');
-        // $total_seat = $planeData->getValue($data_fetch_array_assoc, 'total_asientos');
-        $premium_seat_colums = $planeData->getValue('columnas_primera');
-        $premium_seat_rows = $planeData->getValue('filas_primera');
-        $economy_seat_colums = $planeData->getValue('columnas_economy');
-        $economy_seat_rows = $planeData->getValue('filas_economy');
-        $total_premium_seat = $planeData->getValue('asientos_primera');
-        $total_economy_seat = $planeData->getValue('asientos_economy');
-        $total_seat = $planeData->getValue('total_asientos');
+        $premium_seat_colums    = $plane_proccess_data->getValue('columnas_primera');
+        $premium_seat_rows      = $plane_proccess_data->getValue('filas_primera');
+        $economy_seat_colums    = $plane_proccess_data->getValue('columnas_economy');
+        $economy_seat_rows      = $plane_proccess_data->getValue('filas_economy');
+        $total_premium_seat     = $plane_proccess_data->getValue('asientos_primera');
+        $total_economy_seat     = $plane_proccess_data->getValue('asientos_economy');
+        $total_seat             = $plane_proccess_data->getValue('total_asientos');
+
+        $seatMapData = array(
+            "premium_seat_colums"    => $plane_proccess_data->getValue('columnas_primera'),
+            "premium_seat_rows"      => $plane_proccess_data->getValue('filas_primera'),
+            "economy_seat_colums"    => $plane_proccess_data->getValue('columnas_economy'),
+            "economy_seat_rows"      => $plane_proccess_data->getValue('filas_economy'),
+            "total_premium_seat"     => $plane_proccess_data->getValue('asientos_primera'),
+            "total_economy_seat"     => $plane_proccess_data->getValue('asientos_economy'),
+            "total_seat"             => $plane_proccess_data->getValue('total_asientos')
+        );
+
+        $_SESSION["seatMapData"] = $seatMapData;
 
     } else { 
 
@@ -117,29 +111,14 @@
 
     }
 
-    // Hardcode values
-    // $colsQuantity = 4;
-    // $totalSeats = 60;
-    // $rows_quantity = $totalSeats / $colsQuantity; // se calcula la cantidad de filas
-
-    // $seatId = 001;
-    // $seatStatus = 'disabled'; // valores ['available',disabled']
-    // // O bien un dato booleano para saber su estado
-    // $availableSeat = false; // or true
-
-    function getValue($array, $key_) {
-
-        foreach ($array as $key => $value) {
-
-            if ($key == $key_) {
-                return $value;
-            }
-
-        }
-
-    }
-
-    function printSeatMap($rows_quantity, $cols_quantity) {
+    /**
+     * printSeatMap
+     * Dibuja el esquema de asientos del avión en base a los datos recibidos de la base,
+     * @$rows_quantity Number con la cantidad de filas de asientos
+     * @$cols_quantity Number con la cantidad de asientos por fila (columnas)
+     * @$category String con el nombre de la categoría del asiento (premium/economy)
+     */
+    function printSeatMap($rows_quantity, $cols_quantity, $category) {
 
         for ($row = 0; $row <= $rows_quantity ; $row++) { 
             // fila
@@ -167,14 +146,14 @@
                     // TODO: si el asiento está reservado (asiento.status == 'reserved' || 'disabled'), 
                     //       agregar atributo disabled al radio y la clase correspondiente al label
                     if ( (($seat + $row) % 2) == 0) {
-                        echo "<input id='asiento$row$seat' name='asiento' type='radio' value='$row$seat' disabled='disabled'>";
-                        echo "<label for='asiento$row$seat' class='seat disabled'>F $row A$seat</label>";
+                        echo "<input id='asiento$category$row$seat' name='asiento' type='radio' value='$row$seat' disabled='disabled'>";
+                        echo "<label for='asiento$category$row$seat' class='seat disabled'>F $row A$seat</label>";
                     } else if( ($seat % 2) != 0 && ($row % 3) == 0 ) {
-                        echo "<input id='asiento$row$seat' name='asiento' type='radio' value='$row$seat' disabled='disabled'>";
-                        echo "<label for='asiento$row$seat' class='seat reserved'>F $row A$seat</label>";
+                        echo "<input id='asiento$category$row$seat' name='asiento' type='radio' value='$row$seat' disabled='disabled'>";
+                        echo "<label for='asiento$category$row$seat' class='seat reserved'>F $row A$seat</label>";
                     } else {
-                        echo "<input id='asiento$row$seat' name='asiento' type='radio' value='$row$seat' data-seat-row='$row' data-seat-col='$seat'>";
-                        echo "<label for='asiento$row$seat' class='seat'>F $row A$seat</label>";
+                        echo "<input id='asiento$category$row$seat' name='asiento' type='radio' value='$row$seat' data-seat-row='$row' data-seat-col='$seat'>";
+                        echo "<label for='asiento$category$row$seat' class='seat'>F $row A$seat</label>";
                     }
 
                 }
@@ -218,10 +197,10 @@
                                 <legend>Seleccione un asiento</legend>
 
                                     <div class="seat-premium-class">
-                                        <?php printSeatMap($premium_seat_rows,$premium_seat_colums); ?>
+                                        <?php printSeatMap($seatMapData["premium_seat_rows"], $seatMapData["premium_seat_colums"], 'premium'); ?>
                                     </div>
                                     <div class="seat-economy-class">
-                                        <?php printSeatMap($economy_seat_rows,$economy_seat_colums); ?>
+                                        <?php printSeatMap($seatMapData["economy_seat_rows"], $seatMapData["economy_seat_colums"], 'economy'); ?>
                                     </div>
 
                             </fieldset>

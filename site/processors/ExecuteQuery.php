@@ -6,9 +6,9 @@
      */
 
     /**
-     * This Class establishes a connection to any server, 
+     * This Class execute , 
      * that has been pass from parameter
-     * @example connectToMyServer = new ConnectToServer('myServer', 'root', 'root');
+     * @example ;
      */
     class ExecuteQuery {
 

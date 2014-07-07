@@ -19,8 +19,7 @@
     include 'AskData.php';
 
     // Establecemos una conexión con el servidor
-    $connect_to_localhost_server = new ConnectToServer('localhost', 'root', 'root');
-    $connect_to_localhost_server->connect();
+    $connect_to_localhost_server = new ConnectToServer();
     $connect_link = $connect_to_localhost_server->getConnectionLink();
 
     // Seleccionamos una base de datos

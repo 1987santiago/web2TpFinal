@@ -8,21 +8,28 @@
     /**
      * This Class establishes a connection to any server, 
      * that has been pass from parameter
-     * @example connectToMyServer = new ConnectToServer('myServer', 'root', 'root');
+     * @example connectToMyServer = new ConnectToServer();
      */
     class ConnectToServer {
 
         // Attributes
-        private $server_name; // String
+        private $server; // String
+        private $database; // String
         private $user; // String
         private $pass; // String
         private $link; // Boolean 
 
         // Methods
-        function ConnectToServer($server_name, $user, $pass) {
-            $this->server_name = $server_name;
-            $this->user = $user;
-            $this->pass = $pass;
+
+        // @Constructor
+        function ConnectToServer() { 
+            // Hardcode values
+            $this->server = 'localhost';
+            $this->database = 'skynet';
+            $this->user = 'root';
+            $this->pass = 'root';
+            // Establishes connection
+            $this->connect();
         }
 
         /**
@@ -31,7 +38,7 @@
          * On error, returns false.
          */ 
         public function connect() {
-            $link = mysql_connect($this->server_name, $this->user);
+            $link = mysql_connect($this->server, $this->user);
             $this->link = $link;
         }
 

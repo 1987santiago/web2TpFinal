@@ -50,20 +50,20 @@
 
         <script type="text/javascript">
 
-            (function(){
-                'use strict';
+            // (function(){
+            //     'use strict';
 
-                var link = document.getElementById('gotoPreviousPage');
+            //     var link = document.getElementById('gotoPreviousPage');
 
-                link.onclick = function(event) {
+            //     link.onclick = function(event) {
 
-                    event.preventDefault();
+            //         event.preventDefault();
+            //         console.log('window.history ', window.history);
+            //         // window.history.back();
 
-                    window.history.back();
+            //     };
 
-                };
-
-            }());
+            // }());
 
         </script>
 
