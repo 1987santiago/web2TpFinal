@@ -73,6 +73,16 @@
     <!-- Incluir este js para agregar funcionalidad en browsers < IE8 
         <script type="text/javascript" src="js/components/seatSelection.js"></script> 
     -->
+    <script>
+        $(function() {
+            $("#fechaNac").datepicker({
+            showOn: "button",
+            buttonImage: "../images/calendar.gif",
+            buttonImageOnly: true,
+            firstDay: 0
+            });
+        });
+    </script>
     </body>
 
 </html>

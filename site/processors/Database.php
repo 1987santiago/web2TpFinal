@@ -31,7 +31,7 @@
 		 * 		@true si se conecto satisfactoriamente
 		 * 		@false si no se logró establecer una conexión
 		 */
-		private function connect() {
+		public function connect() {
 
 			$this->connection = mysql_connect($this->hostname, $this->user, $this->pass);
 			$conexionExitosa = mysql_select_db($this->database, $this->connection);
@@ -46,7 +46,7 @@
 		/**
 		 * Metodo para desconectarse
 		 */
-		public function disconnet() {
+		public function disconnect() {
 
 			mysql_close($this->connection);
 

@@ -19,6 +19,7 @@
  
     $skynet = new Database();
     $conexionCorrecta = $skynet->connect();
+    
     if ($conexionCorrecta)
     {
         switch ($tipoDeViaje) 
