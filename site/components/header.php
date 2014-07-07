@@ -1,7 +1,7 @@
 <header>
     
     <!-- Logo -->
-    <h1>Areolineas Payaso</h1>
+    <h1>Sky net</h1>
 
     <!-- Principal navigation bar -->
     <nav>
