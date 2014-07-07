@@ -7,7 +7,12 @@
 ?>
 
 <!-- se incluye el inicio del html <!doctype html>...</head> -->
-<?php require $local_path . '/components/head.php'; ?>
+<?php 
+    $_SESSION["resources"] = array(
+        "css" => array("seatSelection")
+    ); 
+    require $local_path . '/components/head.php'; 
+?>
     
     <body>
 

@@ -14,8 +14,8 @@
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
 
-    include 'Database.php';
-    include 'ProccessData.php';
+    require_once 'Database.php';
+    require_once 'ProccessData.php';
 
     // Establecemos una conexión con el servidor
     $connect = new Database();

@@ -1,6 +1,6 @@
 <?php 
 
-    include 'Database.php';
+    require_once 'Database.php';
 
     // Establecemos una conexión con el servidor
     $connect = new Database();

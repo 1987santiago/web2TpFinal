@@ -1,13 +1,17 @@
 <?php
     session_start();
-    require_once 'database.php';
+
+    require_once '../processors/Database.php';
+
     define("EXCEDENTE", 10);
+
     $categoria = (int) $_POST["categoria"];
     $vuelo = (int) $_POST["vuelo"];
     $_SESSION["categoriaElegida"] = $categoria;
     $_SESSION["vueloElegido"] = $vuelo;
     $skynet = new Database();
     $conexionCorrecta = $skynet->connect();
+
     if ($conexionCorrecta)
     {
         switch ($categoria) 

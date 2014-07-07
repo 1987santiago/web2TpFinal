@@ -1,3 +1,24 @@
+<?php 
+
+    function getCssResources($files) {
+
+        foreach ($files as $index => $name) {
+            $statics_path = $_SESSION["statics_path"];
+            echo "<link href='$statics_path/css/$name.css' type='text/css' rel='stylesheet'>";
+        }
+
+    }
+
+    function getJsResources($files) {
+
+        foreach ($files as $index => $name) {
+            $statics_path = $_SESSION["statics_path"];
+            echo "<script type='text/javascript' src='$statics_path/js/$name.js'></script>";
+        }
+
+    }
+
+?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
 <!--[if IE 7]>  <html class="no-js  lt-ie10 lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
@@ -16,7 +37,25 @@
         <link href="<?php echo $statics_path; ?>/css/global.css" type="text/css" rel="stylesheet">
         <link href="<?php echo $statics_path; ?>/css/grid.css" type="text/css" rel="stylesheet">
         <link href="<?php echo $statics_path; ?>/css/tables.css" type="text/css" rel="stylesheet">
-        <link href="<?php echo $statics_path; ?>/css/seatSelection.css" type="text/css" rel="stylesheet">
+        <link href="<?php echo $statics_path; ?>/css/jquery-ui.css" type="text/css" rel="stylesheet"/>
+        
+        <?php 
+            // Si se envían datos de los recursos que se necesitan cargar especialmente para 
+            // un componente o sección, 
+            if (isset($_SESSION["resources"])) {
+                // obtenemos dichos recursos
+                $_resources = $_SESSION["resources"];
+                // los iteramos e imprimimos para descargarlos
+                foreach ($_resources as $key => $value) {
+                    if ($key == "css") {
+                        getCssResources($value);
+                    } else if ($key == "js") {
+                        getJsResources($value);
+                    }
+                }
+
+            }
+        ?>
         
         <!--[if lt IE 9]>
             <script src="<?php echo $static_url; ?>/js/html5shiv.js"></script>
@@ -24,6 +63,15 @@
 
         <!-- JS -->
         <!-- <script type="text/javascript" src="<?php echo $statics_path; ?>/js/lib/require.min.js" data-main="<?php echo $statics_path; ?>/js/main" ></script> -->
+        <!-- <script type="text/javascript" src="../js/jquery-1.10.2.js"></script> -->
         <script type="text/javascript" src="<?php echo $statics_path; ?>/js/lib/jquery-1.8.3.js"></script>
+        <script type="text/javascript" src="../js/jquery.ui.core.js"></script>
+        <script type="text/javascript" src="../js/jquery.ui.datepicker.js"></script>
+        <script type="text/javascript" src="../js/jquery.ui.datepicker-es.js"></script>
 
     </head>
+
+<?php 
+    // Limpiamos el contenido de resources para evitar que se llamen los mismo archivos varias veces
+    $_SESSION["resources"] = null;
+?>

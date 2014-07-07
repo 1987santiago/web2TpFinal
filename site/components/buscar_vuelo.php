@@ -1,6 +1,7 @@
 <?php
     session_start();
-    require_once 'database.php';
+    
+    require_once '../processors/Database.php';
     require_once 'library.php';
     
     $ciudadOrigen = $_POST["ciudadOrigen"];

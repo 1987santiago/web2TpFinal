@@ -5,8 +5,8 @@
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
 
-    include '../processors/Database.php';
-    include '../processors/ProccessData.php';
+    require_once '../processors/Database.php';
+    require_once '../processors/ProccessData.php';
 
     // Establecemos una conexión con el servidor
     $connect = new Database();
@@ -170,7 +170,12 @@
 ?>
 
 <!-- se incluye el inicio del html <!doctype html>...</head> -->
-<?php require $local_path . '/components/head.php'; ?>
+<?php 
+    $_SESSION["resources"] = array(
+        "css" => array("seatSelection")
+    ); 
+    require $local_path . '/components/head.php'; 
+?>
     
     <body>
 

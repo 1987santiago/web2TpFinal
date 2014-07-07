@@ -1,6 +1,6 @@
 <?php 
 
-    include 'selectDataBase.php';
+    require_once 'selectDataBase.php';
     
     // 2. SELECCIONAR UNA DB
     $db_name = $_POST['dbName'];
