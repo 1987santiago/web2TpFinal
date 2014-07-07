@@ -1,0 +1,60 @@
+/*
+ * @name: seatSelection.css
+ * @date: 2014.05.20
+ * @description: Aqui se definen los estilos que dibujan la seccion de reserva de un aseinto (reservaAsiento.php)
+ */
+
+.seat-selection {}
+.seat-selection fieldset {
+    border-radius: 40% 40% 30% 30%;
+    display: inline-block;
+    padding: 4em 2em 5em 0; 
+    text-align: center;
+}
+.seat-selection legend {
+    display: none;
+}
+.seat-selection input[type="radio"] {
+    display: none;
+}
+/* Seat - asiento 
+----------------------------------------*/
+.seat-selection .seat,
+.seat-letter,
+.seat-number {
+    display: inline-block;
+    height: 18px;
+    margin: 4px;
+    text-align: center;
+    vertical-align: middle;
+    width: 18px;
+}
+.seat-number {
+    text-align: right;
+}
+.seat-selection .seat {
+    background: url('../images/seat.gif') no-repeat 0 0 transparent;
+    cursor: pointer;
+    display: inline-block;
+    height: 18px;
+    margin: 4px;
+    overflow: hidden;
+    text-indent: 9999px;
+    width: 18px;
+}
+.seat-selection .seat-premium-class .seat {
+    margin: 4px 10px;
+}
+.seat-selection .disabled,
+.seat-selection .reserved {
+    cursor: default;
+}
+.seat-selection .disabled {
+    background-position: 0 -20px;
+}
+.seat-selection .reserved {
+    background-position: 0 -40px;
+}
+.seat-selection :checked + label {
+    background-position: 0 -60px;
+};

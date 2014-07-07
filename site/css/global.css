@@ -1,5 +1,5 @@
 /*
- * @name: styles.css
+ * @name: global.css
  * @author: santiago marchioni
  * @date: 2014.04.26
  * @description: Set commons styles for Ishidan site
@@ -122,56 +122,12 @@ fieldset {
     padding: 1em 0;
 }
 legend {
-    font-size: 1.4em;
-    line-height: 1.4em;
     margin-left: 1em;
     text-transform: capitalize;
 }
-label {
-    display: inline-block;
-    text-align: right;
-    margin-top: 3px;
-    min-width: 200px;
-    width: 20%;
-    vertical-align: top;
-}
+label {}
 textarea {
     resize: none;
-}
-
-article {
-    border: 1px solid #4132EB;
-    border-radius: 4px;
-    background-color: #E7EAFF;
-}
-article header {
-    background: #101B97;
-}
-article p {
-    padding: .5em 1em;
-}
-
-/* Ejercicio 06
--------------------------------------------------*/
-.ej06 label {
-    min-width: 300px;
-}
-.questions fieldset {
-    padding: 0 1em 1em;
-}
-.questions legend {
-    margin-left: 0;
-}
-.questions label,
-.questions input:not([type="submit"]):not([type="reset"]) {
-    display: block;
-    max-width: 500px;
-    width: 100%;
-} 
-.questions label {
-    text-align: left;
-    font-size: 1.2em;
-    line-height: 1.3em;
 }
 
 /* Box-..
@@ -199,13 +155,9 @@ article p {
     color: #009900;
 }
 
-/* Secondary link 
--------------------------------------------------*/
-.secondary-link {
-    float: right;
+.valid {
+    background-color: green;
 }
-
-.delete-data {
-    display: block;
-    padding: 1em 0;
+.invalid {
+    background-color: red;
 }

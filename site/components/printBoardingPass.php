@@ -18,9 +18,11 @@
 
             <main id="main" role="main">
 
-                <section id="horarios">
+                <section>
+                    
+                    <h2>Check In</h2>
 
-                    Horarios
+                    <p>###ACA VA EL BOARDING PASS IMPRIMIBLE###</p>
 
                 </section>
 
@@ -30,6 +32,25 @@
 
         <!-- se incluye el <header> -->
         <?php require $local_path . '/components/footer.php'; ?> 
+
+        <script type="text/javascript">
+
+            (function(){
+                'use strict';
+
+                var link = document.getElementById('gotoPreviousPage');
+
+                link.onclick = function(event) {
+
+                    event.preventDefault;
+
+                    window.history.back();
+
+                };
+
+            }());
+
+        </script>
 
     </body>
 
