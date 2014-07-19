@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-06-2014 a las 23:48:15
+-- Tiempo de generación: 07-07-2014 a las 16:35:23
 -- Versión del servidor: 5.6.16
 -- Versión de PHP: 5.5.9
 
@@ -26,7 +26,7 @@ USE skynet;
 --
 -- Estructura de tabla para la tabla 'aeropuerto'
 --
--- Creación: 22-06-2014 a las 18:36:50
+-- Creación: 28-06-2014 a las 15:08:04
 --
 
 CREATE TABLE IF NOT EXISTS aeropuerto (
@@ -145,7 +145,7 @@ INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAZY', '
 --
 -- Estructura de tabla para la tabla 'asiento'
 --
--- Creación: 22-06-2014 a las 18:36:53
+-- Creación: 28-06-2014 a las 15:08:07
 --
 
 CREATE TABLE IF NOT EXISTS asiento (
@@ -162,12 +162,22 @@ CREATE TABLE IF NOT EXISTS asiento (
   KEY fk_dni (dni)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- RELACIONES PARA LA TABLA asiento:
+--   numero_vuelo
+--       vuelo -> numero_vuelo
+--   id_categoria
+--       categoria -> id_categoria
+--   dni
+--       pasajero -> dni
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla 'avion'
 --
--- Creación: 22-06-2014 a las 18:36:50
+-- Creación: 28-06-2014 a las 15:08:07
 --
 
 CREATE TABLE IF NOT EXISTS avion (
@@ -198,7 +208,7 @@ INSERT INTO avion (codigo_avion, marca, modelo, total_asientos, asientos_economy
 --
 -- Estructura de tabla para la tabla 'categoria'
 --
--- Creación: 22-06-2014 a las 18:36:51
+-- Creación: 28-06-2014 a las 15:08:08
 --
 
 CREATE TABLE IF NOT EXISTS categoria (
@@ -219,7 +229,7 @@ INSERT INTO categoria (id_categoria, categoria) VALUES(200, 'economy');
 --
 -- Estructura de tabla para la tabla 'empleado'
 --
--- Creación: 22-06-2014 a las 18:36:51
+-- Creación: 28-06-2014 a las 15:08:08
 --
 
 CREATE TABLE IF NOT EXISTS empleado (
@@ -244,7 +254,7 @@ INSERT INTO empleado (id_legajo, apellido, nombre, usuario, clave, es_administra
 --
 -- Estructura de tabla para la tabla 'pago'
 --
--- Creación: 22-06-2014 a las 18:36:51
+-- Creación: 28-06-2014 a las 15:08:09
 --
 
 CREATE TABLE IF NOT EXISTS pago (
@@ -258,12 +268,18 @@ CREATE TABLE IF NOT EXISTS pago (
   KEY fk_codigo_reserva (codigo_reserva)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- RELACIONES PARA LA TABLA pago:
+--   codigo_reserva
+--       reserva -> codigo_reserva
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla 'pasajero'
 --
--- Creación: 22-06-2014 a las 18:36:51
+-- Creación: 28-06-2014 a las 15:08:09
 --
 
 CREATE TABLE IF NOT EXISTS pasajero (
@@ -282,14 +298,15 @@ CREATE TABLE IF NOT EXISTS pasajero (
 --
 -- Estructura de tabla para la tabla 'reserva'
 --
--- Creación: 22-06-2014 a las 18:36:52
+-- Creación: 07-07-2014 a las 11:30:57
 --
 
 CREATE TABLE IF NOT EXISTS reserva (
   codigo_reserva varchar(30) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
-  fecha_reserva date NOT NULL,
-  fecha_partida date NOT NULL,
+  fecha_reserva datetime NOT NULL,
+  fecha_partida datetime NOT NULL,
   esta_en_espera tinyint(1) NOT NULL,
+  monto float NOT NULL,
   dni varchar(8) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   numero_vuelo int(11) NOT NULL,
   id_categoria int(11) NOT NULL,
@@ -299,12 +316,22 @@ CREATE TABLE IF NOT EXISTS reserva (
   KEY fk_id_categoria2 (id_categoria)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- RELACIONES PARA LA TABLA reserva:
+--   dni
+--       pasajero -> dni
+--   numero_vuelo
+--       vuelo -> numero_vuelo
+--   id_categoria
+--       categoria -> id_categoria
+--
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla 'vuelo'
 --
--- Creación: 22-06-2014 a las 18:36:52
+-- Creación: 28-06-2014 a las 15:08:10
 --
 
 CREATE TABLE IF NOT EXISTS vuelo (
@@ -322,6 +349,16 @@ CREATE TABLE IF NOT EXISTS vuelo (
   KEY fk_oaci_destino (oaci_destino),
   KEY fk_codigo_avion (codigo_avion)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=261 ;
+
+--
+-- RELACIONES PARA LA TABLA vuelo:
+--   oaci_origen
+--       aeropuerto -> codigo_oaci
+--   oaci_destino
+--       aeropuerto -> codigo_oaci
+--   codigo_avion
+--       avion -> codigo_avion
+--
 
 --
 -- Volcado de datos para la tabla 'vuelo'
@@ -601,6 +638,12 @@ ALTER TABLE asiento
   ADD CONSTRAINT asiento_ibfk_3 FOREIGN KEY (dni) REFERENCES pasajero (dni);
 
 --
+-- Filtros para la tabla pago
+--
+ALTER TABLE pago
+  ADD CONSTRAINT pago_ibfk_1 FOREIGN KEY (codigo_reserva) REFERENCES reserva (codigo_reserva);
+
+--
 -- Filtros para la tabla reserva
 --
 ALTER TABLE reserva
@@ -615,12 +658,6 @@ ALTER TABLE vuelo
   ADD CONSTRAINT vuelo_ibfk_1 FOREIGN KEY (oaci_origen) REFERENCES aeropuerto (codigo_oaci),
   ADD CONSTRAINT vuelo_ibfk_2 FOREIGN KEY (oaci_destino) REFERENCES aeropuerto (codigo_oaci),
   ADD CONSTRAINT vuelo_ibfk_3 FOREIGN KEY (codigo_avion) REFERENCES avion (codigo_avion);
-
---
--- Filtros para la tabla pago
---  
-ALTER TABLE pago
-  ADD CONSTRAINT pago_ibfk_1 FOREIGN KEY (codigo_reserva) REFERENCES reserva (codigo_reserva);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
