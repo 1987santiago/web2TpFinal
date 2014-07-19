@@ -1,13 +1,10 @@
 <?php 
-	session_start();
-        $estaEnEspera = $_GET["estaEnEspera"];
-        $_SESSION["estaEnEspera"] = $estaEnEspera;
+    session_start();   
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="../css/datos_pasajero.css"/>
+    <meta http-equiv="Content-Type" content="text/html" charset="ISO-8859-15"/>
+    <link rel="stylesheet" type="text/css" href="../css/estilos.css"/>
     <link rel="stylesheet" href="../css/jquery-ui.css"/>
     <script type="text/javascript" src="../js/datos_pasajero.js"></script>
     <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
@@ -135,8 +132,18 @@
 
                 </td>
                 <td>
-                    <a href="listado_vuelos_ida.php" name="anterior">Anterior</a>
-                    <input type="submit" name="siguiente" value="Siguiente"></input>
+                    <?php 
+                        $tipoDeViaje=$_SESSION["tipoDeViaje"];
+                        if ($tipoDeViaje == 1) 
+                        { 
+                            echo "<a href='listado_vuelos_ida.php' name='anterior'>Anterior</a>";
+                        }
+                        else
+                        {
+                            echo "<a href='listado_vuelos_ida_regreso.php' name='anterior'>Anterior</a>";
+                        }    
+                    ?> 
+                    <input type="submit" name="siguiente" value="Siguiente"/>
                 </td>
             </tr>
         </table>

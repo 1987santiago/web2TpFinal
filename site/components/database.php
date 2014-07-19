@@ -38,7 +38,28 @@
             $result = mysql_query($sql);
             return $this->resultToArray($result);
         }
+		
+        // Inicia una transaccion
+        public function beginTransaction() 
+        {
+            mysql_query("SET AUTOCOMMIT=0");
+            mysql_query("START TRANSACTION");
+        }
 
+        // Acepta una transaccion
+        public function commit() 
+        {
+            mysql_query("COMMIT");
+            mysql_query("SET AUTOCOMMIT=1");
+        }
+
+        // Vuelve al estado anterior en una transaccion
+        public function rollBack()
+        {
+            mysql_query("ROLLBACK");
+            mysql_query("SET AUTOCOMMIT=1");
+        }
+		
         private function resultToArray($result) 
         {
             $lista = array();

@@ -2,16 +2,26 @@
 
 .centrar
 {
-	margin-left: 35%;
-	margin-top: 10%;
+    margin-left: 35%;
+    margin-top: 10%;
 }
 
 .invisible
 {
-	visibility: hidden;
+    visibility: hidden;
 }
 
 .visible
 {
-	visibility: visible;
+    visibility: visible;
+}
+
+.anchoCuadroTexto
+{
+    width: 80%;
+}
+
+.anchoFecha 
+{
+    width: 50%;
 }

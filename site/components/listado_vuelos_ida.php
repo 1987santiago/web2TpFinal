@@ -1,15 +1,14 @@
 <?php 
-	session_start();
+    session_start();
 ?>
-<!DOCTYPE html PUBLIC -//W3C//DTD XHTML 1.0 Strict//EN http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd>
-<html xmlns=http://www.w3.org/1999/xhtml>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="../css/listado_vuelos_ida.css"/>
+    <meta http-equiv="Content-Type" content="text/html" charset="ISO-8859-15"/>
+    <link rel="stylesheet" type="text/css" href="../css/estilos.css"/>
     <script type="text/javascript" src="../js/listado_vuelos_ida.js"></script>
 </head>
 <body>
-    <form action="buscar_asiento_ida.php" method="post" onsubmit="return validarVueloSeleccionado()" class="centrar">
+    <form action="buscar_asiento.php" method="post" onsubmit="return validarVueloSeleccionado()" class="centrar">
         <?php  echo "Fecha de partida:  " . $_SESSION["fechaPartida"]; ?>
         <table>
             <tr>
@@ -38,9 +37,9 @@
                 </td>
             </tr>
             <?php 
-                $vuelos = $_SESSION["vuelos"];
-                if (isset($vuelos)) 
+                if (isset($_SESSION["vuelosIda"])) 
                 {
+                    $vuelos = $_SESSION["vuelosIda"];
                     foreach($vuelos as $vuelo) 	
                     {
                         $idVueloSeleccionado = $vuelo["numero_vuelo"];
@@ -54,11 +53,17 @@
                         echo        "<td>";
                         echo            $vuelo["oaci_destino"] . "-" . $vuelo["destino"];
                         echo        "</td>";
-                        echo        "<td>";
-                        echo            "<input type='radio' name='categoria' value='200'/>" . $vuelo["tarifa_economy"];
-                        echo        "</td>";
-                        echo        "<td>";
-                        echo            "<input type='radio' name='categoria' value='100'/>" . $vuelo["tarifa_primera"];
+			echo        "<td>";
+			if ($vuelo["asientos_economy"] > 0) 
+			{
+                            echo 	"<input type='radio' name='categoria' value='200'/>" . $vuelo["tarifa_economy"];
+			}
+			echo        "</td>";
+			echo        "<td>";
+                        if ($vuelo["asientos_primera"] > 0) 
+                        {
+                            echo        "<input type='radio' name='categoria' value='100'/>" . $vuelo["tarifa_primera"];	
+                        }
                         echo        "</td>";
                         echo        "<td>";
                         echo            "<input type='radio' name='vuelo' value='$idVueloSeleccionado'/>";
@@ -67,31 +72,9 @@
                     }  
                 }
             ?>
-             <tr>
-                <td>
-
-                </td>
-                <td>
-
-                </td>
-                <td>
-
-                </td>
-                 <td>
-
-                </td>
-                <td>
-
-                </td>
-                <td>
-
-                </td>
-                <td>
-                    <a href="datos_vuelo.php" name="anterior">Anterior</a>
-                    <input type="submit" name="siguiente" value="Siguiente"/>
-                </td>
-            </tr>
         </table> 
+        <a href="datos_vuelo.php" name="anterior">Anterior</a>
+        <input type="submit" name="siguiente" value="Siguiente"/>
     </form>		
 </body>
 </html>
