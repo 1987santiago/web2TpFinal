@@ -111,8 +111,16 @@
                 console.log('request complete : ', res);
             },
             success: function(res) {
-                // se invoca a la funcion que procesa los datos recibidos
-                (data && data.callback) ? data.callback(res) : 'false';
+                console.log('request success : ', res);
+                if (!res || typeof res === 'undefined' || res === '' || res === 'false') {
+                    // Si no hubo respuesta
+                    console.log('no');
+                    (data && data.callback) ? data.callback(false) : false;
+                } else {
+                    console.log('si');
+                    // se invoca a la funcion que procesa los datos recibidos
+                    (data && data.callback) ? data.callback(res) : false;
+                }
             },
             error: function(error) {
                 console.log('request error : ', error);

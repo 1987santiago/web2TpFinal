@@ -84,10 +84,13 @@
 			$response = mysql_query($sql);
 			$this->response = $response;
 
-			if ($response)
+			if ($response) {
+				echo "true";
 				return true;
-			else
+			} else {
+				echo "false";
 				return false;
+			}
 
 		}
 		
@@ -112,7 +115,14 @@
 		 */
 		private function resultToArray() {
 
-			return mysql_fetch_assoc($this->response);
+            $lista = array();
+            $i = 0;
+
+            while ($fila = mysql_fetch_assoc($this->response)) {
+                $lista[$i] = $fila;
+                $i = $i + 1;
+            }
+            return $lista;
 		
 		}
 

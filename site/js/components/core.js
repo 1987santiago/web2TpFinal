@@ -7,7 +7,7 @@
 (function(window, $) {
     'use strict';
     
-    var skynet = window.skynet || {};
+    var skynet = window.skynet || {};
 
     // Properties 
 

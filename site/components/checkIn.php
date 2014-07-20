@@ -1,5 +1,14 @@
 <?php
     session_start();
+
+    /*
+     * en este archivo se el cliente ingresa un código de reserva, 
+     * el mismo se valida con la base de datos
+     * una vez checkeado el código se sigue el siguiente flujo:
+     *      A - VALIDA: se habilita el boton submit que lleva a elegir el asiento (seatSelection.php)
+     *      B - NO VALIDA: se notifica visualmente que el código es inválido y no se habilita el boton
+     */
+
     // guardamos la nueva ruta base del site
     $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
@@ -38,7 +47,7 @@
                         <input name="statics_path" value="<?php echo $statics_path; ?>" type="hidden" />
 
                         <label for="reservationCode">Ingrese su código de reserva: </label>
-                        <input id="reservationCode" name="reservationCode" type="text" />
+                        <input id="reservationCode" name="reservation_code" type="text" />
 
                         <input type="submit" value="Verificar" />
 
@@ -68,13 +77,16 @@
                     // parametros que necesitamos para hacerl el request por ajax
                     params = {
                         data : data,
-                        url : "<?php echo $statics_path; ?>/processors/reservationCheckIn.php",
+                        url : "<?php echo $statics_path; ?>/processors/validateReservationStatus.php",
                         type : 'POST', 
                         callback : skinField
                     };
 
                 function skinField(response, status, requestObj) {
 
+                    console.log('response', response);
+                    console.log('status', status);
+                    console.log('requestObj', requestObj);
                     if (response) { // si valida 
                         inputClass = 'valid';
                         form.querySelector('[type=submit]').removeAttribute('disabled');

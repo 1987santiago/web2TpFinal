@@ -15,7 +15,7 @@
     ); 
     require $local_path . '/components/head.php'; 
 ?>
-    
+
     <body>
 
         <div class="wrapper">
@@ -23,7 +23,7 @@
             <!-- se incluye el <header> -->
             <?php require $local_path . '/components/header.php'; ?> 
 
-            <main id="main" role="main">
+            <main id="main" role="main" class="contenedor-formulario-favorito">
 
                 <form action="guardar_pasajero_reserva.php" method="post" onsubmit="return validarDatosPasajero()">
                     <fieldset>
