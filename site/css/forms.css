@@ -1,0 +1,12 @@
+/*
+ * @name: forms.css
+ * @date: 2014.07.07
+ * @description: Aqui se definen los estilos que dibujan los formularios
+ */
+
+label {
+    display: inline-block;
+    min-width: 200px;
+    text-align: right;
+    width: 30%;
+}
