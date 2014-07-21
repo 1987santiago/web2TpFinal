@@ -1,0 +1,58 @@
+/**
+ * navLateral.css
+ */
+ 
+.links img{
+    margin-top:15px;
+}
+.links a{
+    width:200px;
+    color: #FFF;
+    display: inline-block;
+    padding: .6em 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    border:1px solid #CF3131;  
+    background-color: #CF3131;
+}
+
+.links a:hover {
+    background-color: #c85959;
+}
+
+.suscrip{
+    font-size: 15px;
+    height:35px;
+    width:200px;
+    border:1px solid #aaa;
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+    border-radius:2px;
+    color: #888;
+    padding:5px 5px;
+    margin-bottom:4%;
+}
+
+button.submit {
+    padding: 9px 17px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    line-height: 1;
+    color: #444;
+    border: none;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#bbb));
+    background-image: -moz-linear-gradient(0% 100% 90deg, #BBBBBB, #FFFFFF);
+    background-color: #fff;
+    border: 1px solid #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+button.submit:hover {
+    opacity:.55;
+    cursor: pointer;
+}
+button.submit:active {
+    border: 1px solid #222;
+    box-shadow: 0 0 10px 5px #444 inset;
+}

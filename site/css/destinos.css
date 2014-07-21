@@ -1,0 +1,13 @@
+/**
+ * destinos.css
+ */
+
+.destino li{
+    list-style-type:none; 
+}
+
+.destino h3{
+    font-size:1.2em;
+    line-height: 1.6em;
+     color: #CF3131;
+}

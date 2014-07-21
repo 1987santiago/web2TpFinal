@@ -1,4 +1,3 @@
-
 <?php
 	session_start();
 
@@ -11,6 +10,8 @@
 
 	$_SESSION["local_path"] = $local_path;
 	$_SESSION["statics_path"] = $statics_path;
+
+	header("Location: $statics_path/sections/home.php");
 
 ?>
 

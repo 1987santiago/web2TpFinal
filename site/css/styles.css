@@ -1,0 +1,140 @@
+/*
+ * @name: styles.css
+ * @author: santiago marchioni
+ * @date: 2014.04.26
+ * @description: Set commons styles for Ishidan site
+ */
+
+/* Global 
+--------------------------------------------------*/
+html, 
+body {
+    height: 100%;
+}
+body {
+    color: #666;
+    font-family: Arial, Helvetica, Sans-serif;
+    font-size: 13px;
+    line-height: 1.2em;
+}
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+h1 {
+    font-size: 1.6em;
+    line-height: 1.6em;
+}
+
+/* Header 
+--------------------------------------------------*/
+header {
+    background-color: #d2caca;
+    /* padding: 1em;*/
+    color: #fff;
+}
+    /* Nav
+    ----------------------------------------------*/
+  header nav {
+        background-color: #CF3131;
+        overflow: hidden;
+        padding: 0 2em; 
+    }
+  header nav li {
+        display: inline-block;
+    }
+  header nav a {
+        color: #FFF;
+        font-size: 1.4em;
+        display: inline-block;
+        padding: .6em 1em;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+   header nav a:hover {
+        background-color: #c85959;
+    }
+
+header ol {
+    list-style: decimal;
+    -webkit-margin-start: 2em;
+}
+
+.volando {
+    float: right;
+   }
+
+/* Footer 
+--------------------------------------------------*/
+footer{
+    background-color: #d2caca;
+    padding: 1em;
+    color: #fff;
+}
+
+
+footer strong {
+    color: #CF3131;
+    font-weight: bold;
+}
+
+.seccionesFooter{
+    display:table;
+}
+
+.about, .information, .legals, .datafiscal{
+    display: table-cell;
+    padding: .6em 1em;
+
+}
+
+footer a {
+    color: #FFF;
+    text-decoration: none; 
+        }
+
+  footer nav {
+        background-color: #d2caca;
+       
+       
+    }
+ footer li {
+        list-style-type:none; /* LA misma está en el header */
+         overflow: hidden;
+          padding: 0 2em;
+    }   
+
+
+
+/* -------------- Div CENTRAL  -------------------- */
+
+.central{
+width:100%;
+display:table;
+
+}
+
+.left{
+display: table-cell;
+}
+
+.right{
+display: table-cell;
+}
+
+h2{
+margin-left:20px;
+color: #feb003;
+font-size: 2.5em;
+    line-height: 1.6em;
+}
+
+.reserva{
+margin-left:50px;
+}
+
+.sell, .pago{
+  margin-top: 2%;
+  border-top: 1px solid #CF3131;
+}
