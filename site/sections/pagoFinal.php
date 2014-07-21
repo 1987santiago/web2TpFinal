@@ -32,13 +32,9 @@
 
             </div>
 
-            <div >
-                <?php require $local_path . '/components/offExclusiv.php'; ?>
-            </div> 
+            <?php require $local_path . '/components/offExclusiv.php'; ?>
 
-            <div >
-                <?php require $local_path . '/components/pagoSinInt.php'; ?>
-            </div> 
+            <?php require $local_path . '/components/pagoSinInt.php'; ?>
 
         </div><!-- [END] wrapper -->
 

@@ -3,11 +3,6 @@
     $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
-
-    // se incluye el inicio del html <!doctype html>...</head>
-    // $_SESSION["resources"] = array(
-    //     "css"  => array("navLateral")
-    // ); 
 ?>
 
 <div class="links">

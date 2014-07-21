@@ -36,6 +36,4 @@
 		echo 'Hubo un error en el registro del pago. Intentelo mas tarde';	
     }
 
-?>      
-
-
+?>

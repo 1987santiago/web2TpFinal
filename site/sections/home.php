@@ -11,7 +11,9 @@
         "css"  => array("navLateral"),
         "css"  => array("formReservHome"),
         "css"  => array("offExclusiv"),
-        "css"  => array("pagoSinInt")
+        "css"  => array("pagoSinInt"),
+        "css"  => array("wowSlider"),
+        "css"  => array("/wow/engine1/style")
     ); 
     require $local_path . '/components/head.php'; 
 ?>
@@ -37,22 +39,23 @@
 
                 <!-- Se inlcuye el slider -->    
                 <div class="right">
-                    <?php require $local_path . '/components/wowSlider.php'; ?>
+                    <?php include $local_path . '/components/wowSlider.php'; ?>
                 </div> 
 			
             </div>
 
-            <div>
-                <?php require $local_path . '/components/offExclusiv.php'; ?>
-            </div> 
+            <?php include $local_path . '/components/offExclusiv.php'; ?>
      
-            <div>
-                <?php require $local_path . '/components/pagoSinInt.php'; ?>
-            </div> 
+            <?php require $local_path . '/components/pagoSinInt.php'; ?>
 
         </div><!-- [END] wrapper -->
 
         <?php require $local_path . '/components/footer.php'; ?>
+
+        <!-- Scripts necesarios para Wow Slider -->
+        <script type="text/javascript" src="<?php echo "$statics_path"; ?>/wow/engine1/wowslider.js"></script>
+        <script type="text/javascript" src="<?php echo "$statics_path"; ?>/wow/engine1/script.js"></script>
+        <!-- [END] Scripts necesarios para Wow Slider -->
 
     </body>
 

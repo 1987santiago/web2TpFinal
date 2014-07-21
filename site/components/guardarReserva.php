@@ -5,7 +5,7 @@
 	//Aquí hay que sustituir la el nombre de la base de datos
 	mysql_select_db("skynet", $conexion);
 
-	require_once("../processors/fpdf/fpdf.php");
+	require_once("../lib/fpdf/fpdf.php");
 
 	$fecha_pago = $_POST['fecha_pago'];
 	$monto = $_POST['monto'];
