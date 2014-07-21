@@ -27,7 +27,7 @@
 
                 <!-- se incluye el formulario de busqueda de vuelos disponibles para reservar -->
                 <div class="left">
-                    <?php require $local_path . '/components/guardarReserva.php'; ?>
+                    <?php require $local_path . '/components/__guardarReserva.php'; ?>
                 </div>
 
             </div>
