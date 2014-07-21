@@ -7,7 +7,7 @@
 (function(window, $) {
     'use strict';
 
-    var request = skynet.request ||Â {}; 
+    var request = skynet.request || {}; 
 
     // CONSTANTS
     var STATIC_URL = '/unlam/web2/gitLab/tpweb2/site'; 
@@ -30,8 +30,8 @@
 
         var params = {
             url : STATIC_URL + '/sections/' + section.name + '.php',
-            container : section.container ||Â $('#main'),
-            context : section.context ||Â '',
+            container : section.container || $('#main'),
+            context : section.context || '',
             callback : showSection
         };
 
@@ -112,7 +112,7 @@
             },
             success: function(res) {
                 console.log('request success : ', res);
-                if (!res || typeof res === 'undefined' ||Â res === '' || res === 'false') {
+                if (!res || typeof res === 'undefined' || res === '' || res === 'false') {
                     // Si no hubo respuesta
                     console.log('no');
                     (data && data.callback) ? data.callback(false) : false;
@@ -150,7 +150,7 @@
      */
     var getData = function(data) {
 
-        var _data = data.data ||Â {},
+        var _data = data.data || {},
             container = data.container,
             context = data.context || '',
             url  = data.url + ' ' + context || STATIC_URL + 'error.php',

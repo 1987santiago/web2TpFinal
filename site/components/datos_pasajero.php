@@ -1,9 +1,11 @@
-<?php 
-	session_start();
+<?php
+    session_start();
     // guardamos la nueva ruta base del site
     $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
+     // se guarda la ruta para ejecutar php
+    $http_path = $_SESSION["http_path"];
     
     $estaEnEspera = (isset($_GET["estaEnEspera"])? $_GET["estaEnEspera"] : '' );
     $_SESSION["estaEnEspera"] = $estaEnEspera;
@@ -13,19 +15,26 @@
         "css"  => array("forms"),
         "js"  => array("datos_pasajero")
     ); 
-    require $local_path . '/components/head.php'; 
+    require $local_path . '/components/head.php';
 ?>
-
-    <body>
-
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="ISO-8859-15"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo $statics_path . '/css/forms.css' ;?>"/>
+    <script type="text/javascript" src="<?php echo $statics_path . '/js/datos_pasajero.js'; ?>"></script>
+    <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery-1.10.2.js'; ?>"></script>
+    <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery.ui.core.js'; ?>"></script>
+    <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery.ui.datepicker.js'; ?>"></script>
+    <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery.ui.datepicker-es.js'; ?>"></script>
+<body>
         <div class="wrapper">
     
             <!-- se incluye el <header> -->
             <?php require $local_path . '/components/header.php'; ?> 
 
-            <main id="main" role="main" class="contenedor-formulario-favorito">
+            <main id="main" role="main">
 
-                <form action="guardar_pasajero_reserva.php" method="post" onsubmit="return validarDatosPasajero()">
+                <form action="<?php echo $http_path . '/components/guardar_pasajero_reserva.php'; ?>" method="post" onsubmit="return validarDatosPasajero()">
                     <fieldset>
                         <legend>Datos del pasajero</legend>
                         <div>
@@ -56,11 +65,22 @@
                             <label for="nacionalidad">Nacionalidad</label>
                             <input type="text" id="nacionalidad" name="nacionalidad" value="<?php if (isset($_SESSION['nacionalidad'])){ echo $_SESSION['nacionalidad']; } ?>"/>
                         </div>
+                        <?php 
+                            $tipoDeViaje=$_SESSION["tipoDeViaje"];
+                            if ($tipoDeViaje == 1) 
+                                { 
+                                    $anterior = $http_path . "/components/listado_vuelos_ida.php";
+                                    echo "<a href=$anterior name='anterior'>Anterior</a>";
+                                }
+                            else
+                                {
+                                    $anterior = $http_path . "/components/listado_vuelos_ida_regreso.php";
+                                    echo "<a href=$anterior name='anterior'>Anterior</a>";
+                                }    
+                    	?> 
+                    	<input type="submit" name="siguiente" value="Siguiente"/>
                     </fieldset>
-
-                    <a href="listado_vuelos_ida.php" name="anterior">Anterior</a>
-                    <input type="submit" name="siguiente" value="Siguiente" />
-
+			
                 </form>
 
             </main><!-- [end] main -->
@@ -68,11 +88,12 @@
         </div><!-- [end] wrapper -->
 
         <!-- se incluye el <header> -->
-        <?php require $local_path . '/components/footer.php'; ?> 
+        <?php require $local_path . '/components/footer.php'; ?>
 
     <!-- Incluir este js para agregar funcionalidad en browsers < IE8 
         <script type="text/javascript" src="js/components/seatSelection.js"></script> 
     -->
+
     <script>
         $(function() {
             $("#fechaNac").datepicker({
@@ -83,6 +104,6 @@
             });
         });
     </script>
-    </body>
 
+    </body>
 </html>

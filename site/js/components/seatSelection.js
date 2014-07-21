@@ -7,7 +7,7 @@
 (function(window, $) {
     'use strict';
 
-    var seat = skynet.seat ||Â {};
+    var seat = skynet.seat || {};
 
     // Get seats
     var seats = document.querySelectorAll('input'), // Guardamos todos los asientos
