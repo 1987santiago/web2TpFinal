@@ -7,7 +7,6 @@
     <nav>
 
         <li><a href="<?php echo $statics_path; ?>/sections/home.php" data-section="home" title="Home">Home</a></li>
-        <li><a href="<?php echo $statics_path; ?>/sections/horarios.php" data-section="horarios" title="Horarios">Horarios</a></li>
         <li><a href="<?php echo $statics_path; ?>/components/checkIn.php" data-component="checkIn" title="Check-in">Check-in</a></li>
 
         <!-- Estos links son para probar [quitar luego] -->
