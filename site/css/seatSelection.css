@@ -4,11 +4,13 @@
  * @description: Aqui se definen los estilos que dibujan la seccion de reserva de un aseinto (reservaAsiento.php)
  */
 
-.seat-selection {}
+.seat-selection {
+    display: inline-block;  
+}
 .seat-selection fieldset {
     border-radius: 40% 40% 30% 30%;
     display: inline-block;
-    padding: 4em 2em 5em 0; 
+    padding: 1em 1em 5em 0; 
     text-align: center;
 }
 .seat-selection legend {
@@ -24,7 +26,7 @@
 .seat-number {
     display: inline-block;
     height: 18px;
-    margin: 4px;
+    margin: 2px;
     text-align: center;
     vertical-align: middle;
     width: 18px;
@@ -37,7 +39,7 @@
     cursor: pointer;
     display: inline-block;
     height: 18px;
-    margin: 4px;
+    margin: 2px;
     overflow: hidden;
     text-indent: 9999px;
     width: 18px;

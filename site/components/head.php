@@ -36,7 +36,6 @@
         <link href="<?php echo $statics_path; ?>/css/reset.css" type="text/css" rel="stylesheet">
         <link href="<?php echo $statics_path; ?>/css/global.css" type="text/css" rel="stylesheet">
         <link href="<?php echo $statics_path; ?>/css/styles.css" type="text/css" rel="stylesheet">
-        <link href="<?php echo $statics_path; ?>/css/grid.css" type="text/css" rel="stylesheet">
         <link href="<?php echo $statics_path; ?>/css/tables.css" type="text/css" rel="stylesheet">
         <link href="<?php echo $statics_path; ?>/css/jquery-ui.css" type="text/css" rel="stylesheet"/>
                     
@@ -65,9 +64,15 @@
         <!-- JS -->
         <script type="text/javascript" src="<?php echo $statics_path; ?>/js/lib/jquery-1.8.3.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-        <script type="text/javascript" src="<?php echo $statics_path; ?>/js/jquery.ui.core.js"></script>
-        <script type="text/javascript" src="<?php echo $statics_path; ?>/js/jquery.ui.datepicker.js"></script>
-        <script type="text/javascript" src="<?php echo $statics_path; ?>/js/jquery.ui.datepicker-es.js"></script>
+        <script type="text/javascript" src="<?php echo $statics_path; ?>/js/lib/jquery.ui.core.js"></script>
+        <script type="text/javascript" src="<?php echo $statics_path; ?>/js/lib/jquery.ui.datepicker.js"></script>
+        <script type="text/javascript" src="<?php echo $statics_path; ?>/js/lib/jquery.ui.datepicker-es.js"></script>
+
+        <!-- Seteamos variables globales -->
+        <script type="text/javascript">
+            var LOCAL_PATH = '<?php echo $_SESSION["local_path"]; ?>',
+                STATICS_PATH = '<?php echo $_SESSION["statics_path"]; ?>';
+        </script>
 
     </head>
 

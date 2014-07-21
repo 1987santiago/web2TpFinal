@@ -2,19 +2,19 @@
  * @name Core.js
  * @author smarchioni
  * @date 2014/07/05 (AAAA/DD/MM)
- * @namespace aero
+ * @namespace skynet
  */
 
 (function(window, $) {
     'use strict';
     
-    var aero = window.aero || {};
+    var skynet = window.skynet || {};
 
     // Properties 
 
     // Methods 
 
     // Exposse aero 
-    window.aero = aero;
+    window.skynet = skynet;
 
 }(this, jQuery));

@@ -11,29 +11,28 @@
     ); 
     require $local_path . '/components/head.php'; 
 ?>
-    <body>
 
         <div class="wrapper">
 
             <!-- se incluye el <header> -->
             <?php require $local_path . '/components/header.php'; ?> 
 
-            <div class="central">
+            <main role="main">
                 
                 <!-- se incluye la barra lateral de navegación -->
-                <div class="links">
-                    <?php require $local_path . '/components/navLateral.php'; ?>
-                </div>
+                <?php require $local_path . '/components/navLateral.php'; ?>
 
                 <!-- se incluye el formulario de busqueda de vuelos disponibles para reservar -->
-                <div class="left">
+                <div class="col left-col">
                     <?php require $local_path . '/components/__guardarReserva.php'; ?>
                 </div>
 
-            </div>
+            </main>
 
+            <!-- listado de ofertas -->
             <?php require $local_path . '/components/offExclusiv.php'; ?>
 
+            <!-- listado de medios de pago sin interés -->
             <?php require $local_path . '/components/pagoSinInt.php'; ?>
 
         </div><!-- [END] wrapper -->

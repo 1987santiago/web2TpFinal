@@ -10,9 +10,7 @@
 
     // se incluye el inicio del html <!doctype html>...</head>
     $_SESSION["resources"] = array(
-        "css"  => array("forms"),
-        "css"  => array("estilos"),
-        "js"  => array("datos_pasajero")
+        "css"  => array("forms", "estilos", "datos_pasajero")
     ); 
     require $local_path . '/components/head.php'; 
 ?>

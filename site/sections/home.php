@@ -7,13 +7,7 @@
 
     // se incluye el inicio del html <!doctype html>...</head>
     $_SESSION["resources"] = array(
-        "css"  => array("generic"),
-        "css"  => array("navLateral"),
-        "css"  => array("formReservHome"),
-        "css"  => array("offExclusiv"),
-        "css"  => array("pagoSinInt"),
-        "css"  => array("wowSlider"),
-        "css"  => array("/wow/engine1/style")
+        "css"  => array("formReservHome","offExclusiv", "pagoSinInt", "wowSlider", "engine1/style")
     ); 
     require $local_path . '/components/head.php'; 
 ?>
@@ -25,24 +19,22 @@
             <!-- se incluye el <header> -->
             <?php require $local_path . '/components/header.php'; ?> 
 
-            <div class="central">
+            <main role="main"><!-- ex: center -->
 
                 <!-- se incluye la barra lateral de navegación -->
-                <div class="links">
-                    <?php require $local_path . '/components/navLateral.php'; ?>
-                </div>
+                <?php require $local_path . '/components/navLateral.php'; ?>
 
                 <!-- se incluye el formulario de busqueda de vuelos disponibles para reservar -->
-                <div class="left">
+                <div class="col left-col">
                     <?php require $local_path . '/components/formReservHome.php'; ?>
                 </div>
 
                 <!-- Se inlcuye el slider -->    
-                <div class="right">
+                <div class="col right-col">
                     <?php include $local_path . '/components/wowSlider.php'; ?>
                 </div> 
 			
-            </div>
+            </main>
 
             <?php include $local_path . '/components/offExclusiv.php'; ?>
      

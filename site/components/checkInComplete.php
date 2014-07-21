@@ -22,7 +22,10 @@
 
             <main id="main" role="main">
 
-                <section>
+                <!-- se incluye el sidebar -->
+                <?php include $local_path . '/components/navLateral.php'; ?>                 
+
+                <section class="col">
                     
                     <h2>Checkin satisfactorio</h2>
 

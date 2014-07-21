@@ -66,8 +66,8 @@ footer {
     border-top: 2px solid #FF8F00;
     color: #999;
     font-size: 1.1em;
-    height: 2.4em;
-    margin-top: -4.4em;
+    height: 14em;
+    margin-top: -14em;
     padding: 1em;
     text-align: center;
 }
@@ -91,16 +91,21 @@ footer strong {
 --------------------------------------------------*/
 .wrapper {
     min-height: 100%;
-    padding-bottom: 5.4em;
+    padding-bottom: 15.4em;
 }
 main, [role="main"] {
-    padding: 1em;
+    display: table;
+    width: 100%;
+}
+main, [role="main"],
+section {
+    margin: 0 auto;
+    max-width: 1200px;
+    vertical-align: top;
 }
 section {
     overflow: hidden;
     padding: 1em;
-    margin: 0 auto;
-    max-width: 1200px;
 }
 section h2 {
     color: #FF8F00;
@@ -114,6 +119,26 @@ section h2 span {
     font-size: .7em;
 }
 
+/* Columns
+-------------------------------------------------*/
+.sidebar, 
+.links,
+.col {
+    display: table-cell;
+    padding: 1em;
+}
+
+/* Sidebar
+-------------------------------------------------*/
+.sidebar, 
+.links {
+    background-color: #999;
+    display: table-cell;
+    min-width: 230px;
+    vertical-align: top;
+    width: 20%;
+}
+
 /* Form 
 -------------------------------------------------*/
 fieldset {
@@ -125,7 +150,6 @@ legend {
     margin-left: 1em;
     text-transform: capitalize;
 }
-label {}
 textarea {
     resize: none;
 }

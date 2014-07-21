@@ -7,31 +7,28 @@
 
     // se incluye el inicio del html <!doctype html>...</head>
     $_SESSION["resources"] = array(
-        "css"  => array("generic"),
-        "css"  => array("navLateral"),
         "css"  => array("dameReserva")
     ); 
     require $local_path . '/components/head.php'; 
 ?>
 
-    <body>
-        <div>
-        <!-- se incluye el <header> -->
-            <?php require $local_path . '/components/header.php'; ?> 
-        </div>    
-        <div class="links">
-            <?php require $local_path . '/components/navLateral.php'; ?>
-        </div>
-         <div class="left">
+<div class="wrapper">
+
+    <!-- se incluye el <header> -->
+    <?php require $local_path . '/components/header.php'; ?> 
+
+    <main role="main">
+
+        <?php require $local_path . '/components/navLateral.php'; ?>
+        
         <!-- se incluye el el resultado del pago de la reserva -->
+        <div class="col left-col">
             <?php require $local_path . '/components/dameReserva.php'; ?> 
         </div>   
 
+    </main>
 
-		<div >
-			<!-- se incluye el <footer> -->
-            <?php require $local_path . '/components/footer.php'; ?>
-        </div> 
-    </body>
+    <!-- se incluye el <footer> -->
+    <?php require $local_path . '/components/footer.php'; ?>
 
-</html>  
+</div>  

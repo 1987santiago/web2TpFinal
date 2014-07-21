@@ -5,7 +5,7 @@
     $statics_path = $_SESSION["statics_path"];
 ?>
 
-<div class="right">
+<div class="images-slider"> <!-- ex: right -->
 	
 	<!-- Start WOWSlider id=wowslider-container1 -->
 	<h2>Conozca Argentina</h2>

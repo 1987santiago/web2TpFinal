@@ -48,8 +48,39 @@
 	</div>
 </footer>
 
+
 <!-- JS 
 <script type="text/javascript" src="<?php echo $statics_path; ?>/js/jquery-1.8.3.js"></script>
-<script type="text/javascript" src="<?php echo $statics_path; ?>/js/jquery-ui-1.9.2.custom.min.js"></script>
-<script type="text/javascript" src="<?php echo $statics_path; ?>/js/core.js"></script>-->
-<!--<script type="text/javascript" src="<?php echo $statics_path; ?>/js/request.js"></script>-->
+<script type="text/javascript" src="<?php echo $statics_path; ?>/js/jquery-ui-1.9.2.custom.min.js"></script>-->
+<script type="text/javascript" src="<?php echo $statics_path; ?>/js/core.js"></script>
+<script type="text/javascript" src="<?php echo $statics_path; ?>/js/request.js"></script>
+
+<?php 
+
+    function getJsResourcesOnload($files) {
+
+        foreach ($files as $index => $name) {
+            $statics_path = $_SESSION["statics_path"];
+            echo "<script type='text/javascript' src='$statics_path/js/$name.js'></script>";
+        }
+
+    }
+
+    // Si se envían datos de los recursos que se necesitan cargar especialmente para 
+    // un componente o sección, 
+    if (isset($_SESSION["onloadResources"])) {
+        // obtenemos dichos recursos
+        $_resources = $_SESSION["onloadResources"];
+        // los iteramos e imprimimos para descargarlos
+        foreach ($_resources as $key => $value) {
+            if ($key == "js") {
+                getJsResourcesOnload($value);
+            }
+        }
+
+    }
+
+    // Limpiamos el contenido de resources para evitar que se llamen los mismo archivos varias veces
+    $_SESSION["onloadResources"] = null;
+?>
+

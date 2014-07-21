@@ -6,9 +6,6 @@
     $statics_path = $_SESSION["statics_path"];
 
     // se incluye el inicio del html <!doctype html>...</head>
-    $_SESSION["resources"] = array(
-        "css"  => array("generic")
-    ); 
     require $local_path . '/components/head.php'; 
 ?>
 
@@ -19,19 +16,17 @@
             <!-- se incluye el <header> -->
             <?php require $local_path . '/components/header.php'; ?> 
 
-            <div class="central">
-                
+            <main role="main">
+                                        
                 <!-- se incluye la barra lateral de navegación -->
-                <div class="links">
-                    <?php require $local_path . '/components/navLateral.php'; ?>
-                </div>
+                <?php require $local_path . '/components/navLateral.php'; ?>
 
                 <!-- se incluye el formulario de busqueda de vuelos disponibles para reservar -->
-                <div class="left">
+                <div class="col">
                     <?php require $local_path . '/components/formPrePagoReserva.php'; ?>
                 </div>
 
-            </div>
+            </main>
         
         </div><!-- [END] wrapper -->
 
