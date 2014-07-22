@@ -9,8 +9,6 @@
      *      B - NO VALIDA: se redirije a la seccion de ingreso de codigo (paso anterior - checkIn.php), informando el error
      */
 
-    // guardamos la nueva ruta base del site
-    $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
 

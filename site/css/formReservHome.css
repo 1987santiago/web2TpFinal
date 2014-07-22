@@ -1,0 +1,84 @@
+/**
+ * formReservHome.css
+ */
+
+/*--- estilos del formulario ---*/
+.contact_form {
+    background-color:#f1f1f1;
+    border:1px solid #cecfd0;
+}
+.contact_form ul {
+    list-style-type:none;
+}
+.contact_form li{
+    padding: .6em;
+}
+
+.contact_form label {
+    color: #555555;
+    text-align:right;
+    float: left;
+    font-weight: bold;
+    margin: 3px 5px 0 0;
+    min-width: 120px;
+    width: 26%;
+}
+.contact_form input, 
+.contact_form select {
+    border:1px solid #aaa;
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+    border-radius:2px;
+    color: #888;
+    font-size: 12px;
+    width: 50%;
+}
+.contact_form input {
+    padding: 3px 8px;
+}
+.contact_form select {
+    padding:8px;
+}
+.contact_form input[type="checkbox"] {
+    cursor:pointer;
+    display: inline-block;
+    height: 14px;
+        width: 14px;
+    
+}
+.contact_form button {
+    margin-left:120px;
+}
+.contact_form input:focus {
+    background: #fff;
+    border:1px solid #555;
+    box-shadow: 0 0 3px #aaa;
+}
+.contact_form .ui-datepicker-trigger {
+    margin: 0 5px;
+    vertical-align: middle;
+}
+/* === Estilos del boton de Envio === */
+
+button.submit {
+   padding: 9px 17px;
+   font-family: Helvetica, Arial, sans-serif;
+   font-weight: bold;
+   line-height: 1;
+   color: #444;
+   border: none;
+   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
+   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#bbb));
+   background-image: -moz-linear-gradient(0% 100% 90deg, #BBBBBB, #FFFFFF);
+   background-color: #fff;
+   border: 1px solid #f1f1f1;
+   border-radius: 10px;
+   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+button.submit:hover {
+    opacity:.55;
+    cursor: pointer;
+}
+button.submit:active {
+    border: 1px solid #222;
+    box-shadow: 0 0 10px 5px #444 inset;
+}
