@@ -9,10 +9,10 @@
      *      B - CAMBIA: se redirije al paso anterior para que seleccione otro asiento (seatSelection.php)
      */
 
-    // guardamos la nueva ruta base del site
-    $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
+    // guardamos la ruta base
+    $base_path = $_SESSION["base_path"];
 
     if (!isset($_POST['seat'])) {
         // redirigimos al usuario al inicio del checkIn
@@ -52,19 +52,19 @@
 ?>
 
 <!-- se incluye el inicio del html <!doctype html>...</head> -->
-<?php require $local_path . '/components/head.php'; ?>
+<?php require "$base_path$statics_path/components/head.php"; ?>
     
     <body>
 
         <div class="wrapper">
     
             <!-- se incluye el <header> -->
-            <?php require $local_path . '/components/header.php'; ?>
+            <?php require "$base_path$statics_path/components/header.php"; ?>
 
             <main id="main" role="main">
 
                 <!-- se incluye el sidebar -->
-                <?php include $local_path . '/components/navLateral.php'; ?>                 
+                <?php include "$base_path$statics_path/components/navLateral.php"; ?>                 
 
                 <section class="col" id="seatConfirm">
                     
@@ -96,7 +96,7 @@
         </div><!-- [end] wrapper -->
 
         <!-- se incluye el <header> -->
-        <?php require $local_path . '/components/footer.php'; ?> 
+        <?php require "$base_path$statics_path/components/footer.php"; ?> 
 
         <script type="text/javascript">
 

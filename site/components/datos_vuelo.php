@@ -1,7 +1,5 @@
 <?php 
     session_start();
-    // guardamos la nueva ruta base del site
-    $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
     
@@ -12,7 +10,7 @@
     $_SESSION["resources"] = array(
         "css"  => array("forms", "datos_vuelo", "datos_vuelo")
     ); 
-    require $local_path . '/components/head.php'; 
+    require $statics_path . '/components/head.php'; 
 ?>
 
     <body>
@@ -20,7 +18,7 @@
         <div class="wrapper">
 
             <!-- se incluye el <header> -->
-            <?php require $local_path . '/components/header.php'; ?> 
+            <?php require $statics_path . '/components/header.php'; ?> 
 
             <main id="main" role="main">
 

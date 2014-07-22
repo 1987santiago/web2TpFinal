@@ -1,7 +1,5 @@
 <?php
 	session_start();
-    // guardamos la nueva ruta base del site
-    $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
     
@@ -12,7 +10,7 @@
     $_SESSION["resources"] = array(
         "css"  => array("forms", "estilos", "datos_pasajero")
     ); 
-    require $local_path . '/components/head.php'; 
+    require $statics_path . '/components/head.php'; 
 ?>
 
     <body>
@@ -20,7 +18,7 @@
         <div class="wrapper">
     
             <!-- se incluye el <header> -->
-            <?php require $local_path . '/components/header.php'; ?> 
+            <?php require $statics_path . '/components/header.php'; ?> 
 
             <main id="main" role="main" class="contenedor-formulario-favorito">
 
@@ -74,7 +72,7 @@
         </div><!-- [end] wrapper -->
 
         <!-- se incluye el <header> -->
-        <?php require $local_path . '/components/footer.php'; ?>
+        <?php require $statics_path . '/components/footer.php'; ?>
 
         <!-- Incluir este js para agregar funcionalidad en browsers < IE8 
             <script type="text/javascript" src="js/components/seatSelection.js"></script> 

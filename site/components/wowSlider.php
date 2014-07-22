@@ -1,6 +1,4 @@
-<?php
-    // guardamos la nueva ruta base del sit
-    $local_path = $_SESSION["local_path"];
+<?php 
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
 ?>

@@ -8,10 +8,10 @@
      * y se deshabilitan para impedir su selección
      */
 
-    // guardamos la nueva ruta base del site
-    $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
+    // guardamos la ruta base
+    $base_path = $_SESSION["base_path"];
 
     // Si existen errores se guardan e informan
     $hasError = false;
@@ -338,7 +338,7 @@
     $_SESSION["resources"] = array(
         "css" => array("seatSelection")
     ); 
-    require $local_path . '/components/head.php'; 
+    require "$base_path$statics_path/components/head.php"; 
 ?>
     
     <body>
@@ -346,13 +346,13 @@
         <div class="wrapper">
     
             <!-- se incluye el <header> -->
-            <?php require $local_path . '/components/header.php'; ?> 
+            <?php require "$base_path$statics_path/components/header.php"; ?> 
 
             <main id="main" role="main">
 
 
                 <!-- se incluye el sidebar -->
-                <?php include $local_path . '/components/navLateral.php'; ?> 
+                <?php include "$base_path$statics_path/components/navLateral.php"; ?> 
                     
                 <?php
                     if ($hasError) { 
@@ -399,7 +399,7 @@
         </div><!-- [end] wrapper -->
 
         <!-- se incluye el <header> -->
-        <?php require $local_path . '/components/footer.php'; ?> 
+        <?php require "$base_path$statics_path/components/footer.php"; ?> 
 
     <!-- Incluir este js para agregar funcionalidad en browsers < IE8 
         <script type="text/javascript" src="js/components/seatSelection.js"></script> 

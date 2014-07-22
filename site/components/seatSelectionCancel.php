@@ -1,7 +1,5 @@
 <?php 
-    session_start();
-    // guardamos la nueva ruta base del site
-    $local_path = $_SESSION["local_path"];
+    session_start(); 
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
 

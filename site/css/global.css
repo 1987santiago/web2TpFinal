@@ -30,8 +30,7 @@ h1 {
 /* Header 
 --------------------------------------------------*/
 header {
-    background-color: rgba(0, 0, 0, .4);
-    padding: 1em;
+    background-color: #DDD;
     color: #fff;
 }
     /* Nav
@@ -52,46 +51,64 @@ header {
         text-transform: uppercase;
     }
     nav a:hover {
-        background-color: #000;
+        background-color: #C85959;
     }
 
 header ol {
     list-style: decimal;
     -webkit-margin-start: 2em;
 }
+.isologotipo {
+    float: right;
+}
+
 
 /* Footer 
 --------------------------------------------------*/
 footer {
-    border-top: 2px solid #FF8F00;
-    color: #999;
-    font-size: 1.1em;
-    height: 14em;
-    margin-top: -14em;
+    background-color: #DDD;
+    border-top: 2px solid #CF3131;
+    color: #FFF;
+    font-size: 1em;
+    height: 8em;
+    margin-top: -8em;
     padding: 1em;
-    text-align: center;
+    position: relative;
 }
 footer > a, 
 footer div {
     display: inline-block;
     vertical-align: middle;
 }
-footer > a {
-    background-color: #FF8F00;
-    color: #FFF;
-    margin: 0 1em;
-    padding: .2em .3em;
+footer a {
+    color: #666;
+    line-height: 1.2em;
 }
 footer strong {
     color: #FF8F00;
     font-weight: bold;
+}
+footer dl {
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+}
+footer dt {
+    color: #CF3131;
+    font-weight: bold;
+}
+
+.datafiscal {
+    bottom: 1em;
+    position: absolute;
+    right: 1em;
 }
 
 /* Main 
 --------------------------------------------------*/
 .wrapper {
     min-height: 100%;
-    padding-bottom: 15.4em;
+    padding-bottom: 8em;
 }
 main, [role="main"] {
     display: table;
@@ -109,7 +126,7 @@ section {
 }
 section h2 {
     color: #FF8F00;
-    font-size: 1.5em;
+    font-size: 1.2em;
     line-height: 1.3em;
     padding-bottom: 8px;
     text-transform: uppercase;
@@ -127,12 +144,15 @@ section h2 span {
     display: table-cell;
     padding: 1em;
 }
+.left-col {
+    width: 50%;
+}
 
 /* Sidebar
 -------------------------------------------------*/
 .sidebar, 
 .links {
-    background-color: #999;
+    border-right: 2px solid #CF3131;
     display: table-cell;
     min-width: 230px;
     vertical-align: top;
@@ -152,6 +172,15 @@ legend {
 }
 textarea {
     resize: none;
+}
+
+/* Validation 
+-------------------------------------------------*/
+.valid {
+    background-color: green;
+}
+.invalid {
+    background-color: red;
 }
 
 /* Box-..
@@ -179,9 +208,21 @@ textarea {
     color: #009900;
 }
 
-.valid {
-    background-color: green;
+/* Slider 
+-------------------------------------------------*/
+.slider {
+    max-width: 1200px;
+    overflow-x: scroll; 
 }
-.invalid {
-    background-color: red;
+.slider ul {
+    white-space: nowrap;
+} 
+.slider li {
+    display: inline-block;
+}
+
+/* Listas 
+-------------------------------------------------*/
+.list li {
+    display: inline-block;
 }
