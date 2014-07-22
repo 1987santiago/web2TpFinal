@@ -1,11 +1,18 @@
 <?php
+<<<<<<< HEAD
     session_start();
+=======
+	session_start();
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
     // guardamos la nueva ruta base del site
     $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
+<<<<<<< HEAD
      // se guarda la ruta para ejecutar php
     $http_path = $_SESSION["http_path"];
+=======
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
     
     $estaEnEspera = (isset($_GET["estaEnEspera"])? $_GET["estaEnEspera"] : '' );
     $_SESSION["estaEnEspera"] = $estaEnEspera;
@@ -15,9 +22,9 @@
         "css"  => array("forms"),
         "js"  => array("datos_pasajero")
     ); 
+<<<<<<< HEAD
     require $local_path . '/components/head.php';
 ?>
-
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="ISO-8859-15"/>
@@ -28,6 +35,22 @@
     <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery.ui.datepicker.js'; ?>"></script>
     <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery.ui.datepicker-es.js'; ?>"></script>
 <body>
+=======
+    require $local_path . '/components/head.php'; 
+?>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="ISO-8859-15"/>
+        <link rel="stylesheet" type="text/css" href="../css/estilos.css"/>
+        <link rel="stylesheet" href="../css/jquery-ui.css"/>
+        <script type="text/javascript" src="../js/datos_pasajero.js"></script>
+        <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="../js/jquery.ui.core.js"></script>
+        <script type="text/javascript" src="../js/jquery.ui.datepicker.js"></script>
+        <script type="text/javascript" src="../js/jquery.ui.datepicker-es.js"></script>
+    </head>
+    <body>
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
         <div class="wrapper">
     
             <!-- se incluye el <header> -->
@@ -35,7 +58,11 @@
 
             <main id="main" role="main">
 
+<<<<<<< HEAD
                 <form action="<?php echo $http_path . '/components/guardar_pasajero_reserva.php'; ?>" method="post" onsubmit="return validarDatosPasajero()">
+=======
+                <form action="guardar_pasajero_reserva.php" method="post" onsubmit="return validarDatosPasajero()">
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
                     <fieldset>
                         <legend>Datos del pasajero</legend>
                         <div>
@@ -66,6 +93,7 @@
                             <label for="nacionalidad">Nacionalidad</label>
                             <input type="text" id="nacionalidad" name="nacionalidad" value="<?php if (isset($_SESSION['nacionalidad'])){ echo $_SESSION['nacionalidad']; } ?>"/>
                         </div>
+<<<<<<< HEAD
                         <?php 
                             $tipoDeViaje=$_SESSION["tipoDeViaje"];
                             if ($tipoDeViaje == 1) 
@@ -82,6 +110,21 @@
                     	<input type="submit" name="siguiente" value="Siguiente"/>
                     </fieldset>
 			
+=======
+                    </fieldset>
+			<?php 
+                            $tipoDeViaje=$_SESSION["tipoDeViaje"];
+                            if ($tipoDeViaje == 1) 
+                            { 
+                                echo "<a href='listado_vuelos_ida.php' name='anterior'>Anterior</a>";
+                            }
+                            else
+                            {
+                                echo "<a href='listado_vuelos_ida_regreso.php' name='anterior'>Anterior</a>";
+                            }    
+                    	?> 
+                    <input type="submit" name="siguiente" value="Siguiente"/>
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
                 </form>
 
             </main><!-- [end] main -->
@@ -95,6 +138,7 @@
         <script type="text/javascript" src="js/components/seatSelection.js"></script> 
     -->
 
+<<<<<<< HEAD
     <script>
         $(function() {
             $("#fechaNac").datepicker({
@@ -103,6 +147,20 @@
             buttonImageOnly: true,
             firstDay: 0
             });
+        });
+    </script>
+=======
+        <script>
+            $(function() {
+                $("#fechaNac").datepicker({
+                showOn: "button",
+                buttonImage: "../images/calendar.gif",
+                buttonImageOnly: true,
+                firstDay: 0
+                });
+            });
+        </script>
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
 
     </body>
 </html>

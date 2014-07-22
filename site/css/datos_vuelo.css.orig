@@ -1,0 +1,27 @@
+@CHARSET "ISO-8859-1";
+
+.centrar
+{
+    margin-left: 35%;
+    margin-top: 10%;
+}
+
+.invisible
+{
+    visibility: hidden;
+}
+
+.visible
+{
+    visibility: visible;
+}
+
+.anchoCuadroTexto
+{
+    width: 80%;
+}
+
+.anchoFecha 
+{
+    width: 50%;
+}

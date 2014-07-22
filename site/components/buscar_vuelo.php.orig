@@ -1,12 +1,16 @@
 <?php
     session_start();
-
+<<<<<<< HEAD
     // guardamos la nueva ruta base del site
     $local_path = $_SESSION["local_path"];
     // se guarda la ruta para ejecutar php
     $http_path = $_SESSION["http_path"];
     require_once $local_path . "/components/database.php";
     require_once $local_path . "/components/library.php";
+=======
+    require_once '../processors/Database.php';
+    require_once 'library.php';
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
 
     function getVuelos($query, $fecha)
     {
@@ -48,7 +52,10 @@
     $_SESSION["fechaPartida"]=$fechaPartida;
     $_SESSION["fechaRegreso"]=$fechaRegreso;
     $_SESSION["tipoDeViaje"]=$tipoDeViaje;
-
+<<<<<<< HEAD
+=======
+    
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
     switch ($tipoDeViaje)
 	{
         case 1:
@@ -59,15 +66,24 @@
                 if (count($vuelosIda) > 0)
                 {
                     $_SESSION["vuelosIda"] = $vuelosIda;
+<<<<<<< HEAD
                     $siguiente = $http_path . "/components/listado_vuelos_ida.php";
                     header("Location: " . $siguiente);
+=======
+                    header("Location: listado_vuelos_ida.php");
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
                 }
                 else
                 {
                     $errorNoHayVuelosParaLaFecha = "No hay vuelos entre " . $ciudadOrigen . " y " . $ciudadDestino . " para la fecha " . $fechaPartida;
+<<<<<<< HEAD
                     $anterior = $http_path . "/components/datos_vuelo.php";
                     $error = $http_path . "/components/error.php";
                     header("Location: ". $error . "?mensaje=$errorNoHayVuelosParaLaFecha&anterior=$anterior");
+=======
+                    $anterior = "datos_vuelo.php";
+                    header("Location: error.php?mensaje=$errorNoHayVuelosParaLaFecha&anterior=$anterior");
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
                 }
                 break;
         case 2:
@@ -83,27 +99,39 @@
                 {
                     if (count($vuelosRegreso) > 0)
                     {
-
                         $_SESSION["vuelosIda"] = $vuelosIda;
                         $_SESSION["vuelosRegreso"] = $vuelosRegreso;
+<<<<<<< HEAD
                         $siguiente = $http_path . "/components/listado_vuelos_ida_regreso.php";
                         header("Location: " . $siguiente);
+=======
+                        header("Location: listado_vuelos_ida_regreso.php");
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
                     }
                     else
-
                     {
                         $errorNoHayVuelosParaLaFecha = "No hay vuelos entre " . $ciudadDestino . " y " . $ciudadOrigen . " para la fecha " . $fechaRegreso;
+<<<<<<< HEAD
                         $anterior = $http_path. "/components/datos_vuelo.php";
                         $error = $http_path. "/components/error.php";
                         header("Location: ". $error . "?mensaje=$errorNoHayVuelosParaLaFecha&anterior=$anterior");
+=======
+                        $anterior = "datos_vuelo.php";
+                        header("Location: error.php?mensaje=$errorNoHayVuelosParaLaFecha&anterior=$anterior");
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
                     }
                 }
                 else
                 {
                     $errorNoHayVuelosParaLaFecha = "No hay vuelos entre " . $ciudadOrigen . " y " . $ciudadDestino . " para la fecha " . $fechaPartida;
+<<<<<<< HEAD
                     $anterior = $http_path . "/components/datos_vuelo.php";
                     $error = $http_path . "/components/error.php";
                     header("Location: ". $error . "?mensaje=$errorNoHayVuelosParaLaFecha&anterior=$anterior");
+=======
+                    $anterior = "datos_vuelo.php";
+                    header("Location: error.php?mensaje=$errorNoHayVuelosParaLaFecha&anterior=$anterior");
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
                 }
                 break;
     }

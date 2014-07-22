@@ -1,12 +1,14 @@
 <?php 
-	
     session_start();
     // guardamos la nueva ruta base del site
     $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
+<<<<<<< HEAD
     // se guarda la ruta para ejecutar php
     $http_path = $_SESSION["http_path"];
+=======
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
     
     $estaEnEspera = (isset($_GET["estaEnEspera"])? $_GET["estaEnEspera"] : '' );
     $_SESSION["estaEnEspera"] = $estaEnEspera;
@@ -22,6 +24,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html" charset="ISO-8859-15"/>
+<<<<<<< HEAD
         <link rel="stylesheet" type="text/css" href="<?php echo $statics_path . '/css/forms.css';?>"/>
         <script type="text/javascript" src="<?php echo $statics_path . '/js/datos_vuelo.js'; ?>"></script>
         <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery-1.10.2.js'; ?>"></script>
@@ -30,6 +33,16 @@
         <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery.ui.datepicker-es.js'; ?>"></script>
     </head>
 
+=======
+        <link rel="stylesheet" type="text/css" href="../css/datos_vuelo.css"/>
+        <link rel="stylesheet" href="../css/jquery-ui.css"/>
+        <script type="text/javascript" src="../js/datos_vuelo.js"></script>
+        <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="../js/jquery.ui.core.js"></script>
+        <script type="text/javascript" src="../js/jquery.ui.datepicker.js"></script>
+        <script type="text/javascript" src="../js/jquery.ui.datepicker-es.js"></script>
+    </head>
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
     <body>
         <div class="wrapper">
 
@@ -38,6 +51,7 @@
 
             <main id="main" role="main">
 
+<<<<<<< HEAD
                 <form id="frmVuelo" method="post" action="<?php echo $http_path . '/components/buscar_vuelo.php'; ?>" onsubmit="return validarDatosVuelo()">
 
                     <fieldset>
@@ -61,11 +75,37 @@
                                     $skynet->disconnect();
                                 }
                             ?>
+=======
+                <form id="frmVuelo" method="post" action="buscar_vuelo.php" onsubmit="return validarDatosVuelo()" class="centrar">
+
+                    <fieldset>
+                        <legend>Consultar vuelo</legend>
+                        <div>
+                            <label for="ciudadOrigen">Ciudad origen</label>
+                            <select id="ciudadOrigen" name="ciudadOrigen" required="required">
+                                <?php
+                                    require_once 'database.php';
+                                    $skynet = new Database();
+                                    $conexionOk = $skynet->connect();
+                                    if ($conexionOk) 
+                                    {
+                                        $query = "SELECT distinct origen FROM vuelo ORDER BY origen";
+                                        $ciudades = $skynet->executeSelect($query);
+                                        foreach ($ciudades as $ciudad) 
+                                        {
+                                            $ciudadActual = $ciudad["origen"];
+                                            echo "<option value='$ciudadActual'>$ciudadActual</option>";
+                                        }
+                                        $skynet->disconnect();
+                                    }
+                                ?>
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
                             </select> 
                         </div>
                         <div>
                             <label for="ciudadDestino">Ciudad destino</label>
                             <select id="ciudadDestino" name="ciudadDestino" required="required">
+<<<<<<< HEAD
                             <?php
                                 require_once $local_path . "/components/database.php";
                                 $skynet = new Database();
@@ -86,11 +126,37 @@
                         </div>
                         <div>
                             <label for="fechaPartida">Fecha partida [dd/mm/aaaa]</label>
+=======
+                        	<?php
+                                    require_once 'database.php';
+                                    $skynet = new Database();
+                                    $conexionOk = $skynet->connect();
+                                    if ($conexionOk) 
+                                    {
+                                        $query = "SELECT distinct destino FROM vuelo ORDER BY destino";
+                                        $ciudades = $skynet->executeSelect($query);
+                                        foreach ($ciudades as $ciudad)
+                                        {
+                                            $ciudadActual = $ciudad["destino"];
+                                            echo "<option value='$ciudadActual'>$ciudadActual</option>";
+                                        }
+                                        $skynet->disconnect();
+                                    }
+                        	?>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="fechaPartida">Fecha partida [dd-mm-aaaa]</label>
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
                             <!-- Aqui se enlaza el datepicker al cuadro de texto -->
                             <input type="text" id="fechaPartida" name="fechaPartida" value="<?php if (isset($_SESSION['fechaPartida'])){ echo $_SESSION['fechaPartida']; } ?>"/>
                         </div>
                         <div id="divRegreso" class="invisible">
+<<<<<<< HEAD
                             <label for="fechaRegreso">Fecha regreso [dd/mm/aaaa]</label>
+=======
+                            <label for="fechaRegreso">Fecha regreso [dd-mm-aaaa]</label>
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
                             <!-- Aqui se enlaza el datepicker al cuadro de texto -->
                             <input type="text" id="fechaRegreso" name="fechaRegreso" value="<?php if (isset($_SESSION['fechaRegreso'])){ echo $_SESSION['fechaRegreso']; } ?>"/>
                         </div>
@@ -108,8 +174,12 @@
             </main>
 
         </div>
+<<<<<<< HEAD
         <!-- se incluye el <footer> -->
 	<?php require $local_path . '/components/footer.php'; ?>     
+=======
+
+>>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
         <script>
             $(function() {
                 $("#fechaPartida").datepicker({
