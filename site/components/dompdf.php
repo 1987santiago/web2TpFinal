@@ -35,7 +35,7 @@
             "<ul>";
 
     $pdf_filename = 'boardingPass-' . $reservation_data[0]['codigo_reserva'] . $flight_data[0]['numero_vuelo'] . $save_seat_data['id_asiento'] . '.pdf';
-    $qr_src = "pp.png";
+    $qr_src = "codeQR2.png";
     
     $html = "<div>$data</div><div><h3>Codigo QR:<h3><img src='" . $qr_src . "'/></div>";
 

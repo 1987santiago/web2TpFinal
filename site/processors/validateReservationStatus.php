@@ -3,8 +3,8 @@
 
     /*
      * en este archivo se procesa el codigo de reserva que ingresa el usuario-cliente
-     * el mismo se chequea contra la base de datos la validez del mismo
-     * una vez checkeado se sigue el siguiente flujo:
+     * el mismo se chequea contra la base de datos para verificar su validez, 
+     * una vez checkeado continua el siguiente flujo:
      *      A - VALIDA: se redirije a la seccion de seleccion de asiento (seatSelection.php)
      *      B - NO VALIDA: se redirije a la seccion de ingreso de codigo (paso anterior - checkIn.php), informando el error
      */
@@ -45,13 +45,21 @@
         // var_dump($reservation_data);
 
         $reservation_proccess_data = new ProccessData($reservation_data);
-
         // $proccess_data->printData(); 
 
         // obtenemos el id de reserva, 
         $id_reservation_code = $reservation_proccess_data->getValue('codigo_reserva');
 
-        // Chequeamos que la reserva esté pagada
+        // Chequeamos que la reserva no se haya confirmado (check-in completo)
+        // Posibles estados de la reserva: 
+        //      0 - Pagada
+        //      1 - Sin pagar
+        //      2 - Confirmada (ya se hizo el check-in)
+        $reservation_active = $reservation_proccess_data->getValue('estado');
+        if ($reservation_active == 2 || $reservation_active == 1 ) 
+            return false;
+
+        // Chequeamos que la reserva esté pagada 
         $is_paid = is_paid($id_reservation_code); 
         if (!$is_paid) 
             return false;

@@ -26,7 +26,7 @@
                         $asientosPrimera = $skynet->executeSelect($query);
                         $query2 = "SELECT count(*) as reservas
                                   FROM reserva
-                                  WHERE numero_vuelo = $vuelo and id_categoria = $categoria and esta_en_espera = false";
+                                  WHERE numero_vuelo = $vuelo and id_categoria = $categoria and esta_en_espera = 0";
                         $reservasPrimera = $skynet->executeSelect($query2);
                         $totalAsientos = intval($asientosPrimera[0]["asientos_primera"]);
                         $totalReservas = intval($reservasPrimera[0]["reservas"]);
@@ -42,7 +42,7 @@
                             {
                                 $query = "SELECT count(*) as reservas
                                           FROM reserva
-                                          WHERE numero_vuelo = $vuelo and esta_en_espera = true";
+                                          WHERE numero_vuelo = $vuelo and esta_en_espera = 1";
                                 $reservasEnEspera = $skynet->executeSelect($query);
                                 $cantidadReservasEnEspera = intval($reservasEnEspera[0]["reservas"]);
                                 if ($cantidadReservasEnEspera < EXCEDENTE) 
@@ -75,7 +75,7 @@
                         $asientosEconomy = $skynet->executeSelect($query);
                         $query2 = "SELECT count(*) as reservas
                                   FROM reserva
-                                  WHERE numero_vuelo = $vuelo and id_categoria = $categoria and esta_en_espera = false";
+                                  WHERE numero_vuelo = $vuelo and id_categoria = $categoria and esta_en_espera = 0";
                         $reservasEconomy = $skynet->executeSelect($query2);
                         $totalAsientos = intval($asientosEconomy[0]["asientos_economy"]);
                         $totalReservas = intval($reservasEconomy[0]["reservas"]);
@@ -91,7 +91,7 @@
                             {
                                 $query = "SELECT count(*) as reservas
                                           FROM reserva
-                                          WHERE numero_vuelo = $vuelo and esta_en_espera = true";
+                                          WHERE numero_vuelo = $vuelo and esta_en_espera = 1";
                                 $reservasEnEspera = $skynet->executeSelect($query);
                                 $cantidadReservasEnEspera = intval($reservasEnEspera[0]["reservas"]);
                                 if ($cantidadReservasEnEspera < EXCEDENTE) 

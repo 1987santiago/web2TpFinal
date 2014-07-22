@@ -18,10 +18,9 @@
             "Categoria: " . $save_seat_data['descripcion'] . "\n" . 
             "Codigo de reserva: " . $reservation_data[0]['codigo_reserva'];
 
-    // require_once "../lib/phpqrcode/phpqrcode.php";
-    require_once "$base_path$statics_path/lib/phpqrcode/qrlib.php";
+    require "$base_path$statics_path/lib/phpqrcode/qrlib.php";
 
-    $code = QRcode::png($data, "pp.png");
+    $code = QRcode::png($data, "codeQR2.png");
 
     /*
     save_seat_data: { 

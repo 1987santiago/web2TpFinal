@@ -85,10 +85,8 @@
 			$this->response = $response;
 
 			if ($response) {
-				echo "true";
 				return true;
 			} else {
-				echo "false";
 				return false;
 			}
 
