@@ -1,15 +1,12 @@
 <?php
     session_start();
-<<<<<<< HEAD
     // guardamos la nueva ruta base del site
     $local_path = $_SESSION["local_path"];
     // se guarda la ruta para ejecutar php
     $http_path = $_SESSION["http_path"];
     
     require_once $local_path . "/components/database.php";
-=======
-    require_once 'database.php';
->>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
+
     define("EXCEDENTE", 10); // constante
         
     function getAsientosLibres($vuelo, $categoria) 
@@ -96,27 +93,17 @@
                 }
                 if ($reservaIdaPermitida) 
                 {
-<<<<<<< HEAD
                     $siguiente = $http_path . "/components/datos_pasajero.php";
                     $_SESSION["reservaIdaEnEspera"] = $reservaIdaEnEspera;
                     header("Location: " . $siguiente);
-=======
-                    header("Location: datos_pasajero.php");
-                    $_SESSION["reservaIdaEnEspera"] = $reservaIdaEnEspera;
->>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
                 }
                 else
                 {    
                     $errorNoHayAsientos = "No hay asientos para el vuelo de ida entre " . $_SESSION["ciudadOrigen"] . 
                                           " y " . $_SESSION["ciudadDestino"] . " en la categoria " . $_SESSION["categoriaIdaElegida"];
-<<<<<<< HEAD
                     $error = $http_path . "/components/error.php";
                     $anterior = $http_path . "/components/listado_vuelos_ida.php";
                     header("Location: " . $error . "?mensaje=$errorNoHayAsientos&anterior=$anterior");
-=======
-                    $anterior = "listado_vuelos_ida.php";
-                    header("Location: error.php?mensaje=$errorNoHayAsientos&anterior=$anterior");
->>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
                 }
                 break;
         case 2: 
@@ -165,16 +152,11 @@
                 }
                 if ($reservaIdaPermitida && $reservaRegresoPermitida) 
                 {
-<<<<<<< HEAD
+
                     $_SESSION["reservaIdaEnEspera"] = $reservaIdaEnEspera;
                     $_SESSION["reservaRegresoEnEspera"] = $reservaRegresoEnEspera;
                     $siguiente = $http_path . "/components/datos_pasajero.php";
                     header("Location: ". $siguiente);
-=======
-                    header("Location: datos_pasajero.php");
-                    $_SESSION["reservaIdaEnEspera"] = $reservaIdaEnEspera;
-                    $_SESSION["reservaRegresoEnEspera"] = $reservaRegresoEnEspera;
->>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
                 }
                 else
                 {    
@@ -182,28 +164,20 @@
                     {
                         $errorNoHayAsientos = "No hay asientos para el vuelo de ida entre " . $_SESSION["ciudadOrigen"] . 
                                               " y " . $_SESSION["ciudadDestino"] . " en la categoria " . $_SESSION["categoriaIdaElegida"];
-<<<<<<< HEAD
                         $error = $http_path . "/components/error.php";
                         $anterior = $http_path . "/components/listado_vuelos_ida_regreso.php";
                         header("Location: " . $error . "?mensaje=$errorNoHayAsientos&anterior=$anterior");
-=======
-                        $anterior = "listado_vuelos_ida_regreso.php";
-                        header("Location: error.php?mensaje=$errorNoHayAsientos&anterior=$anterior");
->>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
+
                         die();
                     }
                     if (!$reservaRegresoPermitida) 
                     {
                         $errorNoHayAsientosRegreso = "No hay asientos para el vuelo de regreso entre " . $_SESSION["ciudadDestino"] . 
                                                      " y " . $_SESSION["ciudadOrigen"] . " en la categoria " . $_SESSION["categoriaRegresoElegida"];
-<<<<<<< HEAD
+
                         $error = $http_path . "/components/error.php";
                         $anterior = $http_path . "/components/listado_vuelos_ida_regreso.php";
                         header("Location: " . $error . "?mensaje=$errorNoHayAsientosRegreso&anterior=$anterior");
-=======
-                        $anterior = "listado_vuelos_ida_regreso.php";
-                        header("Location: error.php?mensaje=$errorNoHayAsientosRegreso&anterior=$anterior");
->>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
                         die();
                     }
                 } 

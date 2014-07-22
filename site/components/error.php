@@ -1,6 +1,5 @@
 <?php
     session_start();
-<<<<<<< HEAD
     // guardamos la nueva ruta base del site
     $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
@@ -47,14 +46,3 @@
         <?php require $local_path . '/components/footer.php'; ?>     
     </body>
 </html> 
-=======
-    $mensaje = $_GET["mensaje"];
-    $anterior = $_GET["anterior"];
-    echo "<link rel='stylesheet' type='text/css' href='../css/error.css'/>";
-    echo "<form class='centrar'>";
-    echo    $mensaje;
-    echo    "</br>";
-    echo    "<a href='$anterior' name='anterior'/>Anterior</a>";
-    echo "</form>";
-?>
->>>>>>> a53980cc692633ef8dbabd31edbcabc735fdfb83
