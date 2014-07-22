@@ -8,10 +8,10 @@
      * y se deshabilitan para impedir su selección
      */
 
-    // guardamos la nueva ruta base del site
-    $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
+    // guardamos la ruta base
+    $base_path = $_SESSION["base_path"];
 
     // Si existen errores se guardan e informan
     $hasError = false;
@@ -21,16 +21,24 @@
         $errorMsg = $_COOKIE['error'];
     }
     
-    // Obtenemos el código ingresado por usuario
-    if (isset($_POST['reservation_code'])) {
-        $reservation_code = $_POST['reservation_code']; 
-    } else if (isset($_COOKIE['reservation_code'])) {
-        $reservation_code = $_COOKIE['reservation_code'];
-    } else {
+    if (!isset($_POST['reservation_code']) && !isset($_COOKIE['reservation_code']) && !isset($_SESSION['reservation_code']) ) {
+
         // En caso de no existir el codigo de reserva 
         // redirigimos al usuario al inicio del checkIn
         setcookie('error', 'Codigo_reserva_no_ingresado');
-        header("Location: $statics_path/components/checkIn.php");
+        header("Location: $statics_path/sections/checkIn.php");
+
+    } else {
+
+        // Obtenemos el código ingresado por usuario
+        if (isset($_POST['reservation_code'])) {
+            $reservation_code = $_POST['reservation_code']; 
+        } else if (isset($_COOKIE['reservation_code'])) {
+            $reservation_code = $_COOKIE['reservation_code'];
+        } else if (isset($_SESSION['reservation_code'])) {
+            $reservation_code = $_SESSION['reservation_code'];
+        }
+
     }
 
     require_once '../processors/Database.php';
@@ -49,11 +57,11 @@
     if (!$response_sql) {
         // redirigimos al usuario al inicio del checkIn
         setcookie('error', 'Codigo_reserva_invalido');
-        header("Location: $statics_path/components/checkIn.php");
+        header("Location: $statics_path/sections/checkIn.php");
     }
     
     // eliminamos la cookie error
-    setcookie('error', '', time()-300);  
+    setcookie('error', '', time()-300);
 
     setcookie('reservation_code', $reservation_code, time()+1000);
 
@@ -330,7 +338,7 @@
     $_SESSION["resources"] = array(
         "css" => array("seatSelection")
     ); 
-    require $local_path . '/components/head.php'; 
+    require "$base_path$statics_path/components/head.php"; 
 ?>
     
     <body>
@@ -338,55 +346,60 @@
         <div class="wrapper">
     
             <!-- se incluye el <header> -->
-            <?php require $local_path . '/components/header.php'; ?> 
+            <?php require "$base_path$statics_path/components/header.php"; ?> 
 
             <main id="main" role="main">
 
-                <div class="">
-                    <?php
-                        if ($hasError) { 
-                            echo "<div class='box-error'>$errorMsg</div>";
-                        }
-                    ?>
 
-                    <article class="seat-selection">
+                <!-- se incluye el sidebar -->
+                <?php include "$base_path$statics_path/components/navLateral.php"; ?> 
+                    
+                <?php
+                    if ($hasError) { 
+                        echo "<div class='box-error'>$errorMsg</div>";
+                    }
+                ?>
 
-                        <h3>Selección de asiento</h3>
+                <article class="col seat-selection">
 
-                        <form id="seatSelection" action="seatConfirm.php" method="post">
+                    <h3>Selección de asiento</h3>
 
-                            <input name="flightNumber" type="hidden" value='<?php echo "$flight_data[numero_vuelo]"; ?>'>
-                            <input name="travelerDoc" type="hidden" value='<?php echo "$reservation_data[dni]"; ?>'>
+                    <form id="seatSelection" action="seatConfirm.php" method="post">
 
-                            <fieldset>
+                        <input name="flightNumber" type="hidden" value='<?php echo "$flight_data[numero_vuelo]"; ?>'>
+                        <input name="travelerDoc" type="hidden" value='<?php echo "$reservation_data[dni]"; ?>'>
 
-                                <legend>Seleccione un asiento</legend>
+                        <fieldset>
 
-                                    <div class="seat-premium-class">
-                                        <?php printSeatMap($seatMapData["filas_primera"], $seatMapData["columnas_primera"], 100); ?>
-                                    </div>
-                                    <div class="seat-economy-class">
-                                        <?php printSeatMap($seatMapData["filas_economy"], $seatMapData["columnas_economy"], 200); ?>
-                                    </div>
+                            <legend>Seleccione un asiento</legend>
 
-                            </fieldset>
+                                <div class="seat-premium-class">
+                                    <?php printSeatMap($seatMapData["filas_primera"], $seatMapData["columnas_primera"], 100); ?>
+                                </div>
+                                <div class="seat-economy-class">
+                                    <?php printSeatMap($seatMapData["filas_economy"], $seatMapData["columnas_economy"], 200); ?>
+                                </div>
 
-                            <div>
-                                <input type="submit" value="Siguiente >">
-                            </div>
+                        </fieldset>
 
-                        </form>
+                        <div>
+                            <input type="submit" value="Siguiente >" />
+                        </div>
 
-                    </article>
+                    </form>
 
-                </div>
+                    <form action="seatSelectionCancel.php" method="post">
+                        <input type="submit" value="Cancelar" />
+                    </form>
+
+                </article>
 
             </main><!-- [end] main -->
 
         </div><!-- [end] wrapper -->
 
         <!-- se incluye el <header> -->
-        <?php require $local_path . '/components/footer.php'; ?> 
+        <?php require "$base_path$statics_path/components/footer.php"; ?> 
 
     <!-- Incluir este js para agregar funcionalidad en browsers < IE8 
         <script type="text/javascript" src="js/components/seatSelection.js"></script> 

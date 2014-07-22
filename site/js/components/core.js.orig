@@ -13,7 +13,11 @@
 
     // Methods 
 
+<<<<<<< HEAD:site/js/components/core.js
     // Exposse skynet 
+=======
+    // Exposse aero 
+>>>>>>> master:site/js/core.js
     window.skynet = skynet;
 
 }(this, jQuery));

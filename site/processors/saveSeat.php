@@ -6,8 +6,6 @@
      * en la base de datos
      */
 
-    // guardamos la nueva ruta base del site
-    $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
 
@@ -50,7 +48,15 @@
 
     // Si la inserción tuvo éxito 
     if ($response_sql) {
-        header("Location: $statics_path/components/printBardingPass.php");
+        header("Location: $statics_path/components/checkInComplete.php");
+    } else {
+        session_destroy();
+        session_start();
+        // guardamos la nueva ruta base del site
+        $_SESSION["local_path"] = $statics_path;
+        // guardamos la url de los recursos estaticos
+        $_SESSION["statics_path"] = $statics_path;
+        header("Location: $statics_path/components/");
     }
 
 

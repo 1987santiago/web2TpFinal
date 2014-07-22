@@ -1,0 +1,40 @@
+footer{
+    background-color: #d2caca;
+    padding: 1em;
+    color: #fff;
+}
+.volando { /* LA misma está en el header */
+    float: right;
+   }
+
+
+
+.seccionesFooter{
+	display:table;
+}
+
+.about, .information, .legals, .datafiscal{
+	display: table-cell;
+	padding: .6em 1em;
+
+}
+nav li {
+        list-style-type:none; /* LA misma está en el header */
+    }
+    nav a {
+        color: #FFF;
+        text-decoration: none; 
+        display: inline-block;
+         }
+.redes{
+	width: 100%;
+	float: left;
+}
+.links ul{
+ width:150px; /* esta en Formulario.php*/
+}
+
+.data{
+
+	padding-top: 10px;
+}

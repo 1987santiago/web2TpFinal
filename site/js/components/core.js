@@ -13,7 +13,7 @@
 
     // Methods 
 
-    // Exposse skynet 
+    // Exposse aero 
     window.skynet = skynet;
 
 }(this, jQuery));

@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     // guardamos la nueva ruta base del site
     $local_path = $_SESSION["local_path"];
     // se guarda la ruta para ejecutar php
@@ -13,27 +12,36 @@
         $vuelosAMostrar = array();
         $skynet = new Database();
         $conexionCorrecta = $skynet->connect();
-        if ($conexionCorrecta)
-        {
+        
+        if ($conexionCorrecta) {
+            
             $vuelos = $skynet->executeSelect($query);
             $cantidadVuelos = count($vuelos);
-            if ($cantidadVuelos > 0)
-            {
+            
+            if ($cantidadVuelos > 0) {
+
                 $fechaPartidaFormateada = getFechaFormateada($fecha);
                 $dia = getDiaDeLaSemana($fechaPartidaFormateada);
-                foreach($vuelos as $vuelo)
-                {
+
+                foreach($vuelos as $vuelo) {
+                
                     $diasDeVuelo = getDiasVueloBin($vuelo["dias_vuelo"]);
-                    if ($diasDeVuelo[$dia] == "1")
-                    {
+                    
+                    if ($diasDeVuelo[$dia] == "1") {
                         // Se añade el vuelo a un nuevo array
                         array_push($vuelosAMostrar, $vuelo);
                     }
+                
                 }
+
             }
-           $skynet->disconnect();
+
+            $skynet->disconnect();
+        
         }
+        
         return $vuelosAMostrar;
+
     }
 
     $ciudadOrigen = $_POST["ciudadOrigen"];

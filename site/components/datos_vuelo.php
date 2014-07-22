@@ -1,7 +1,5 @@
 <?php 
     session_start();
-    // guardamos la nueva ruta base del site
-    $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
     // se guarda la ruta para ejecutar php
@@ -12,10 +10,9 @@
 
     // se incluye el inicio del html <!doctype html>...</head>
     $_SESSION["resources"] = array(
-        "css"  => array("forms"),
-        "js"  => array("datos_vuelo")
+        "css"  => array("forms", "datos_vuelo", "datos_vuelo")
     ); 
-    require $local_path . '/components/head.php'; 
+    require $statics_path . '/components/head.php'; 
 ?>
 
 <html>
@@ -33,7 +30,7 @@
         <div class="wrapper">
 
             <!-- se incluye el <header> -->
-            <?php require $local_path . '/components/header.php'; ?> 
+            <?php require $statics_path . '/components/header.php'; ?> 
 
             <main id="main" role="main">
 
@@ -89,7 +86,6 @@
                             <input type="text" id="fechaPartida" name="fechaPartida" value="<?php if (isset($_SESSION['fechaPartida'])){ echo $_SESSION['fechaPartida']; } ?>"/>
                         </div>
                         <div id="divRegreso" class="invisible">
-                            <label for="fechaRegreso">Fecha regreso [dd/mm/aaaa]</label>
                             <!-- Aqui se enlaza el datepicker al cuadro de texto -->
                             <input type="text" id="fechaRegreso" name="fechaRegreso" value="<?php if (isset($_SESSION['fechaRegreso'])){ echo $_SESSION['fechaRegreso']; } ?>"/>
                         </div>

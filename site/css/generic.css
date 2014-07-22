@@ -1,0 +1,21 @@
+/**
+ * confirmaPago
+ */
+
+.central {
+    display:table;
+    width:100%;
+}
+.links {
+    display: table-cell;
+    width: 10%;
+    background-color: #FFF;
+    padding-bottom: 10px;
+    list-style-type:none;
+}        
+.left{
+    display: table-cell;
+}
+.right{
+    display: table-cell;
+}
