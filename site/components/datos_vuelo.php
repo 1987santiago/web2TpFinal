@@ -1,5 +1,4 @@
 <?php 
-	
     session_start();
     // guardamos la nueva ruta base del site
     $local_path = $_SESSION["local_path"];
@@ -99,6 +98,7 @@
                             <input type="radio" id="viajeIda" name="tipoDeViaje" value="1" checked="checked" onclick="ocultarFechaRegreso()"/>Ida
                             <input type="radio" id="viajeIdaVuelta" name="tipoDeViaje" value="2" onclick="mostrarFechaRegreso()"/>Ida y vuelta
                         </div>
+                        
                         <input type="submit" name="buscar" value="Buscar"></input>
 
                     </fieldset>
