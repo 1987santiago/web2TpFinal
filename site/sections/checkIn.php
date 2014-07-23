@@ -44,7 +44,7 @@
                             echo '<p class="box box-error">$_COOKIE[\'error\']</p>';
                         }
                     ?>
-                    <form action='<?php echo "$statics_path/components/seatSelection.php"; ?>' method="post" >
+                    <form data-component="checkIn" action='<?php echo "$statics_path/components/seatSelection.php"; ?>' method="post" >
 
                         <input name="statics_path" value="<?php echo $statics_path; ?>" type="hidden" />
 
@@ -78,7 +78,11 @@
 
                 // datos que le pasamos al achivo que valida el codigo
                 var data = {
-                        reservationCode : reservationCode.value
+                        reservationCode : reservationCode.value,
+
+                        // Con este dato el validador define que validación hacer
+                        // No es lo mismo para pagar que para hacer el check-in por ejemplo 
+                        component : (form.dataset)? form.dataset.component : form.getAttribute('data-component')
                     },
 
                     // parametros que necesitamos para hacerl el request por ajax

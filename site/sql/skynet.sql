@@ -305,7 +305,7 @@ CREATE TABLE IF NOT EXISTS reserva (
   codigo_reserva varchar(30) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   fecha_reserva datetime NOT NULL,
   fecha_partida datetime NOT NULL,
-  estado tinyint(1) NOT NULL,
+  estado tinyint(11) NOT NULL,
   monto float NOT NULL,
   dni varchar(8) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   numero_vuelo int(11) NOT NULL,

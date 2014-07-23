@@ -20,14 +20,13 @@
 
     // Obtenemos el código ingresado por usuario
     $reservation_code = $_POST['reservationCode']; 
+    // Obtenemos el nombre del componente a validar
+    $component = $_POST['component']; 
 
     $query_sql = "SELECT * FROM reserva WHERE (codigo_reserva = '$reservation_code');";
 
     // Realizamos la consulta a la tabla y guardamos el array associativo 
     $reservation_data = $connect->executeSelect($query_sql);
-    // var_dump($reservation_data);
-    // $estavacio = (sizeof($reservation_data) == 0)? "vacio" : "con algo";
-    // echo $estavacio;
 
     // Si la consulta fue exitosa entra
     if ($reservation_data) { 
@@ -42,7 +41,6 @@
         $_SESSION['reservation_data'] = $reservation_data;
     
         // echo "\nDatos de reserva: \n";
-        // var_dump($reservation_data);
 
         $reservation_proccess_data = new ProccessData($reservation_data);
         // $proccess_data->printData(); 
@@ -56,18 +54,39 @@
         //      1 - Sin pagar
         //      2 - Confirmada (ya se hizo el check-in)
         $reservation_active = $reservation_proccess_data->getValue('estado');
-        if ($reservation_active == 2 || $reservation_active == 1 ) 
-            return false;
 
-        // Chequeamos que la reserva esté pagada 
-        $is_paid = is_paid($id_reservation_code); 
-        if (!$is_paid) 
-            return false;
+        switch ($component) {
 
-        // Chequeamos que la hora actual se encuentre entre 2 a 48hs antes de la salida del vuelo
-        $is_valid_checkin_time = is_valid_time($reservation_proccess_data->getValue('fecha_partida'));
-        if (!$is_valid_checkin_time) 
-            return false;
+            case 'checkIn':
+
+                if ($reservation_active == '0' || $reservation_active == '2') 
+                    return false;
+
+                // Chequeamos que la reserva esté pagada 
+                // $is_paid = is_paid($id_reservation_code); 
+                // if (!$is_paid) 
+                //     return false;
+
+                // Chequeamos que la hora actual se encuentre entre 2 a 48hs antes de la salida del vuelo
+                $is_valid_checkin_time = is_valid_time($reservation_proccess_data->getValue('fecha_partida'));
+                if (!$is_valid_checkin_time) 
+                    return false;
+                
+                break;
+            
+            case 'pay':
+
+                if ($reservation_active != 0) 
+                    return false;
+
+                // Deberíamos validar que no hayan pasado más de N hs desde que se realizo la reserva
+
+                break;
+            
+            default:
+                return false;
+                break;
+        }
 
         // Si el codigo de reserva es valido, está pagado y el horario de checkin es válido
         echo true;

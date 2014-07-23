@@ -1,0 +1,9 @@
+/** 
+ * custom-pdf.css
+ * Estilos para los archivos pdf
+ */
+
+.skynet-pdf dt,
+.skynet-pdf dd {
+    display: inline-block;
+}

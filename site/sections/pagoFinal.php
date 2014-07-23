@@ -6,9 +6,9 @@
     $base_path = $_SESSION["base_path"];
 
     // se incluye el inicio del html <!doctype html>...</head>
-    $_SESSION["resources"] = array(
-        "css"  => array("generic")
-    ); 
+    // $_SESSION["resources"] = array(
+    //     "css"  => array("generic")
+    // ); 
     require "$base_path$statics_path/components/head.php"; 
 ?>
 
@@ -22,10 +22,12 @@
                 <!-- se incluye la barra lateral de navegación -->
                 <?php require "$base_path$statics_path/components/navLateral.php"; ?>
 
-                <!-- se incluye el formulario de busqueda de vuelos disponibles para reservar -->
-                <div class="col left-col">
-                    <?php require "$base_path$statics_path/components/__guardarReserva.php"; ?>
-                </div>
+                <!--  -->
+                <section class="col">
+
+                    <?php require "$base_path$statics_path/components/guardarReserva.php"; ?>
+
+                </section>
 
             </main>
 
