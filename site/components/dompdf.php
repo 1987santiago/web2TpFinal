@@ -1,4 +1,5 @@
 <?php 
+    $server_root = $_SESSION["server_root"];
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
 
@@ -35,10 +36,11 @@
             "<ul>";
 
     $pdf_filename = 'boardingPass-' . $reservation_data[0]['codigo_reserva'] . $flight_data[0]['numero_vuelo'] . $save_seat_data['id_asiento'] . '.pdf';
-    $qr_src = "codeQR2.png";
+    $qr_src = "$server_root$statics_path/components/codeQR2.png";
     
     $html = "<div>$data</div><div><h3>Codigo QR:<h3><img src='" . $qr_src . "'/></div>";
 
+    // die($html);
     $dompdf = new DOMPDF();     
     $dompdf->load_html($html);
     $dompdf->render();

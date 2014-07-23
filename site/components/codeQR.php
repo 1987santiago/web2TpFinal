@@ -20,7 +20,7 @@
 
     require "$base_path$statics_path/lib/phpqrcode/qrlib.php";
 
-    $code = QRcode::png($data, "codeQR2.png");
+    $code = QRcode::png($data, "codeQR.png");
 
     /*
     save_seat_data: { 

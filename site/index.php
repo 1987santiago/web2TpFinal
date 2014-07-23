@@ -3,11 +3,13 @@
 
 	$PATHS = parse_ini_file("paths.ini");
 
+	$server_root = $PATHS["server_root"];
 	// guardamos la url de los recursos estaticos
 	$statics_path = $PATHS["statics_path"];
 	// guardamos la ruta base
 	$base_path = $PATHS["base_path"];
 
+	$_SESSION["server_root"] = $server_root;
 	$_SESSION["statics_path"] = $statics_path;
 	$_SESSION["base_path"] = $base_path;
 
