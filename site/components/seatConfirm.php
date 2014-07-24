@@ -129,7 +129,7 @@
                     </dl>
 
                     <p><a id="saveSeat" href='../processors/saveSeat.php'>Confirmar y reservar asiento</a></p>
-                    <p><a id="gotoPreviousPage" href='seatSelection.php'>Cambiar asiento</a></p>
+                    <p><a id="changeSeatBtn" href='seatSelection.php'>Cambiar asiento</a></p>
 
                     <form action="seatSelectionCancel.php" method="post">
                         <input type="submit" value="Cancelar" />
@@ -179,6 +179,8 @@
                     
                     if (response) { // si valida 
                         // Mostramos el boton para imprimir el boarding pass
+                        var changeSeatBtn = document.getElementById('changeSeatBtn');
+                            changeSeatBtn.style.display = 'none';
                         boardingPass.innerHTML = 
                             '<div class="box box-success">' +
                             '<h3>Reserva Existosa</h3>' +
