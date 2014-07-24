@@ -142,10 +142,10 @@ section h4 {
 /* Columns
 -------------------------------------------------*/
 .sidebar, 
-.links,
 .col {
     display: table-cell;
     padding: 1em;
+    vertical-align: top;
 }
 .left-col {
     width: 50%;
@@ -153,13 +153,23 @@ section h4 {
 
 /* Sidebar
 -------------------------------------------------*/
-.sidebar, 
-.links {
+.sidebar {
     border-right: 2px solid #CF3131;
     display: table-cell;
     min-width: 230px;
+    padding: 1em 0;
     vertical-align: top;
     width: 20%;
+}
+.sidebar a {
+    border-bottom: 2px solid #EDEDED;
+    color: #666;
+    display: block;
+    padding: 1em;
+    font-size: 1.4em;
+}
+.sidebar a:hover {
+    background-color: #EFEFEF;
 }
 
 /* Form 
@@ -170,6 +180,7 @@ fieldset {
     padding: 1em 0;
 }
 legend {
+    font-size: 1.2em;
     margin-left: 1em;
     text-transform: capitalize;
 }
@@ -198,7 +209,7 @@ textarea {
     .data-form label {
         display: inline-block;
         text-align: right;
-        min-width: 120px;
+        min-width: 200px;
         width: 26%;
     }
     .data-form dd {

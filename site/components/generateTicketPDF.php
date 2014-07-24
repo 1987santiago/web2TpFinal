@@ -35,16 +35,17 @@
         "Avión: " . $plane_data['marca'] . " Modelo: " . $plane_data['modelo'];
     
     $qr_file_name = "reservationCodeQR" . rand() . ".png";
-    $qr_code = QRcode::png($data, $qr_file_name);
+    $qr_code = QRcode::png($data, $qr_file_name, QR_ECLEVEL_L, 2);
 
 	$html = 
 		"<div>
 
-			<header>
+			<header style='position:relative;'>
                 <img src='../images/header/volando.png' alt='Skynet' />
+                <img src='" . $qr_file_name . "' alt='datos reserva' style='position:absolute; left: 15cm;' />
             </header>
-
-            <section>
+            <hr>
+            <section style='border-bottom: 1px solid #ddd;'>
                 <h2>Datos Vuelo</h2>
                 <dl>
                     <dt>Ciudad origen:</dt>
@@ -58,7 +59,7 @@
                 </dl>
             </section>
 
-            <section>
+            <section style='border-bottom: 1px solid #ddd;'>
                 <h2>Datos Pasajero</h2>
                 <dl>
                     <dt>Nombre y Apellido: </dt>
@@ -72,7 +73,6 @@
                 </dl>
             </section>
 
-			<div><img src='" . $qr_file_name . "' alt='datos reserva' /></div>
         </div>";
 
     // die($html);

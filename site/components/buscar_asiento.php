@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once 'database.php';
+    require_once '../processors/Database.php';
     define("EXCEDENTE", 10); // constante
         
     function getAsientosLibres($vuelo, $categoria) 
@@ -84,14 +84,14 @@
             
             if ($asientosLibresIda > 0) {
             
-                $reservaIdaEnEspera = false;
+                $reservaIdaEnEspera = 0;
                 $reservaIdaPermitida = true;
             
             } else {
                 
                 if ($reservasEsperaIda < EXCEDENTE) {
 
-                    $reservaIdaEnEspera = true; 
+                    $reservaIdaEnEspera = -1; 
                     $reservaIdaPermitida = true;
                 }
             }
@@ -124,14 +124,14 @@
             
             if ($asientosLibresIda > 0) {
             
-                $reservaIdaEnEspera = false;
+                $reservaIdaEnEspera = 0;
                 $reservaIdaPermitida = true;
             
             } else {
 
                 if ($reservasEsperaIda < EXCEDENTE) {
 
-                    $reservaIdaEnEspera = true;
+                    $reservaIdaEnEspera = -1;
                     $reservaIdaPermitida = true;
 
                 }

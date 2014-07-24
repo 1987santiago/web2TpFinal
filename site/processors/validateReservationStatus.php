@@ -33,8 +33,8 @@
 
         // si el registro está vacío retornamos falso 
         if (sizeof($reservation_data) == 0) {
-            echo '$reservation_data :: vacio false';
-            return false;
+            echo false;
+            // return false;
         }
 
         // Guardamos en una variable de session los datos de la reserva
@@ -59,8 +59,10 @@
 
             case 'checkIn':
 
-                if ($reservation_active == '0' || $reservation_active == '2') 
+                if ($reservation_active != '1') {   
+                    echo 'false :: no es 1';
                     return false;
+                }
 
                 // Chequeamos que la reserva esté pagada 
                 // $is_paid = is_paid($id_reservation_code); 
@@ -69,30 +71,37 @@
 
                 // Chequeamos que la hora actual se encuentre entre 2 a 48hs antes de la salida del vuelo
                 $is_valid_checkin_time = is_valid_time($reservation_proccess_data->getValue('fecha_partida'));
-                if (!$is_valid_checkin_time) 
+                if (!$is_valid_checkin_time) {
+                    echo 'false :: fecha no valida' . $reservation_proccess_data->getValue('fecha_partida');
                     return false;
+                }
                 
                 break;
             
             case 'pay':
 
-                if ($reservation_active != 0) 
+                if ($reservation_active != 0) {
+                    echo 'false';
                     return false;
+                }
 
                 // Deberíamos validar que no hayan pasado más de N hs desde que se realizo la reserva
 
                 break;
             
             default:
+                echo 'false';
                 return false;
                 break;
         }
 
         // Si el codigo de reserva es valido, está pagado y el horario de checkin es válido
-        echo true;
+        echo 'true';
+        return true;
 
     } else { 
         // echo '$reservation_data :: no existe';
+        echo 'false :: no se encontraron registros';
         return false;
     }
 
@@ -141,11 +150,13 @@
 
         date_default_timezone_set('America/Argentina/Buenos_Aires');
 
-        $starting_date  = strtotime (date($starting_str_date));
-        $current_date   = strtotime (date('Y-m-d')); // the current date 
-        $hours_remaining = date($starting_date - $current_date) / 3600;
+        $starting_date = "$starting_date 08:00:00";
+        $current_date = date('Y-m-d h:i:s'); //"2014-08-14 05:00:00";
 
-        return ($hours_remaining > 2 && $hours_remaining < 48);
+        $seconds = strtotime($starting_date) - strtotime($current_date);
+        $hours_remaining = $seconds / 60 / 60;
+
+        return ($hours_remaining > 2);
 
     }
 

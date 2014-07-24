@@ -12,11 +12,6 @@
     <nav>
         <li><a href="<?php echo "$statics_path"; ?>/sections/home.php" data-section="home" title="Home">Home</a></li>
         <li><a href="<?php echo "$statics_path"; ?>/sections/destinos.php" data-section="destinos" title="Destinos">Destinos</a></li>
-
-        <!-- Estos links son para probar [quitar luego] -->
-        <li><a href="<?php echo $statics_path; ?>/components/datos_vuelo.php" data-component="checkIn" title="Datos Vuelo">Datos vuelo</a></li>
-        <li><a href="<?php echo $statics_path; ?>/components/datos_pasajero.php" data-component="checkIn" title="Datos Pasajero">Datos pasajero</a></li>
-        <!--/ Estos links son para probar [quitar luego] -->
     </nav>
 
 </header>

@@ -1,5 +1,9 @@
 <?php
     session_start();
+    // guardamos la url de los recursos estaticos
+    $statics_path = $_SESSION["statics_path"];
+    // guardamos la ruta base
+    $base_path = $_SESSION["base_path"];
 
     require_once '../processors/Database.php';
     require_once 'library.php';
@@ -65,11 +69,12 @@
         
         if (count($vuelosIda) > 0) {
             $_SESSION["vuelosIda"] = $vuelosIda;
-            header("Location: listado_vuelos_ida.php");
+            header("Location: $statics_path/components/listado_vuelos_ida.php");
         } else {
             $errorNoHayVuelosParaLaFecha = "No hay vuelos entre " . $ciudadOrigen . " y " . $ciudadDestino . " para la fecha " . $fechaPartida;
             $anterior = "datos_vuelo.php";
-            header("Location: error.php?mensaje=$errorNoHayVuelosParaLaFecha&anterior=$anterior");
+            $_SESSION['error'] = 'error - No hay vuelos para la fecha seleccionada';
+            header("Location: $statics_path/sections/home.php");
         }
         break;
 
@@ -88,18 +93,20 @@
             if (count($vuelosRegreso) > 0) {
                 $_SESSION["vuelosIda"] = $vuelosIda;
                 $_SESSION["vuelosRegreso"] = $vuelosRegreso;
-                header("Location: listado_vuelos_ida_regreso.php");
+                header("Location: $statics_path/components/listado_vuelos_ida_regreso.php");
             } else {
                 $errorNoHayVuelosParaLaFecha = "No hay vuelos entre " . $ciudadDestino . " y " . $ciudadOrigen . " para la fecha " . $fechaRegreso;
                 $anterior = "datos_vuelo.php";
-                header("Location: error.php?mensaje=$errorNoHayVuelosParaLaFecha&anterior=$anterior");
+                $_SESSION['error'] = 'error - No hay vuelos para la fecha seleccionada';
+                header("Location: $statics_path/sections/home.php");
             }
 
         } else {
             
             $errorNoHayVuelosParaLaFecha = "No hay vuelos entre " . $ciudadOrigen . " y " . $ciudadDestino . " para la fecha " . $fechaPartida;
             $anterior = "datos_vuelo.php";
-            header("Location: error.php?mensaje=$errorNoHayVuelosParaLaFecha&anterior=$anterior");
+            $_SESSION['error'] = 'error - No hay vuelos para la fecha seleccionada';
+            header("Location: $statics_path/sections/home.php");
         
         }
         break;

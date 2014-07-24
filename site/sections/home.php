@@ -4,10 +4,18 @@
     $statics_path = $_SESSION["statics_path"];
     // guardamos la ruta base
     $base_path = $_SESSION["base_path"];
+    
+    // Si existen errores se guardan e informan
+    $hasError = false;
+
+    if (isset($_SESSION['error'])) {
+        $hasError = true;
+        $errorMsg = $_SESSION['error'];
+    }
 
     // se incluye el inicio del html <!doctype html>...</head>
     $_SESSION["resources"] = array(
-        "css"  => array("formReservHome","offExclusiv", "pagoSinInt", "wowSlider", "engine1/style")
+        "css"  => array("datosVuelo","offExclusiv", "pagoSinInt", "wowSlider", "engine1/style")
     ); 
     require "$base_path$statics_path/components/head.php"; 
 ?>
@@ -26,7 +34,15 @@
 
                 <!-- se incluye el formulario de busqueda de vuelos disponibles para reservar -->
                 <div class="col left-col">
-                    <?php require "$base_path$statics_path/components/formReservHome.php"; ?>
+                    <?php
+                        // Si hay un erro lo imprimimos en la página
+                        if ($hasError) { 
+                            echo "<div class='box box-error'>$errorMsg</div>";
+                            // Una vez mostrado el error, reseteamos la variable
+                            $_SESSION['error'] = null;
+                        }
+                    ?>
+                    <?php require "$base_path$statics_path/components/datos_vuelo.php"; ?>
                 </div>
 
                 <!-- Se inlcuye el slider -->    
@@ -47,6 +63,7 @@
         <!-- Scripts necesarios para Wow Slider -->
         <script type="text/javascript" src="<?php echo "$statics_path"; ?>/wow/engine1/wowslider.js"></script>
         <script type="text/javascript" src="<?php echo "$statics_path"; ?>/wow/engine1/script.js"></script>
+        <script type="text/javascript" src="<?php echo "$statics_path"; ?>/js/datos_vuelo.js"></script>
         <!-- [END] Scripts necesarios para Wow Slider -->
 
     </body>

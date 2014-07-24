@@ -23,8 +23,8 @@
     $save_seat_data = $_SESSION['save_seat_data'];
     $reservation_data = $_SESSION['reservation_data']; 
     
-    require_once '../processors/Database.php';
-    require_once '../processors/ProccessData.php';
+    require_once 'Database.php';
+    require_once 'ProccessData.php';
 
     // Establecemos una conexión con el servidor
     $connect = new Database();
@@ -41,22 +41,24 @@
                     $save_seat_data[dni]
                 );";
     
-    echo $query_sql;
-
     // Ejecutamos la consulta y guardamos la respuesta de la base
     $response_sql = $connect->executeIDU($query_sql);
 
     // Si la inserción tuvo éxito 
     if ($response_sql) {
-        header("Location: $statics_path/components/checkInComplete.php");
+        echo 'true';
+        return true;
+        // header("Location: $statics_path/components/checkInComplete.php");
     } else {
-        session_destroy();
-        session_start();
-        // guardamos la nueva ruta base del site
-        $_SESSION["local_path"] = $statics_path;
-        // guardamos la url de los recursos estaticos
-        $_SESSION["statics_path"] = $statics_path;
-        header("Location: $statics_path/components/");
+        // session_destroy();
+        // session_start();
+        // // guardamos la nueva ruta base del site
+        // $_SESSION["local_path"] = $statics_path;
+        // // guardamos la url de los recursos estaticos
+        // $_SESSION["statics_path"] = $statics_path;
+        echo 'false';
+        return false;
+        // header("Location: $statics_path/");
     }
 
 

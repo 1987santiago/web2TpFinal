@@ -1,5 +1,4 @@
 <?php 
-    require "../processors/SessionHandler.php";
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
     // guardamos la ruta base
@@ -27,9 +26,9 @@
     // eliminar la cookie al terminar el flujo
     setcookie('qr_file_name', $qr_file_name);
 
-    $msg = "data --> $data<br>qr_file_name --> $qr_file_name<br>";
-    die($msg);
-    // $code = QRcode::png($data, $qr_file_name);
+    // $msg = "data --> $data<br>qr_file_name --> $qr_file_name<br>";
+    // die($msg);
+    $code = QRcode::png($data, $qr_file_name, QR_ECLEVEL_L, 2);
 
     /*
     save_seat_data: { 

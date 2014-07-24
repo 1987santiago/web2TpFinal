@@ -124,24 +124,28 @@
 		
 		}
 
-		/**
-		 * Obtiene la cantidad de registros de una consulta
-         * @return Number of records founds
-		 */
-        public function getRows() {
+		// Inicia una transaccion
+        public function beginTransaction() {
 
-            return mysql_num_rows($this->response);
+            mysql_query("SET AUTOCOMMIT=0");
+            mysql_query("START TRANSACTION");
 
         }
 
-        /**
-         * Obtiene la cantidad de datos obtenidos por registro
-         * @return Number of fields founds into a record
-         */
-        public function getFields() {
+        // Acepta una transaccion
+        public function commit() {
+        
+            mysql_query("COMMIT");
+            mysql_query("SET AUTOCOMMIT=1");
+        
+        }
 
-            return mysql_num_fields($this->response);
+        // Vuelve al estado anterior en una transaccion
+        public function rollBack() {
 
+            mysql_query("ROLLBACK");
+            mysql_query("SET AUTOCOMMIT=1");
+        
         }
 	
 	}

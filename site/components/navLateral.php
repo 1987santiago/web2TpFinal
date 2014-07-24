@@ -4,9 +4,9 @@
 ?>
 
 <div class="sidebar"><!-- ex: links -->
-
-	<li><a href="<?php echo "$statics_path"; ?>/sections/reservas.php" data-section="reservas" title="Reservas">Reservas</a></li>
-	<li><a href="<?php echo "$statics_path"; ?>/sections/pago.php" data-section="pago" title="Pago">Pago</a></li>
-	<li><a href="<?php echo "$statics_path"; ?>/sections/checkin.php" data-section="checkin" title="Checkin">Checkin</a></li>
-
+    <ul>
+    	<!-- <li><a href="<?php echo "$statics_path"; ?>/sections/reservas.php" data-section="reservas" title="Reservas">Reservas</a></li> -->
+    	<li><a href="<?php echo "$statics_path"; ?>/sections/pago.php" data-section="pago" title="Pago">Pago</a></li>
+    	<li><a href="<?php echo "$statics_path"; ?>/sections/checkin.php" data-section="checkin" title="Checkin">Checkin</a></li>
+    </ul>
 </div>
