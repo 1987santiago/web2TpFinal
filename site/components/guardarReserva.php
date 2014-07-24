@@ -59,4 +59,4 @@
     
 <h4>Imprima su pasaje electronico</h4>
 
-<a class="link-button" href="../components/generaPDF.php" title="Imprimir Boleto">Imprimir</a>
+<a class="link-button" href="../components/generateTicketPDF.php" title="Imprimir Boleto">Imprimir</a>
