@@ -1,52 +1,62 @@
 <?php
-	//Creamos la conexión a nuestra base de datos
-	//Hay que sustituir el usuario contraseña
-	$conexion = mysql_connect("localhost", "root", "");
-	//Aquí hay que sustituir la el nombre de la base de datos
-	mysql_select_db("skynet", $conexion);
+    // guardamos la url de los recursos estaticos
+    $statics_path = $_SESSION["statics_path"];
+    // guardamos la ruta base
+    $base_path = $_SESSION["base_path"];
 
-	require_once("../lib/fpdf/fpdf.php");
+    require_once "$base_path$statics_path/processors/Database.php";
 
-	$fecha_pago = $_POST['fecha_pago'];
-	$monto = $_POST['monto'];
-	$tarjeta = $_POST['tarjeta'];
-	$numTarjeta =  $_POST['numeroTarjeta'];
-	$codigo_reserva = $_POST['codigoReserva'];
+    // Establecemos una conexión con el servidor
+    $connect = new Database();    
 
-	$insertar = "INSERT INTO pago (fecha_pago, forma_pago, numero_tarjeta, monto, codigo_reserva) VALUES ('$fecha_pago','$tarjeta', '$numTarjeta', '$monto', '$codigo_reserva')";
-	mysql_query($insertar,$conexion);	
+    $reservation_data = $_SESSION['reservation_data'][0];
+	
+    $payDate    = date('Y-m-d');
+    $card       = $_POST['card'];
+    $cardNumber = $_POST['cardnumber'];
+    $price      = $_POST['price'];
+	$reservationCode = $reservation_data['codigo_reserva'];
 
- 	$query = "select * from pago where codigo_reserva = '$codigo_reserva'";
-	$consulta = mysql_query($query);
-	$nfilas = mysql_num_rows($consulta);
+    $query_insert = 
+        "INSERT INTO pago (fecha_pago, forma_pago, numero_tarjeta, monto, codigo_reserva) 
+        VALUES ('$payDate','$card', '$cardNumber', '$price', '$reservationCode')";
 
-	if ($insertar) {
-		
-		echo '<h2 class="reserva">Pago realizado con exito</h2>';
-		echo '</br>';
-		echo '<h2 class="reserva">Imprima su pasaje electronico</h2>';
+    // Ejecutamos la query de inserción 
+    $pay_insertion = $connect->executeIDU($query_insert);
 
-		$query = "select * from pago where codigo_reserva = '$codigo_reserva'";
-		$consulta = mysql_query($query);
-		$row = mysql_fetch_array($consulta);
+    // Si la consulta fue exitosa entra
+    if ($pay_insertion) { 
+        // Devemos cambiar el estado de la reserva
+        updateReservationStatus($reservation_data['codigo_reserva']);
+    } else {
+        echo "No se pudo realizar el pago, intente nuevamente";
+        // return false;
+    }
 
-		$pdf = new FPDF();
-		$pdf->AddPage();
-		// listamos los datos con Cell
-		$pdf->SetFont('Arial','',12); // definimos el tipo de letra y el tamaño
-		// Cell esta formado por (posición de inicio, ancho, texto, borde, cambio de linea, posición del texto)
-		$pdf->Cell(30,6,'Monto:'.$row['monto'],0,1,'R'); 
-		$pdf->Cell(1,6,'Forma de Pago: '.$row['forma_pago'],0,1);
-		$pdf->Cell(0,6,'Codigo de Reserva: '.$row['codigo_reserva'],0,1);
-						
-		$pdf->Output("ejemplo.pdf","F");
+    /**
+     * Actualiza el estado de la reserva en la table reserva de la base
+     * @param String $codigo_reserva 
+     */
+    function updateReservationStatus($codigo_reserva) {
 
-		echo "<script language='javascript'> window.open('ejemplo.pdf','_blank');</script>";
-		
-	} else {
-		echo 'Hubo un error en el registro del pago. Intentelo mas tarde';	
-	}
+        global $connect;
 
-?>      
+        $sql_update_query = "UPDATE reserva SET estado=1  WHERE (codigo_reserva = '$codigo_reserva');";
 
+        // Realizamos la consulta a la tabla 
+        $updated = $connect->executeIDU($sql_update_query);
 
+        if (!$updated) {   
+            echo "no se pudo acceder a la base";
+            return false;
+        }
+
+    }
+
+?>
+
+<h2 class="reserva">Pago realizado con exito</h2>
+    
+<h4>Imprima su pasaje electronico</h4>
+
+<a class="link-button" href="../components/generateTicketPDF.php" title="Imprimir Boleto">Imprimir</a>

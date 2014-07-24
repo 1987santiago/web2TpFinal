@@ -1,0 +1,6 @@
+/**
+ * datosVuelo.css
+ */
+.datos-vuelo #divRegreso {
+    visibility: hidden;
+}

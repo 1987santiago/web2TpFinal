@@ -1,11 +1,4 @@
 <footer>
-<!-- 	<div class="redes">
-		<img  class="volando" alt="YouTube" src="<?php echo "$statics_path"; ?>/images/social/youtube.PNG" />
-		<img  class="volando" alt="Twitter" src="<?php echo "$statics_path"; ?>/images/social/twitter.PNG" />
-		<img  class="volando" alt="Facebook" src="<?php echo "$statics_path"; ?>/images/social/facebook.PNG" /> 
-		<img  class="volando" alt="RSS" src="<?php echo "$statics_path"; ?>/images/social/rss.PNG" /> 	
-	</div>
- -->
     <dl>
         <dt>Sobre Skynet<dt>
         <dd><a href="<?php echo "$statics_path"; ?>/sections/nosortros.php" data-section="nosotros" title="Nosotros">Nosotros</a></dd>

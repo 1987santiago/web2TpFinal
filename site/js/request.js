@@ -111,7 +111,15 @@
             },
             success: function(res) {
                 // se invoca a la funcion que procesa los datos recibidos
-                (data && data.callback) ? data.callback(res) : 'false';
+                if (data && data.callback) {
+                    if (res == 'true') {
+                        data.callback(true); 
+                    } else { 
+                        data.callback(false);
+                    }
+                } else {
+                    console.error('No hay asientos disponibles');
+                }
             },
             error: function(error) {
                 console.log('request error : ', error);

@@ -70,8 +70,7 @@
 
         <!-- Seteamos variables globales -->
         <script type="text/javascript">
-            var LOCAL_PATH = '<?php echo $_SESSION["local_path"]; ?>',
-                STATICS_PATH = '<?php echo $_SESSION["statics_path"]; ?>';
+            var STATICS_PATH = '<?php echo $_SESSION["statics_path"]; ?>';
         </script>
 
     </head>

@@ -8,7 +8,7 @@
     <script type="text/javascript" src="../js/listado_vuelos_ida_regreso.js"></script>
 </head>
 <body>
-    <form action="buscar_asiento.php" method="post" onsubmit="return validarVuelosSeleccionados()" class="centrar">
+    <form action="buscar_asiento.php" method="post" onsubmit="return validarVuelosSeleccionados()">
         <?php  echo "Fecha de partida: " . $_SESSION["fechaPartida"]; ?>
         <table>
             <tr>

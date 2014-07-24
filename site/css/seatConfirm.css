@@ -1,0 +1,19 @@
+/**
+ * seatConfirm.css
+ */
+.seat-confirm dl {
+    font-size: 1.2em;
+    line-height: 1.4em;
+    padding: 1em;
+}
+.seat-confirm dt {
+    float: left;
+    min-width: 100px;
+    padding-right: 4px;
+    text-align: right;
+    width: 20%;
+}
+.seat-confirm dd {
+    font-size: 1.2em;
+    padding-left: 4em;
+}

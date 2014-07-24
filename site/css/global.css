@@ -135,14 +135,17 @@ section h2 span {
     color: #999;
     font-size: .7em;
 }
+section h4 {
+    padding-bottom: .6em;
+}
 
 /* Columns
 -------------------------------------------------*/
 .sidebar, 
-.links,
 .col {
     display: table-cell;
     padding: 1em;
+    vertical-align: top;
 }
 .left-col {
     width: 50%;
@@ -150,13 +153,23 @@ section h2 span {
 
 /* Sidebar
 -------------------------------------------------*/
-.sidebar, 
-.links {
+.sidebar {
     border-right: 2px solid #CF3131;
     display: table-cell;
     min-width: 230px;
+    padding: 1em 0;
     vertical-align: top;
     width: 20%;
+}
+.sidebar a {
+    border-bottom: 2px solid #EDEDED;
+    color: #666;
+    display: block;
+    padding: 1em;
+    font-size: 1.4em;
+}
+.sidebar a:hover {
+    background-color: #EFEFEF;
 }
 
 /* Form 
@@ -167,12 +180,50 @@ fieldset {
     padding: 1em 0;
 }
 legend {
+    font-size: 1.2em;
     margin-left: 1em;
     text-transform: capitalize;
 }
 textarea {
     resize: none;
 }
+    /* Data Form
+    ---------------------------------------------*/
+    .data-form {
+        background-color: #f1f1f1;
+        border-radius: 6px;
+        color: #666;
+        overflow: hidden;
+    }
+    .data-form,
+    .data-form fieldset {
+        padding: 1em;
+    }
+    .data-form fieldset {
+        border: 1px solid #cecfd0;
+    }
+    .data-form fieldset > div {
+        margin-bottom: 4px;
+    }
+    .data-form dt, 
+    .data-form label {
+        display: inline-block;
+        text-align: right;
+        min-width: 200px;
+        width: 26%;
+    }
+    .data-form dd {
+        color: #333;
+        display: inline-block;
+        min-width: 200px;
+        margin-bottom: 4px;
+        width: 50%;
+    }
+    .data-form input[type="submit"] {
+        float: right;
+    }
+
+
 
 /* Validation 
 -------------------------------------------------*/
@@ -225,4 +276,14 @@ textarea {
 -------------------------------------------------*/
 .list li {
     display: inline-block;
+}
+
+/* Links 
+-------------------------------------------------*/
+.link-button {
+    background-color: #EDEDED;
+    border: 1px solid #999;
+    border-radius: 4px;
+    color: #000;
+    padding: 0 .5em;
 }
