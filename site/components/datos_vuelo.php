@@ -1,36 +1,23 @@
 <?php 
     session_start();
     // guardamos la url de los recursos estaticos
+    $base_path = $_SESSION["base_path"];
     $statics_path = $_SESSION["statics_path"];
     // se guarda la ruta para ejecutar php
     $http_path = $_SESSION["http_path"];
-    
-    $estaEnEspera = (isset($_GET["estaEnEspera"])? $_GET["estaEnEspera"] : '' );
-    $_SESSION["estaEnEspera"] = $estaEnEspera;
-
-    // se incluye el inicio del html <!doctype html>...</head>
     $_SESSION["resources"] = array(
-        "css"  => array("forms", "datos_vuelo", "datos_vuelo")
+        "css"  => array("forms"),
+        "js" => array("datos_vuelo")
     ); 
-    require $statics_path . '/components/head.php'; 
 ?>
 
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html" charset="ISO-8859-15"/>
-        <link rel="stylesheet" type="text/css" href="<?php echo $statics_path . '/css/forms.css';?>"/>
-        <script type="text/javascript" src="<?php echo $statics_path . '/js/datos_vuelo.js'; ?>"></script>
-        <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery-1.10.2.js'; ?>"></script>
-        <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery.ui.core.js'; ?>"></script>
-        <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery.ui.datepicker.js'; ?>"></script>
-        <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery.ui.datepicker-es.js'; ?>"></script>
-    </head>
+    <?php require "$base_path$statics_path/components/head.php"; ?>
 
     <body>
         <div class="wrapper">
 
             <!-- se incluye el <header> -->
-            <?php require $statics_path . '/components/header.php'; ?> 
+            <?php require $base_path . $statics_path . '/components/header.php'; ?> 
 
             <main id="main" role="main">
 
@@ -41,43 +28,43 @@
                         <div>
                             <label for="ciudadOrigen">Ciudad origen</label>
                             <select id="ciudadOrigen" name="ciudadOrigen" required="required">
-                            <?php
-                                require_once $local_path . "/components/database.php";
-                                $skynet = new Database();
-                                $conexionOk = $skynet->connect();
-                                if ($conexionOk) 
-                                {
-                                    $query = "SELECT distinct origen FROM vuelo ORDER BY origen";
-                                    $ciudades = $skynet->executeSelect($query);
-                                    foreach ($ciudades as $ciudad) 
+                                <?php
+                                    require_once $base_path . $statics_path . "/components/database.php";
+                                    $skynet = new Database();
+                                    $conexionOk = $skynet->connect();
+                                    if ($conexionOk) 
                                     {
-                                        $ciudadActual = $ciudad["origen"];
-                                        echo "<option value='$ciudadActual'>$ciudadActual</option>";
+                                        $query = "SELECT distinct origen FROM vuelo ORDER BY origen";
+                                        $ciudades = $skynet->executeSelect($query);
+                                        foreach ($ciudades as $ciudad) 
+                                        {
+                                            $ciudadActual = $ciudad["origen"];
+                                            echo "<option value='$ciudadActual'>$ciudadActual</option>";
+                                        }
+                                        $skynet->disconnect();
                                     }
-                                    $skynet->disconnect();
-                                }
-                            ?>
+                                ?>
                             </select> 
                         </div>
                         <div>
                             <label for="ciudadDestino">Ciudad destino</label>
                             <select id="ciudadDestino" name="ciudadDestino" required="required">
-                            <?php
-                                require_once $local_path . "/components/database.php";
-                                $skynet = new Database();
-                                $conexionOk = $skynet->connect();
-                                if ($conexionOk) 
-                                {
-                                    $query = "SELECT distinct destino FROM vuelo ORDER BY destino";
-                                    $ciudades = $skynet->executeSelect($query);
-                                    foreach ($ciudades as $ciudad)
+                                <?php
+                                    require_once $base_path . $statics_path . "/components/database.php";
+                                    $skynet = new Database();
+                                    $conexionOk = $skynet->connect();
+                                    if ($conexionOk) 
                                     {
-                                        $ciudadActual = $ciudad["destino"];
-                                        echo "<option value='$ciudadActual'>$ciudadActual</option>";
+                                        $query = "SELECT distinct destino FROM vuelo ORDER BY destino";
+                                        $ciudades = $skynet->executeSelect($query);
+                                        foreach ($ciudades as $ciudad)
+                                        {
+                                            $ciudadActual = $ciudad["destino"];
+                                            echo "<option value='$ciudadActual'>$ciudadActual</option>";
+                                        }
+                                        $skynet->disconnect();
                                     }
-                                    $skynet->disconnect();
-                                }
-                            ?>
+                                ?>
                             </select>
                         </div>
                         <div>
@@ -105,7 +92,7 @@
 
         </div>
         <!-- se incluye el <footer> -->
-	<?php require $local_path . '/components/footer.php'; ?>     
+	<?php require $base_path . $statics_path . '/components/footer.php'; ?>     
         <script>
             $(function() {
                 $("#fechaPartida").datepicker({
@@ -125,4 +112,3 @@
             });
         </script>
     </body>
-</html>

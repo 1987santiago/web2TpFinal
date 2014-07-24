@@ -7,7 +7,7 @@
 (function(window, $) {
     'use strict';
 
-    var request = skynet.request ||Â {}; 
+    var request = skynet.request || {}; 
 
 
     /**
@@ -29,8 +29,8 @@
 
         var params = {
             url : STATICS_PATH + '/sections/' + section.name + '.php',
-            container : section.container ||Â $('#main'),
-            context : section.context ||Â '',
+            container : section.container || $('#main'),
+            context : section.context || '',
             callback : showSection
         };
 
@@ -141,7 +141,7 @@
      */
     var getData = function(data) {
 
-        var _data = data.data ||Â {},
+        var _data = data.data || {},
             container = data.container,
             context = data.context || '',
             url  = data.url + ' ' + context || STATICS_PATH + 'error.php',

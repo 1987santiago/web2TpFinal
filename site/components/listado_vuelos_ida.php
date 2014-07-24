@@ -1,33 +1,23 @@
 <?php 
     session_start();
-    // guardamos la nueva ruta base del site
-    $local_path = $_SESSION["local_path"];
     // guardamos la url de los recursos estaticos
+    $base_path = $_SESSION["base_path"];
     $statics_path = $_SESSION["statics_path"];
     // se guarda la ruta para ejecutar php
     $http_path = $_SESSION["http_path"];
-    
-    $estaEnEspera = (isset($_GET["estaEnEspera"])? $_GET["estaEnEspera"] : '' );
-    $_SESSION["estaEnEspera"] = $estaEnEspera;
-
-    // se incluye el inicio del html <!doctype html>...</head>
     $_SESSION["resources"] = array(
         "css"  => array("forms"),
-        "js"  => array("datos_vuelo")
+        "js" => array("listado_vuelos_ida")
     ); 
-    require $local_path . '/components/head.php'; 
 ?>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html" charset="ISO-8859-15"/>
-        <link rel="stylesheet" type="text/css" href="<?php echo $statics_path . '/css/forms.css'; ?>"/>
-        <script type="text/javascript" src="<?php echo $statics_path . '/js/listado_vuelos_ida.js';?>"></script>
-    </head>
+
+    <?php require "$base_path$statics_path/components/head.php"; ?>
+
     <body>
         <div class="wrapper">
 
             <!-- se incluye el <header> -->
-            <?php require $local_path . '/components/header.php'; ?> 
+            <?php require $base_path . $statics_path . '/components/header.php'; ?> 
 
             <main id="main" role="main">
                 <form action="<?php echo $http_path . '/components/buscar_asiento.php';?>" method="post" onsubmit="return validarVueloSeleccionado()">
@@ -122,6 +112,5 @@
         </div><!-- [end] wrapper -->
 
         <!-- se incluye el <footer> -->
-        <?php require $local_path . '/components/footer.php'; ?>     
+        <?php require $base_path . $statics_path . '/components/footer.php'; ?> 
     </body>
-</html>

@@ -1,11 +1,12 @@
 <?php
     session_start();
-    // guardamos la nueva ruta base del site
-    $local_path = $_SESSION["local_path"];
+    // guardamos la url de los recursos estaticos
+    $base_path = $_SESSION["base_path"];
+    $statics_path = $_SESSION["statics_path"];
     // se guarda la ruta para ejecutar php
     $http_path = $_SESSION["http_path"];
-    require_once $local_path . "/components/database.php";
-    require_once $local_path . "/components/library.php";
+    require_once $base_path . $statics_path . "/components/database.php";
+    require_once $base_path . $statics_path . "/components/library.php";
 
     function getVuelos($query, $fecha)
     {
@@ -60,9 +61,9 @@
     switch ($tipoDeViaje)
 	{
         case 1:
-                $busquedaVuelosIda = "SELECT numero_vuelo, oaci_origen, origen, oaci_destino, destino, dias_vuelo, tarifa_economy, tarifa_primera, asientos_economy, asientos_primera
-                                    FROM vuelo, avion
-                                    WHERE vuelo.codigo_avion = avion.codigo_avion and origen = '$ciudadOrigen' and destino = '$ciudadDestino'";
+                $busquedaVuelosIda =    "SELECT numero_vuelo, oaci_origen, origen, oaci_destino, destino, dias_vuelo, tarifa_economy, tarifa_primera, asientos_economy, asientos_primera
+                                        FROM vuelo, avion
+                                        WHERE vuelo.codigo_avion = avion.codigo_avion and origen = '$ciudadOrigen' and destino = '$ciudadDestino'";
                 $vuelosIda = getVuelos($busquedaVuelosIda, $fechaPartida);
                 if (count($vuelosIda) > 0)
                 {

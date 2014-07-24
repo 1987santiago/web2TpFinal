@@ -40,8 +40,8 @@
         <link href="<?php echo $statics_path; ?>/css/jquery-ui.css" type="text/css" rel="stylesheet"/>
                     
         <?php 
-            // Si se envían datos de los recursos que se necesitan cargar especialmente para 
-            // un componente o sección, 
+            // Si se envian datos de los recursos que se necesitan cargar especialmente para 
+            // un componente o seccion, 
             if (isset($_SESSION["resources"])) {
                 // obtenemos dichos recursos
                 $_resources = $_SESSION["resources"];
@@ -70,7 +70,6 @@
 
         <!-- Seteamos variables globales -->
         <script type="text/javascript">
-            var LOCAL_PATH = '<?php echo $_SESSION["local_path"]; ?>',
                 STATICS_PATH = '<?php echo $_SESSION["statics_path"]; ?>';
         </script>
 

@@ -1,19 +1,22 @@
 <?php
-	session_start();
-	$PATHS = parse_ini_file("paths.ini");
+    session_start();
+    
+    $PATHS = parse_ini_file("paths.ini");
 
-	// guardamos la nueva ruta base del site
-	$local_path = $PATHS["local_path"];
-	// guardamos la url de los recursos estaticos
-	$statics_path = $PATHS["statics_path"];
-	// guardamos la ruta base
-	$base_path = $PATHS["base_path"];
+    // guardamos la nueva ruta base del site
+    $base_path = $PATHS["base_path"];
+    // guardamos la url de los recursos estaticos
+    $statics_path = $PATHS["statics_path"];
+    // guardamos la ruta base
+    $http_path = $PATHS["http_path"];
 
-	$_SESSION["statics_path"] = $statics_path;
-	$_SESSION["base_path"] = $base_path;
+    $_SESSION["base_path"] = $base_path;
 
-	header("Location: $statics_path/sections/home.php");
+    $_SESSION["statics_path"] = $statics_path;
 
+    $_SESSION["http_path"] = $http_path;
+
+    header("Location: $statics_path/sections/home.php");
 ?>
 
 <!-- se incluye el <head> -->

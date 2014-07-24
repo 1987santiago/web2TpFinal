@@ -1,34 +1,22 @@
 <?php
     session_start();
     // guardamos la url de los recursos estaticos
+    $base_path = $_SESSION["base_path"];
     $statics_path = $_SESSION["statics_path"];
-     // se guarda la ruta para ejecutar php
+    // se guarda la ruta para ejecutar php
     $http_path = $_SESSION["http_path"];
-    
-    $estaEnEspera = (isset($_GET["estaEnEspera"])? $_GET["estaEnEspera"] : '' );
-    $_SESSION["estaEnEspera"] = $estaEnEspera;
-
-    // se incluye el inicio del html <!doctype html>...</head>
     $_SESSION["resources"] = array(
-        "css"  => array("forms", "estilos", "datos_pasajero")
+        "css"  => array("forms"),
+        "js" => array("datos_pasajero")
     ); 
-    require $statics_path . '/components/head.php'; 
 ?>
+    <?php require "$base_path$statics_path/components/head.php"; ?>
 
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html" charset="ISO-8859-15"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo $statics_path . '/css/forms.css' ;?>"/>
-    <script type="text/javascript" src="<?php echo $statics_path . '/js/datos_pasajero.js'; ?>"></script>
-    <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery-1.10.2.js'; ?>"></script>
-    <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery.ui.core.js'; ?>"></script>
-    <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery.ui.datepicker.js'; ?>"></script>
-    <script type="text/javascript" src="<?php echo $statics_path . '/js/jquery.ui.datepicker-es.js'; ?>"></script>
-<body>
+    <body>
         <div class="wrapper">
-    
+
             <!-- se incluye el <header> -->
-            <?php require $statics_path . '/components/header.php'; ?> 
+            <?php require $base .$statics_path . '/components/header.php'; ?> 
 
             <main id="main" role="main" class="contenedor-formulario-favorito">
 
@@ -75,10 +63,10 @@
                                     $anterior = $http_path . "/components/listado_vuelos_ida_regreso.php";
                                     echo "<a href=$anterior name='anterior'>Anterior</a>";
                                 }    
-                    	?> 
-                    	<input type="submit" name="siguiente" value="Siguiente"/>
+                        ?> 
+                        <input type="submit" name="siguiente" value="Siguiente"/>
                     </fieldset>
-			
+
                 </form>
 
             </main><!-- [end] main -->
@@ -86,20 +74,19 @@
         </div><!-- [end] wrapper -->
 
         <!-- se incluye el <header> -->
-        <?php require $local_path . '/components/footer.php'; ?>
+        <?php require $base_path . $statics_path . '/components/footer.php'; ?>   
 
         <!-- Incluir este js para agregar funcionalidad en browsers < IE8 
             <script type="text/javascript" src="js/components/seatSelection.js"></script> 
         -->
-        
-    <script>
-        $(function() {
-            $("#fechaNac").datepicker({
-            showOn: "button",
-            buttonImage: "../images/calendar.gif",
-            buttonImageOnly: true,
-            firstDay: 0
-            });
 
+        <script>
+            $(function() {
+                $("#fechaNac").datepicker({
+                showOn: "button",
+                buttonImage: "../images/calendar.gif",
+                buttonImageOnly: true,
+                firstDay: 0
+                });
+        </script>        
     </body>
-</html>

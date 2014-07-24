@@ -1,11 +1,12 @@
 <?php
-    session_start();
-    // guardamos la nueva ruta base del site
-    $local_path = $_SESSION["local_path"];
+   session_start();
+    // guardamos la url de los recursos estaticos
+    $base_path = $_SESSION["base_path"];
+    $statics_path = $_SESSION["statics_path"];
     // se guarda la ruta para ejecutar php
     $http_path = $_SESSION["http_path"];
     
-    require_once $local_path . "/components/database.php";
+    require_once $base_path . $statics_path . "/components/database.php";
 
     define("EXCEDENTE", 10); // constante
         
@@ -37,7 +38,7 @@
             $totalAsientos = intval($asientos[0]["asientos"]);
             $reservasHechas = "SELECT count(*) as reservas
                                FROM reserva
-                               WHERE numero_vuelo = $vuelo and id_categoria = $categoria and esta_en_espera = false";
+                               WHERE numero_vuelo = $vuelo and id_categoria = $categoria and estado = 0";
             $reservas = $skynet->executeSelect($reservasHechas);
             $totalReservas = intval($reservas[0]["reservas"]);
             if ($totalAsientos > 0) 
@@ -58,7 +59,7 @@
         {
             $query = "SELECT count(*) as reservas
                       FROM reserva
-                      WHERE numero_vuelo = $vuelo and esta_en_espera = true";
+                      WHERE numero_vuelo = $vuelo and estado = -1";
             $reservasEnEspera = $skynet->executeSelect($query);
             $totalReservasEnEspera = intval($reservasEnEspera[0]["reservas"]);
             $skynet->disconnect();
@@ -80,21 +81,21 @@
                 $reservaIdaPermitida = false;
                 if ($asientosLibresIda > 0)
                 {
-                    $reservaIdaEnEspera = false;
+                    $estadoReservaIda = 0;
                     $reservaIdaPermitida = true;
                 }
                 else
                 {
                     if ($reservasEsperaIda < EXCEDENTE) 
                     {
-                        $reservaIdaEnEspera = true; 
+                        $estadoReservaIda = -1; 
                         $reservaIdaPermitida = true;
                     }
                 }
                 if ($reservaIdaPermitida) 
                 {
                     $siguiente = $http_path . "/components/datos_pasajero.php";
-                    $_SESSION["reservaIdaEnEspera"] = $reservaIdaEnEspera;
+                    $_SESSION["estadoReservaIda"] = $estadoReservaIda;
                     header("Location: " . $siguiente);
                 }
                 else
@@ -118,14 +119,14 @@
                 $reservaIdaPermitida = false;
                 if ($asientosLibresIda > 0)
                 {
-                    $reservaIdaEnEspera = false;
+                    $estadoReservaIda = 0;
                     $reservaIdaPermitida = true;
                 }
                 else
                 {
                     if ($reservasEsperaIda < EXCEDENTE) 
                     {
-                        $reservaIdaEnEspera = true;
+                        $estadoReservaIda = -1;
                         $reservaIdaPermitida = true;
                     }
                 }
@@ -139,22 +140,22 @@
                 $reservaRegresoPermitida = false;
                 if ($asientosLibresRegreso > 0)
                 {
-                    $reservaRegresoEnEspera = false;
+                    $estadoReservaRegreso = 0;
                     $reservaRegresoPermitida = true;
                 }
                 else
                 {
                     if ($reservasEsperaRegreso < EXCEDENTE) 
                     {
-                        $reservaRegresoEnEspera = true;
+                        $estadoReservaRegreso = -1;
                         $reservaRegresoPermitida = true;
                     }
                 }
                 if ($reservaIdaPermitida && $reservaRegresoPermitida) 
                 {
 
-                    $_SESSION["reservaIdaEnEspera"] = $reservaIdaEnEspera;
-                    $_SESSION["reservaRegresoEnEspera"] = $reservaRegresoEnEspera;
+                    $_SESSION["estadoReservaIda"] = $estadoReservaIda;
+                    $_SESSION["estadoReservaRegreso"] = $estadoReservaRegreso;
                     $siguiente = $http_path . "/components/datos_pasajero.php";
                     header("Location: ". $siguiente);
                 }
