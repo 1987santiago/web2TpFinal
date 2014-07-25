@@ -10,9 +10,13 @@
     // guardamos la ruta base
     $http_path = $PATHS["http_path"];
 
-    $_SESSION["base_path"] = $base_path;
+	$server_root = $PATHS["server_root"];
+	// guardamos la url de los recursos estaticos
+	
 
-    $_SESSION["statics_path"] = $statics_path;
+	$_SESSION["server_root"] = $server_root;
+	$_SESSION["statics_path"] = $statics_path;
+	$_SESSION["base_path"] = $base_path;
 
     $_SESSION["http_path"] = $http_path;
 
@@ -29,10 +33,9 @@
 		<!-- se incluye el <header> -->
 		<?php require "$base_path$statics_path/components/header.php"; ?> 
 
-            <!-- se incluye el <header> -->
-            <?php require $local_path . '/components/header.php'; ?> 
+          
 
-            <main id="main" role="main"></main><!-- [end] main -->
+         
 
 		<!-- se incluye el <header> -->
 		<?php require "$base_path$statics_path/components/footer.php"; ?> 

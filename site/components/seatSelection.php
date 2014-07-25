@@ -194,8 +194,6 @@
 
         } else { 
 
-            // echo 'no entro';
-            echo "no se encontraron asientos reservado";
             return 0;
 
         }
@@ -218,6 +216,10 @@
             $reserved_seat = $_SESSION['reserved_seats'];
         } else {
             $reserved_seat = getReservedSeats($flight_num);
+        }
+
+        if (!$reserved_seat) {
+            return false;
         }
 
         foreach ($reserved_seat as $key => $id_asiento) {
@@ -244,6 +246,7 @@
      */
     function printSeatMap($rows_quantity, $cols_quantity, $category_code) {
 
+        global $flight_data;
         $category_description = ($category_code == 100)? 'premi' : 'econo';
 
         if ($_SESSION['reservation_data'][0]['id_categoria'] == $category_code) {
@@ -275,7 +278,7 @@
                 } else {
 
                     // Obtenemos el id del asiento para compararlo con los reservados
-                    $id_asiento = $row . $seat;
+                    $id_asiento = $row . $seat . $flight_data[0]['numero_vuelo'];
 
                     if (isReservedSeat($id_asiento) || $_SESSION['reservation_data'][0]['id_categoria'] != $category_code) { // Si el asiento esta reservado o no corresponde a la categoria pagada lo deshabilitamos
 
@@ -356,7 +359,7 @@
                     
                 <?php
                     if ($hasError) { 
-                        echo "<div class='box-error'>$errorMsg</div>";
+                        echo "<div class='box box-error'>$errorMsg</div>";
                     }
                 ?>
 

@@ -40,8 +40,8 @@
         <link href="<?php echo $statics_path; ?>/css/jquery-ui.css" type="text/css" rel="stylesheet"/>
                     
         <?php 
-            // Si se envían datos de los recursos que se necesitan cargar especialmente para 
-            // un componente o sección, 
+            // Si se envian datos de los recursos que se necesitan cargar especialmente para 
+            // un componente o seccion, 
             if (isset($_SESSION["resources"])) {
                 // obtenemos dichos recursos
                 $_resources = $_SESSION["resources"];
@@ -58,19 +58,10 @@
         ?>
 
         <!--[if lt IE 9]>
-<<<<<<< HEAD
-            <script src="<?php //echo $static_url; ?>/js/html5shiv.js"></script>
-        <![endif]-->
-
-        <!-- JS -->
-        <!-- <script type="text/javascript" src="<?php //echo $statics_path; ?>/js/lib/require.min.js" data-main="<?php //echo $statics_path; ?>/js/main" ></script> -->
-        <!-- <script type="text/javascript" src="../js/jquery-1.10.2.js"></script> -->
-=======
             <script src="<?php echo $statics_path; ?>/js/html5shiv.js"></script>
         <![endif]-->
 
         <!-- JS -->
->>>>>>> master
         <script type="text/javascript" src="<?php echo $statics_path; ?>/js/lib/jquery-1.8.3.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
         <script type="text/javascript" src="<?php echo $statics_path; ?>/js/lib/jquery.ui.core.js"></script>
@@ -79,8 +70,11 @@
 
         <!-- Seteamos variables globales -->
         <script type="text/javascript">
-            var LOCAL_PATH = '<?php echo $_SESSION["local_path"]; ?>',
+<<<<<<< HEAD
                 STATICS_PATH = '<?php echo $_SESSION["statics_path"]; ?>';
+=======
+            var STATICS_PATH = '<?php echo $_SESSION["statics_path"]; ?>';
+>>>>>>> master
         </script>
 
     </head>

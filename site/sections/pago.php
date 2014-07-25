@@ -21,10 +21,20 @@
                 <!-- se incluye la barra lateral de navegación -->
                 <?php require "$base_path$statics_path/components/navLateral.php"; ?>
 
-                <!-- se incluye el formulario de busqueda de vuelos disponibles para reservar -->
-                <div class="col">
-                    <?php require "$base_path$statics_path/components/formPrePagoReserva.php"; ?>
-                </div>
+                <section class="col" id="pay">
+
+                    <h2 class="reserva">Abona tu pasaje</h2>
+
+                    <form data-component="pay" class="contact_form" action ="<?php echo "$statics_path/sections/confirmaPago.php"; ?>" method="post">
+
+                        <label>Ingresa tu código de reserva: </label>
+                        <!-- <input type="text" name="codReserva" id="codReserva" /> -->
+                        <input id="reservationCode" name="reservationCode" type="text" />
+                        <input type="submit" value="Consultar" disabled="disabled" />
+
+                    </form>
+
+                </section>
 
             </main>
         
@@ -32,6 +42,49 @@
 
         <!-- se incluye el <footer> -->
         <?php require "$base_path$statics_path/components/footer.php"; ?>
+
+        <script type="text/javascript">
+
+            var form = document.querySelector('#pay form'),
+                reservationCode = form.reservationCode;
+
+            reservationCode.onchange = function(event) {
+
+                // datos que le pasamos al achivo que valida el codigo
+                var data = {
+                        reservationCode : reservationCode.value,
+
+                        // Con este dato el validador define que validación hacer
+                        // No es lo mismo para pagar que para hacer el check-in por ejemplo 
+                        component : (form.dataset)? form.dataset.component : form.getAttribute('data-component')
+                    },
+
+                    // parametros que necesitamos para hacerl el request por ajax
+                    params = {
+                        data : data,
+                        url : "<?php echo $statics_path; ?>/processors/validateReservationStatus.php",
+                        type : 'POST', 
+                        callback : skinField
+                    };
+
+                function skinField(response, status, requestObj) {
+
+                    if (response) { // si valida 
+                        inputClass = 'valid';
+                        form.querySelector('[type=submit]').removeAttribute('disabled');
+                    } else {
+                        inputClass = 'invalid';
+                        form.querySelector('[type=submit]').setAttribute('disabled',true);
+                    }
+                    reservationCode.setAttribute('class', inputClass);
+
+                }
+
+                window.skynet.request.getDocument(params);
+
+            }; 
+
+        </script>
 
     </body>
 

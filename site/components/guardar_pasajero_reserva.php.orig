@@ -6,8 +6,13 @@
     // se guarda la ruta para ejecutar php
     $http_path = $_SESSION["http_path"];
     
+<<<<<<< HEAD
+    require_once $base_path . $statics_path . "/components/database.php";
+    require_once $base_path . $statics_path . "/components/library.php";
+=======
     require_once '../processors/Database.php';
     require_once 'library.php';
+>>>>>>> master
     	
     function getMonto($numeroVuelo, $categoria) 
     {
@@ -69,15 +74,25 @@
                     $datFechaReservaIda = new DateTime("", new DateTimeZone("America/Buenos_Aires"));
                     $fechaReservaIda = $datFechaReservaIda->format("Y-m-d");
                     $datFechaPartida = new DateTime(getFechaFormateada($_SESSION["fechaPartida"]) . " 8:00:00", new DateTimeZone("America/Buenos_Aires"));
+<<<<<<< HEAD
                     $fechaPartida = $datFechaPartida->format("Y-m-d H:i:s");
                     $estadoReservaIda = $_SESSION["estadoReservaIda"];
                     $vueloIdaElegido = $_SESSION["vueloIdaElegido"];
+=======
+                    $fechaPartida=$datFechaPartida->format("Y-m-d");
+                    $reservaIdaEnEspera = $_SESSION["reservaIdaEnEspera"];
+                    $vueloIdaElegido =$_SESSION["vueloIdaElegido"];
+>>>>>>> master
                     $categoriaIdaElegida = $_SESSION["categoriaIdaElegida"];
                     $montoIda = getMonto($vueloIdaElegido, $categoriaIdaElegida);
  
                     // Se preparan las querys de inserciones
                     $insertPasajero = "INSERT INTO pasajero (dni, apellido, nombre, fecha_nac, telefono, email, nacionalidad) VALUES('$dni', '$apellido', '$nombre', '$fechaNac', '$telefono', '$email', '$nacionalidad')";
+<<<<<<< HEAD
                     $insertReservaIda = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, monto, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaIda','$fechaReservaIda', '$fechaPartida', '$estadoReservaIda', '$montoIda', '$dni', '$vueloIdaElegido', '$categoriaIdaElegida')";
+=======
+                    $insertReserva = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaIda','$fechaReservaIda', '$fechaPartida', '$reservaIdaEnEspera', '$dni', '$vueloIdaElegido', '$categoriaIdaElegida')";
+>>>>>>> master
                     $_SESSION["codigoReservaIda"] = $codigoReservaIda;
                     try 
                     {   
@@ -127,8 +142,13 @@
                     $montoRegreso = getMonto($vueloRegresoElegido, $categoriaRegresoElegida);
                     
                     $insertPasajero = "INSERT INTO pasajero (dni, apellido, nombre, fecha_nac, telefono, email, nacionalidad) VALUES('$dni', '$apellido', '$nombre', '$fechaNac', '$telefono', '$email', '$nacionalidad')";
+<<<<<<< HEAD
                     $insertReservaIda = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, monto, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaIda','$fechaReservaIda', '$fechaPartida', '$estadoReservaIda', '$montoIda', '$dni', '$vueloIdaElegido', '$categoriaIdaElegida')";
                     $insertReservaRegreso = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, monto, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaRegreso','$fechaReservaRegreso', '$fechaRegreso', '$estadoReservaRegreso', '$montoRegreso', '$dni', '$vueloRegresoElegido', '$categoriaRegresoElegida')";
+=======
+                    $insertReservaIda = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaIda', '$fechaReservaIda', '$fechaPartida', '$reservaIdaEnEspera', '$dni', '$vueloIdaElegido', '$categoriaIdaElegida')";
+                    $insertReservaRegreso = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaRegreso', '$fechaReservaRegreso', '$fechaRegreso', '$reservaRegresoEnEspera', '$dni', '$vueloRegresoElegido', '$categoriaRegresoElegida')";
+>>>>>>> master
                     $_SESSION["codigoReservaIda"] = $codigoReservaIda;
                     $_SESSION["codigoReservaRegreso"] = $codigoReservaRegreso;
                     try 

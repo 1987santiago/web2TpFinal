@@ -148,13 +148,21 @@ function fechaRegresoValida()
 function mostrarFechaRegreso() 
 {
     var filaFechaRegreso=document.getElementById("divRegreso");
+<<<<<<< HEAD
+    filaFechaRegreso.style="visibility: visible;";
+=======
     filaFechaRegreso.style.visibility = "visible";
+>>>>>>> master
 }
 
 function ocultarFechaRegreso() 
 {
     var filaFechaRegreso=document.getElementById("divRegreso");
+<<<<<<< HEAD
+    filaFechaRegreso.style="visibility: hidden;"; 
+=======
     filaFechaRegreso.style.visibility = "hidden"; 
+>>>>>>> master
 }
 
 function validarDatosVuelo()

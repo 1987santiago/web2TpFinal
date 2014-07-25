@@ -11,6 +11,7 @@
 ?>
 
     <?php require "$base_path$statics_path/components/head.php"; ?>
+
     
     <body>
         <div class="wrapper">

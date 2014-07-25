@@ -20,7 +20,7 @@
     padding:12px;
 }
 
-label {
+.contact_form label {
     color: #555555;
     display: inline-block;
     text-align:right;
@@ -38,7 +38,7 @@ label {
     width:220px;
     padding:5px 8px;
 }
-select {
+.contact_form select {
     padding:8px;
     width:220px;
 }
@@ -70,7 +70,7 @@ select {
 }
 
 /* === Estilos del boton de Envio === */
-button.submit {
+.contact_form button.submit {
     padding: 9px 17px;
     font-family: Helvetica, Arial, sans-serif;
     font-weight: bold;
@@ -85,11 +85,11 @@ button.submit {
     border-radius: 10px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
-button.submit:hover {
+.contact_form button.submit:hover {
     opacity:.55;
     cursor: pointer;
 }
-button.submit:active {
+.contact_form button.submit:active {
     border: 1px solid #222;
     box-shadow: 0 0 10px 5px #444 inset;
 }
@@ -97,7 +97,7 @@ button.submit:active {
     margin-left:50px;
 }
 
-label span {
+.contact_form label span {
     font-size: 10px;
     color: #FF0000;
     font-weight: normal;

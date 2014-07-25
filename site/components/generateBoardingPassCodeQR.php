@@ -4,6 +4,8 @@
     // guardamos la ruta base
     $base_path = $_SESSION["base_path"];
 
+    require "$base_path$statics_path/lib/phpqrcode/qrlib.php";
+
     $save_seat_data = $_SESSION['save_seat_data'];
     $reservation_data = $_SESSION['reservation_data']; 
     $plane_data = $_SESSION['plane_data']; 
@@ -18,10 +20,15 @@
             "Categoria: " . $save_seat_data['descripcion'] . "\n" . 
             "Codigo de reserva: " . $reservation_data[0]['codigo_reserva'];
 
-    // require_once "../lib/phpqrcode/phpqrcode.php";
-    require_once "$base_path$statics_path/lib/phpqrcode/qrlib.php";
+    $qr_file_name = "codeQR". rand() .".png";
 
-    $code = QRcode::png($data, "pp.png");
+    // Guardamos el nombre del qr en una cookie para poder accederlo desde el generador del pdf,
+    // eliminar la cookie al terminar el flujo
+    setcookie('qr_file_name', $qr_file_name);
+
+    // $msg = "data --> $data<br>qr_file_name --> $qr_file_name<br>";
+    // die($msg);
+    $code = QRcode::png($data, $qr_file_name, QR_ECLEVEL_L, 2);
 
     /*
     save_seat_data: { 

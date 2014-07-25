@@ -5,7 +5,21 @@
     // guardamos la ruta base
     $base_path = $_SESSION["base_path"];
 
-    require_once '../processors/ProccessData.php';
+    require_once "$base_path$statics_path/processors/Database.php";
+    
+    $reservation_data = $_SESSION['reservation_data']; 
+    $codigo_reserva= $reservation_data[0]['codigo_reserva'];
+
+    // Establecemos una conexión con el servidor
+    $connect = new Database();
+
+    $sql_update_query = "UPDATE reserva SET estado=2  WHERE codigo_reserva = '$codigo_reserva';";
+
+    // Realizamos la consulta a la tabla 
+    $updated = $connect->executeIDU($sql_update_query);
+
+    if (!$updated) 
+        echo "no se pudo acceder a la base";
     
 ?>
 
@@ -28,7 +42,7 @@
                     
                     <h2>Checkin satisfactorio</h2>
 
-                    <p>Has click <a href='<?php echo "$statics_path/components/printBoardingPass.php"; ?>' title='imprimir boarding pass'>aquí</a> para imprimir tu boleto.</p>
+                    <p>Has click <a href='<?php echo "$statics_path/components/printBoardingPass.php"; ?>' title='imprimir boarding pass'>aqui</a> para imprimir tu boleto.</p>
 
                 </section>
 

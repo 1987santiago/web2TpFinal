@@ -5,8 +5,8 @@
 <header>
     
     <!-- Logo -->
-    <img alt="Sky Net Sistema de Reservas Online de Pasajes Aereos" src="<?php echo "$statics_path"; ?>/images/header/logo.PNG" /> 
-    <img class="isologotipo" alt="Volamos al mejor precio siempre" src="<?php echo "$statics_path"; ?>/images/header/volando.PNG" />
+    <img alt="Sky Net Sistema de Reservas Online de Pasajes Aéreos" src="<?php echo "$statics_path"; ?>/images/header/logo.png" /> 
+    <img class="isologotipo" alt="Volamos al mejor precio siempre" src="<?php echo "$statics_path"; ?>/images/header/volando.png" />
 
     <!-- Principal navigation bar -->
     <nav>

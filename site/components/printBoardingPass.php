@@ -5,8 +5,8 @@
     // guardamos la ruta base
     $base_path = $_SESSION["base_path"];
 
-    require "$base_path$statics_path/components/codeQR.php";
-    require "$base_path$statics_path/components/dompdf.php";
+    require "$base_path$statics_path/components/generateBoardingPassCodeQR.php";
+    require "$base_path$statics_path/components/generateBoardingPassPDF.php";
 
 ?>
 
