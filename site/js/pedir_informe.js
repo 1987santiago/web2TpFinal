@@ -81,6 +81,18 @@ function fechaFinalValida()
     }
 }
 
+function mostrarDestino() 
+{
+    var destino=document.getElementById("divDestino");
+    destino.style.visibility = "visible";
+}
+
+function ocultarDestino() 
+{
+    var destino=document.getElementById("divDestino");
+    destino.style.visibility = "hidden"; 
+}
+
 function validarFechas() 
 {
     if (!fechaInicialValida())

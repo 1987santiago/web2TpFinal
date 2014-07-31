@@ -37,3 +37,23 @@ label
 {
     width: 50%;
 }
+
+.contenedor 
+{
+    height: 100%;
+    width: 100%;
+}
+
+.grafico 
+{
+    float: left;
+    height: 100%;
+    width: 50%;
+}
+
+.datos 
+{
+    float: left;
+    height: 100%;
+    width: 50%;
+}
