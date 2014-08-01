@@ -7,7 +7,7 @@
 
     // se incluye el inicio del html <!doctype html>...</head>
     $_SESSION["resources"] = array(
-        "css"  => array("dameReserva")
+        "css"  => array("contactForm")
     ); 
     require "$base_path$statics_path/components/head.php"; 
 ?>

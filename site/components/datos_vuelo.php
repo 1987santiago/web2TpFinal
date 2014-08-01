@@ -55,7 +55,7 @@
             <!-- Aqui se enlaza el datepicker al cuadro de texto -->
             <input type="text" id="fechaPartida" name="fechaPartida" value="<?php if (isset($_SESSION['fechaPartida'])){ echo $_SESSION['fechaPartida']; } ?>"/>
         </div>
-        <div id="divRegreso">
+        <div id="divRegreso" style="visibility: hidden;">
             <label for="fechaRegreso">Fecha regreso [dd-mm-aaaa]</label>
             <!-- Aqui se enlaza el datepicker al cuadro de texto -->
             <input type="text" id="fechaRegreso" name="fechaRegreso" value="<?php if (isset($_SESSION['fechaRegreso'])){ echo $_SESSION['fechaRegreso']; } ?>"/>

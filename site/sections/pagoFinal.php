@@ -5,10 +5,6 @@
     // guardamos la ruta base
     $base_path = $_SESSION["base_path"];
 
-    // se incluye el inicio del html <!doctype html>...</head>
-    // $_SESSION["resources"] = array(
-    //     "css"  => array("generic")
-    // ); 
     require "$base_path$statics_path/components/head.php"; 
 ?>
 

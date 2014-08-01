@@ -25,7 +25,7 @@
 
                     <h2 class="reserva">Abona tu pasaje</h2>
 
-                    <form data-component="pay" class="contact_form" action ="<?php echo "$statics_path/sections/confirmaPago.php"; ?>" method="post">
+                    <form data-component="pay" class="data-form" action ="<?php echo "$statics_path/sections/confirmaPago.php"; ?>" method="post">
 
                         <label>Ingresa tu código de reserva: </label>
                         <!-- <input type="text" name="codReserva" id="codReserva" /> -->

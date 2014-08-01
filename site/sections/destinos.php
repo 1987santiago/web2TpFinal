@@ -6,9 +6,6 @@
     $base_path = $_SESSION["base_path"];
 
     // se incluye el inicio del html <!doctype html>...</head>
-    $_SESSION["resources"] = array(
-        "css"  => array("destinos")
-    ); 
     require "$base_path$statics_path/components/head.php"; 
 ?>
 
@@ -27,7 +24,7 @@
         </section>
         
         <section class="destino">
-            <h3>Conoce nuestros destinos y descubre su maravilloso paisaje y cultura</h3>
+            <h2>Conoce nuestros destinos y descubre su maravilloso paisaje y cultura</h2>
             <img src="<?php echo "$statics_path"; ?>/images/destinos/fondoargentina1.png">
         </section>  
 
