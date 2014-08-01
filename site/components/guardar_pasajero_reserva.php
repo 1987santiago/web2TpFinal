@@ -65,14 +65,14 @@
                     $fechaReservaIda = $datFechaReservaIda->format("Y-m-d");
                     $datFechaPartida = new DateTime(getFechaFormateada($_SESSION["fechaPartida"]) . " 8:00:00", new DateTimeZone("America/Buenos_Aires"));
                     $fechaPartida=$datFechaPartida->format("Y-m-d");
-                    $reservaIdaEnEspera = $_SESSION["reservaIdaEnEspera"];
+                    $codigoReservaIdaEnEspera = $_SESSION["codigoReservaIdaEnEspera"];
                     $vueloIdaElegido =$_SESSION["vueloIdaElegido"];
                     $categoriaIdaElegida = $_SESSION["categoriaIdaElegida"];
                     $montoIda = getMonto($vueloIdaElegido, $categoriaIdaElegida);
  
                     // Se preparan las querys de inserciones
                     $insertPasajero = "INSERT INTO pasajero (dni, apellido, nombre, fecha_nac, telefono, email, nacionalidad) VALUES('$dni', '$apellido', '$nombre', '$fechaNac', '$telefono', '$email', '$nacionalidad')";
-                    $insertReserva = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaIda','$fechaReservaIda', '$fechaPartida', '$reservaIdaEnEspera', '$dni', '$vueloIdaElegido', '$categoriaIdaElegida')";
+                    $insertReserva = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaIda','$fechaReservaIda', '$fechaPartida', '$codigoReservaIdaEnEspera', '$dni', '$vueloIdaElegido', '$categoriaIdaElegida')";
                     $_SESSION["codigoReservaIda"] = $codigoReservaIda;
                     try 
                     {   
@@ -103,7 +103,7 @@
                     $fechaReservaIda=$datFechaReservaIda->format('Y-m-d H:i:s');
                     $datFechaPartida = new DateTime(getFechaFormateada($_SESSION["fechaPartida"]) . " 8:00:00", new DateTimeZone("America/Buenos_Aires"));
                     $fechaPartida=$datFechaPartida->format('Y-m-d H:i:s');
-                    $reservaIdaEnEspera = $_SESSION["reservaIdaEnEspera"];
+                    $codigoReservaIdaEnEspera = $_SESSION["codigoReservaIdaEnEspera"];
                     $vueloIdaElegido = $_SESSION["vueloIdaElegido"];
                     $categoriaIdaElegida = $_SESSION["categoriaIdaElegida"];
                     $montoIda = getMonto($vueloIdaElegido, $categoriaIdaElegida);
@@ -114,14 +114,14 @@
                     $fechaReservaRegreso=$datFechaReservaRegreso->format('Y-m-d H:i:s');
                     $datFechaRegreso = new DateTime(getFechaFormateada($_SESSION["fechaRegreso"]) . " 8:00:00", new DateTimeZone("America/Buenos_Aires"));
                     $fechaRegreso=$datFechaRegreso->format('Y-m-d H:i:s');
-                    $reservaRegresoEnEspera = $_SESSION["reservaRegresoEnEspera"];
+                    $codigoReservaRegresoEnEspera = $_SESSION["codigoReservaRegresoEnEspera"];
                     $vueloRegresoElegido = $_SESSION["vueloRegresoElegido"];
                     $categoriaRegresoElegida = $_SESSION["categoriaRegresoElegida"];
                     $montoRegreso = getMonto($vueloRegresoElegido, $categoriaRegresoElegida);
                     
                     $insertPasajero = "INSERT INTO pasajero (dni, apellido, nombre, fecha_nac, telefono, email, nacionalidad) VALUES('$dni', '$apellido', '$nombre', '$fechaNac', '$telefono', '$email', '$nacionalidad')";
-                    $insertReservaIda = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaIda', '$fechaReservaIda', '$fechaPartida', '$reservaIdaEnEspera', '$dni', '$vueloIdaElegido', '$categoriaIdaElegida')";
-                    $insertReservaRegreso = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaRegreso', '$fechaReservaRegreso', '$fechaRegreso', '$reservaRegresoEnEspera', '$dni', '$vueloRegresoElegido', '$categoriaRegresoElegida')";
+                    $insertReservaIda = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaIda', '$fechaReservaIda', '$fechaPartida', '$codigoReservaIdaEnEspera', '$dni', '$vueloIdaElegido', '$categoriaIdaElegida')";
+                    $insertReservaRegreso = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaRegreso', '$fechaReservaRegreso', '$fechaRegreso', '$codigoReservaRegresoEnEspera', '$dni', '$vueloRegresoElegido', '$categoriaRegresoElegida')";
                     $_SESSION["codigoReservaIda"] = $codigoReservaIda;
                     $_SESSION["codigoReservaRegreso"] = $codigoReservaRegreso;
                     try 

@@ -8,9 +8,9 @@
     // Si existen errores se guardan e informan
     $hasError = false;
     
-    if (isset($_POST['adminName'])) {
-        $cookie_value = 'dato-' . $_POST['adminName'];
-        $_SESSION['admin_logged'] = $cookie_value;
+    if ( !isset($_SESSION['admin_logged']) || !$_SESSION['admin_logged']) {
+        $_SESSION['error'] = 'Debe registrarse';
+        header("Location: $statics_path/sections/home.php");
     }
 
     if (isset($_SESSION['error'])) {
@@ -44,22 +44,13 @@
                         if ($hasError) { 
                             echo "<div class='box box-error'>$errorMsg</div>";
                             // Una vez mostrado el error, reseteamos la variable
-                            $_SESSION['error'] = null;
+                            // $_SESSION['error'] = null;
                         }
                     ?>
                     <?php require "$base_path$statics_path/components/datos_vuelo.php"; ?>
                 </div>
-
-                <!-- Se inlcuye el slider -->    
-                <div class="col right-col">
-                    <?php include "$base_path$statics_path/components/wowSlider.php"; ?>
-                </div> 
-			
+            
             </main>
-
-            <?php include "$base_path$statics_path/components/offExclusiv.php"; ?>
-     
-            <?php require "$base_path$statics_path/components/pagoSinInt.php"; ?>
 
         </div><!-- [END] wrapper -->
 

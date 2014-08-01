@@ -40,6 +40,7 @@ header {
         overflow: hidden;
         padding: 0 2em;
     }
+    nav ul, 
     nav li {
         display: inline-block;
     }
@@ -52,6 +53,9 @@ header {
     }
     nav a:hover {
         background-color: #C85959;
+    }
+    .more-actions {
+        float: right;
     }
 
 header ol {
@@ -221,8 +225,23 @@ textarea {
     }
     .data-form input[type="submit"] {
         float: right;
+        margin: .4em 0;
     }
 
+    /* Login 
+    ---------------------------------------------*/
+    .login {
+        float: right;
+        min-width: 340px;
+        width: 30%;
+    }
+    .login label, 
+    .login input {
+        width: 50%;
+        margin-right: -4px;
+        min-width: 0;
+        padding: 0 1em;
+    }
 
 
 /* Validation 
@@ -251,7 +270,7 @@ textarea {
 .box-info {
     background-color: #ffffee;
     border: 1px solid #F5F500;
-    color: #DBDB08;
+    color: #B2B200;
 }
 .box-success {
     background-color: #eeffee;

@@ -10,8 +10,26 @@
 
     <!-- Principal navigation bar -->
     <nav>
-        <li><a href="<?php echo "$statics_path"; ?>/sections/home.php" data-section="home" title="Home">Home</a></li>
-        <li><a href="<?php echo "$statics_path"; ?>/sections/destinos.php" data-section="destinos" title="Destinos">Destinos</a></li>
+        <ul>
+            <li><a href="<?php echo "$statics_path"; ?>/sections/home.php" data-section="home" title="Home">Home</a></li>
+            <li><a href="<?php echo "$statics_path"; ?>/sections/destinos.php" data-section="destinos" title="Destinos">Destinos</a></li>
+        
+        <?php 
+            if ( isset($_SESSION['admin_logged']) && $_SESSION['admin_logged'] ) {
+                echo "<li><a href='$statics_path/sections/estadisticas.php' data-section='estadisticas' title='estadisticas'>Estadisticas</a></li>";
+            }
+        ?>
+
+        </ul>
+
+    <?php 
+        if ( isset($_SESSION['admin_logged']) && $_SESSION['admin_logged'] ) {
+            echo "<a class='more-actions' href='$statics_path/processors/logOut.php' data-section='home' title='Cerrar Sesión'>Cerrar Sesión</a>";
+        } else {
+            echo "<a class='more-actions' href='$statics_path/sections/login.php' data-section='login' title='Ingresar'>Ingresar</a>";
+        }
+    ?>
+
     </nav>
 
 </header>

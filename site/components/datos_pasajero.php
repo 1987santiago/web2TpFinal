@@ -4,13 +4,19 @@
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
 
-    $estaEnEspera = (isset($_GET["estaEnEspera"])? $_GET["estaEnEspera"] : '' );
-    $_SESSION["estaEnEspera"] = $estaEnEspera;
+    $reservaIdaEnEspera = (isset($_SESSION["reservaIdaEnEspera"])? $_SESSION["reservaIdaEnEspera"] : false );
+    $reservaRegresoEnEspera = (isset($_SESSION["reservaRegresoEnEspera"])? $_SESSION["reservaRegresoEnEspera"] : false );
+    $msg = '';
 
-    // se incluye el inicio del html <!doctype html>...</head>
-    // $_SESSION["resources"] = array(
-    //     "css"  => array()
-    // ); 
+    if ($reservaIdaEnEspera) {
+        $_SESSION["codigoReservaIdaEnEspera"] = -1;
+        $msg .= '<p>Su reserva para el vuelo de ida se encuentra "en espera", podrá hacer el check-in únicamente si se desocupa un asiento 24hs antes de la partida del vuelo.</p></p>En dicho caso usted recibirá un mail notificando dicha oportunidad.</p>';
+    } 
+    if ($reservaRegresoEnEspera) {
+        $_SESSION["codigoReservaRegresoEnEspera"] = -1;
+        $msg .= '<p>Su reserva para el vuelo de regreso se encuentra "en espera", podrá hacer el check-in únicamente si se desocupa un asiento 24hs antes de la partida del vuelo.</p></p>En dicho caso usted recibirá un mail notificando dicha oportunidad.</p>';
+    }
+
     require "$base_path$statics_path/components/head.php"; 
 ?>
 
@@ -28,6 +34,12 @@
 
                 <!-- se incluye el formulario de ingreso de datos del pasajero -->
                 <div class="col">
+                    <?php
+                        // Si una de las reservas está en espera se notifica al usuario
+                        if ($reservaIdaEnEspera || $reservaIdaEnEspera) { 
+                            echo "<div class='box box-info'>$msg</div>";
+                        }
+                    ?>
 
                     <form class="data-form" action="guardar_pasajero_reserva.php" method="post" onsubmit="return validarDatosPasajero()">
                         <fieldset>

@@ -35,7 +35,7 @@
             $asientos = $skynet->executeSelect($asientosCategoria);
             $totalAsientos = intval($asientos[0]["asientos"]);
             $reservasHechas = "SELECT count(*) as reservas FROM reserva
-                               WHERE numero_vuelo = $vuelo and id_categoria = $categoria and esta_en_espera = 0";
+                               WHERE numero_vuelo = $vuelo and id_categoria = $categoria and (estado >= 0 and estado <= 2)";
             $reservas = $skynet->executeSelect($reservasHechas);
             $totalReservas = intval($reservas[0]["reservas"]);
 
@@ -59,7 +59,7 @@
 
             $query = "SELECT count(*) as reservas
                       FROM reserva
-                      WHERE numero_vuelo = $vuelo and esta_en_espera = 1";
+                      WHERE numero_vuelo = $vuelo and estado = -1";
             $reservasEnEspera = $skynet->executeSelect($query);
             $totalReservasEnEspera = intval($reservasEnEspera[0]["reservas"]);
             $skynet->disconnect();
@@ -84,14 +84,14 @@
             
             if ($asientosLibresIda > 0) {
             
-                $reservaIdaEnEspera = 0;
+                $reservaIdaEnEspera = false;
                 $reservaIdaPermitida = true;
             
             } else {
                 
                 if ($reservasEsperaIda < EXCEDENTE) {
 
-                    $reservaIdaEnEspera = -1; 
+                    $reservaIdaEnEspera = true; 
                     $reservaIdaPermitida = true;
                 }
             }
@@ -124,14 +124,14 @@
             
             if ($asientosLibresIda > 0) {
             
-                $reservaIdaEnEspera = 0;
+                $reservaIdaEnEspera = false;
                 $reservaIdaPermitida = true;
             
             } else {
 
                 if ($reservasEsperaIda < EXCEDENTE) {
 
-                    $reservaIdaEnEspera = -1;
+                    $reservaIdaEnEspera = true;
                     $reservaIdaPermitida = true;
 
                 }
