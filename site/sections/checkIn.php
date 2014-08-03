@@ -51,7 +51,7 @@
                         <label for="reservationCode">Ingrese su codigo de reserva: </label>
                         <input id="reservationCode" name="reservation_code" type="text" />
 
-                        <input type="submit" value="Verificar" disabled="disabled"/>
+                        <input type="submit" value="Verificar"/>
 
                     </form>
 
