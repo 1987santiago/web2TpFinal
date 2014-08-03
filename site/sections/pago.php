@@ -18,7 +18,7 @@
 
             <main role="main">
                                         
-                <!-- se incluye la barra lateral de navegación -->
+                <!-- se incluye la barra lateral de navegacion -->
                 <?php require "$base_path$statics_path/components/navLateral.php"; ?>
 
                 <section class="col" id="pay">
@@ -27,7 +27,7 @@
 
                     <form data-component="pay" class="contact_form" action ="<?php echo "$statics_path/sections/confirmaPago.php"; ?>" method="post">
 
-                        <label>Ingresa tu código de reserva: </label>
+                        <label>Ingresa tu codigo de reserva: </label>
                         <!-- <input type="text" name="codReserva" id="codReserva" /> -->
                         <input id="reservationCode" name="reservationCode" type="text" />
                         <input type="submit" value="Consultar" disabled="disabled" />

@@ -1,8 +1,13 @@
  <?php
     session_start();
+    // guardamos la url de los recursos estaticos
+    $base_path = $_SESSION["base_path"];
+    $statics_path = $_SESSION["statics_path"];
+    // se guarda la ruta al servidor
+    $server_root = $_SESSION["server_root"];
     
-    require_once '../processors/Database.php';
-    require_once 'library.php';
+    require_once "$base_path$statics_path/processors/Database.php";
+    require_once "$base_path$statics_path/components/library.php";
     	
     function getMonto($numeroVuelo, $categoria) 
     {
@@ -24,7 +29,7 @@
         }
         return $monto;
     }
-	
+  
     // Se prepara el pasajero a guardar
     $dni = $_POST["dni"];
     $apellido = $_POST["apellido"];
@@ -64,15 +69,15 @@
                     $datFechaReservaIda = new DateTime("", new DateTimeZone("America/Buenos_Aires"));
                     $fechaReservaIda = $datFechaReservaIda->format("Y-m-d");
                     $datFechaPartida = new DateTime(getFechaFormateada($_SESSION["fechaPartida"]) . " 8:00:00", new DateTimeZone("America/Buenos_Aires"));
-                    $fechaPartida=$datFechaPartida->format("Y-m-d");
-                    $reservaIdaEnEspera = $_SESSION["reservaIdaEnEspera"];
-                    $vueloIdaElegido =$_SESSION["vueloIdaElegido"];
+                    $fechaPartida = $datFechaPartida->format("Y-m-d H:i:s");
+                    $estadoReservaIda = $_SESSION["estadoReservaIda"];
+                    $vueloIdaElegido = $_SESSION["vueloIdaElegido"];
                     $categoriaIdaElegida = $_SESSION["categoriaIdaElegida"];
                     $montoIda = getMonto($vueloIdaElegido, $categoriaIdaElegida);
  
                     // Se preparan las querys de inserciones
                     $insertPasajero = "INSERT INTO pasajero (dni, apellido, nombre, fecha_nac, telefono, email, nacionalidad) VALUES('$dni', '$apellido', '$nombre', '$fechaNac', '$telefono', '$email', '$nacionalidad')";
-                    $insertReserva = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaIda','$fechaReservaIda', '$fechaPartida', '$reservaIdaEnEspera', '$dni', '$vueloIdaElegido', '$categoriaIdaElegida')";
+                    $insertReservaIda = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, monto, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaIda','$fechaReservaIda', '$fechaPartida', '$estadoReservaIda', '$montoIda', '$dni', '$vueloIdaElegido', '$categoriaIdaElegida')";
                     $_SESSION["codigoReservaIda"] = $codigoReservaIda;
                     try 
                     {   
@@ -81,16 +86,18 @@
                         {
                             $skynet->executeIDU($insertPasajero);
                         }
-                        $skynet->executeIDU($insertReserva);
+                        $skynet->executeIDU($insertReservaIda);
                         $skynet->commit();
-                        header("Location: mostrar_codigo_reserva.php");
+                        $siguiente = "$server_root$statics_path/components/mostrar_codigo_reserva.php";
+                        header("Location: " . $siguiente);
                     } 
                     catch (Exception $e) 
                     {
                         $skynet->rollBack();
                         $errorInsercion = $e->getMessage();
-                        $anterior="datos_pasajero.php";
-                        header("Location: error.php?mensaje=$errorInsercion&anterior=$anterior");
+                        $anterior = "$server_root$statics_path/components/datos_pasajero.php";
+                        $error = "$server_root$statics_path/components/error.php";
+                        header("Location: " . $error. "?mensaje=$errorInsercion&anterior=$anterior");
                     }
                     break;
             case 2: // Viaje ida y vuelta
@@ -100,10 +107,10 @@
                     /* Se prepara el registro de la reserva a guardar*/
                     $codigoReservaIda = getCodigoUnicoReserva();
                     $datFechaReservaIda = new DateTime("", new DateTimeZone("America/Buenos_Aires"));
-                    $fechaReservaIda=$datFechaReservaIda->format('Y-m-d H:i:s');
+                    $fechaReservaIda = $datFechaReservaIda->format('Y-m-d H:i:s');
                     $datFechaPartida = new DateTime(getFechaFormateada($_SESSION["fechaPartida"]) . " 8:00:00", new DateTimeZone("America/Buenos_Aires"));
-                    $fechaPartida=$datFechaPartida->format('Y-m-d H:i:s');
-                    $reservaIdaEnEspera = $_SESSION["reservaIdaEnEspera"];
+                    $fechaPartida = $datFechaPartida->format('Y-m-d H:i:s');
+                    $estadoReservaIda = $_SESSION["estadoReservaIda"];
                     $vueloIdaElegido = $_SESSION["vueloIdaElegido"];
                     $categoriaIdaElegida = $_SESSION["categoriaIdaElegida"];
                     $montoIda = getMonto($vueloIdaElegido, $categoriaIdaElegida);
@@ -111,17 +118,17 @@
                     /* Se prepara el registro de la reserva de regreso a guardar*/
                     $codigoReservaRegreso = getCodigoUnicoReserva();
                     $datFechaReservaRegreso = new DateTime("", new DateTimeZone("America/Buenos_Aires"));
-                    $fechaReservaRegreso=$datFechaReservaRegreso->format('Y-m-d H:i:s');
+                    $fechaReservaRegreso = $datFechaReservaRegreso->format('Y-m-d H:i:s');
                     $datFechaRegreso = new DateTime(getFechaFormateada($_SESSION["fechaRegreso"]) . " 8:00:00", new DateTimeZone("America/Buenos_Aires"));
-                    $fechaRegreso=$datFechaRegreso->format('Y-m-d H:i:s');
-                    $reservaRegresoEnEspera = $_SESSION["reservaRegresoEnEspera"];
+                    $fechaRegreso = $datFechaRegreso->format('Y-m-d H:i:s');
+                    $estadoReservaRegreso = $_SESSION["estadoReservaRegreso"];
                     $vueloRegresoElegido = $_SESSION["vueloRegresoElegido"];
                     $categoriaRegresoElegida = $_SESSION["categoriaRegresoElegida"];
                     $montoRegreso = getMonto($vueloRegresoElegido, $categoriaRegresoElegida);
                     
                     $insertPasajero = "INSERT INTO pasajero (dni, apellido, nombre, fecha_nac, telefono, email, nacionalidad) VALUES('$dni', '$apellido', '$nombre', '$fechaNac', '$telefono', '$email', '$nacionalidad')";
-                    $insertReservaIda = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaIda', '$fechaReservaIda', '$fechaPartida', '$reservaIdaEnEspera', '$dni', '$vueloIdaElegido', '$categoriaIdaElegida')";
-                    $insertReservaRegreso = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaRegreso', '$fechaReservaRegreso', '$fechaRegreso', '$reservaRegresoEnEspera', '$dni', '$vueloRegresoElegido', '$categoriaRegresoElegida')";
+                    $insertReservaIda = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, monto, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaIda','$fechaReservaIda', '$fechaPartida', '$estadoReservaIda', '$montoIda', '$dni', '$vueloIdaElegido', '$categoriaIdaElegida')";
+                    $insertReservaRegreso = "INSERT INTO reserva (codigo_reserva, fecha_reserva, fecha_partida, estado, monto, dni, numero_vuelo, id_categoria) VALUES('$codigoReservaRegreso','$fechaReservaRegreso', '$fechaRegreso', '$estadoReservaRegreso', '$montoRegreso', '$dni', '$vueloRegresoElegido', '$categoriaRegresoElegida')";
                     $_SESSION["codigoReservaIda"] = $codigoReservaIda;
                     $_SESSION["codigoReservaRegreso"] = $codigoReservaRegreso;
                     try 
@@ -134,14 +141,16 @@
                         $skynet->executeIDU($insertReservaIda);
                         $skynet->executeIDU($insertReservaRegreso);
                         $skynet->commit();
-                        header("Location: mostrar_codigo_reserva.php");
+                        $siguiente = "$server_root$statics_path/components/mostrar_codigo_reserva.php";
+                        header("Location: " . $siguiente);
                     } 
                     catch (Exception $e) 
                     {
                         $skynet->rollBack();
                         $errorInsercion = $e->getMessage();
-                        $anterior="datos_pasajero.php";
-                        header("Location: error.php?mensaje=$errorInsercion&anterior=$anterior");
+                        $anterior = "$server_root$statics_path/components/datos_pasajero.php";
+                        $error = "$server_root$statics_path/components/error.php";
+                        header("Location: " . $error. "?mensaje=$errorInsercion&anterior=$anterior");
                     }
                     break;
         }

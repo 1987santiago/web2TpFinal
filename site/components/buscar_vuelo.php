@@ -1,15 +1,15 @@
 <?php
     session_start();
     // guardamos la url de los recursos estaticos
-    $statics_path = $_SESSION["statics_path"];
-    // guardamos la ruta base
     $base_path = $_SESSION["base_path"];
+    $statics_path = $_SESSION["statics_path"];
+    // se guarda la ruta al servidor
+    $server_root = $_SESSION["server_root"];
+    require_once "$base_path$statics_path/processors/Database.php";
+    require_once "$base_path$statics_path/components/library.php";
 
-    require_once '../processors/Database.php';
-    require_once 'library.php';
-
-    function getVuelos($query, $fecha) {
-
+    function getVuelos($query, $fecha)
+    {
         $vuelosAMostrar = array();
         $skynet = new Database();
         $conexionCorrecta = $skynet->connect();
@@ -58,57 +58,62 @@
     $_SESSION["fechaRegreso"]=$fechaRegreso;
     $_SESSION["tipoDeViaje"]=$tipoDeViaje;
 
+    switch ($tipoDeViaje)
+	{
+        case 1:
+                $busquedaVuelosIda =    "SELECT numero_vuelo, oaci_origen, origen, oaci_destino, destino, dias_vuelo, tarifa_economy, tarifa_primera, asientos_economy, asientos_primera
+                                        FROM vuelo, avion
+                                        WHERE vuelo.codigo_avion = avion.codigo_avion and origen = '$ciudadOrigen' and destino = '$ciudadDestino'";
+                $vuelosIda = getVuelos($busquedaVuelosIda, $fechaPartida);
+                if (count($vuelosIda) > 0)
+                {
+                    $_SESSION["vuelosIda"] = $vuelosIda;
+                    $siguiente = "$server_root$statics_path/components/listado_vuelos_ida.php";
+                    header("Location: " . $siguiente);
+                }
+                else
+                {
+                    $errorNoHayVuelosParaLaFecha = "No hay vuelos entre " . $ciudadOrigen . " y " . $ciudadDestino . " para la fecha " . $fechaPartida;
+                    $anterior = "$server_root$statics_path/sections/home.php";
+                    $error = "$server_root$statics_path/components/error.php";
+                    header("Location: ". $error . "?mensaje=$errorNoHayVuelosParaLaFecha&anterior=$anterior");
+                }
+                break;
+        case 2:
+                $busquedaVuelosIda = "SELECT numero_vuelo, oaci_origen, origen, oaci_destino, destino, dias_vuelo, tarifa_economy, tarifa_primera, asientos_economy, asientos_primera
+				      FROM vuelo, avion
+				      WHERE vuelo.codigo_avion = avion.codigo_avion and origen = '$ciudadOrigen' and destino = '$ciudadDestino'";
+                $busquedaVuelosRegreso = "SELECT numero_vuelo, oaci_origen, origen, oaci_destino, destino, dias_vuelo, tarifa_economy, tarifa_primera, asientos_economy, asientos_primera
+					  FROM vuelo, avion
+					  WHERE vuelo.codigo_avion = avion.codigo_avion and origen = '$ciudadDestino' and destino = '$ciudadOrigen'";
+                $vuelosIda = getVuelos($busquedaVuelosIda, $fechaPartida);
+                $vuelosRegreso = getVuelos($busquedaVuelosRegreso, $fechaRegreso);
+                if (count($vuelosIda) > 0)
+                {
+                    if (count($vuelosRegreso) > 0)
+                    {
 
-    switch ($tipoDeViaje) {
+                        $_SESSION["vuelosIda"] = $vuelosIda;
+                        $_SESSION["vuelosRegreso"] = $vuelosRegreso;
+                        $siguiente = "$server_root$statics_path/components/listado_vuelos_ida_regreso.php";
+                        header("Location: " . $siguiente);
+                    }
+                    else
 
-    case 1:
-        $busquedaVuelosIda = "SELECT numero_vuelo, oaci_origen, origen, oaci_destino, destino, dias_vuelo, tarifa_economy, tarifa_primera, asientos_economy, asientos_primera
-            FROM vuelo, avion
-            WHERE vuelo.codigo_avion = avion.codigo_avion and origen = '$ciudadOrigen' and destino = '$ciudadDestino'";
-        $vuelosIda = getVuelos($busquedaVuelosIda, $fechaPartida);
-        
-        if (count($vuelosIda) > 0) {
-            $_SESSION["vuelosIda"] = $vuelosIda;
-            header("Location: $statics_path/components/listado_vuelos_ida.php");
-        } else {
-            $errorNoHayVuelosParaLaFecha = "No hay vuelos entre " . $ciudadOrigen . " y " . $ciudadDestino . " para la fecha " . $fechaPartida;
-            $anterior = "datos_vuelo.php";
-            $_SESSION['error'] = 'error - No hay vuelos para la fecha seleccionada';
-            header("Location: $statics_path/sections/home.php");
-        }
-        break;
-
-    case 2:
-        $busquedaVuelosIda = "SELECT numero_vuelo, oaci_origen, origen, oaci_destino, destino, dias_vuelo, tarifa_economy, tarifa_primera, asientos_economy, asientos_primera
-            FROM vuelo, avion
-            WHERE vuelo.codigo_avion = avion.codigo_avion and origen = '$ciudadOrigen' and destino = '$ciudadDestino'";
-        $busquedaVuelosRegreso = "SELECT numero_vuelo, oaci_origen, origen, oaci_destino, destino, dias_vuelo, tarifa_economy, tarifa_primera, asientos_economy, asientos_primera
-            FROM vuelo, avion
-            WHERE vuelo.codigo_avion = avion.codigo_avion and origen = '$ciudadDestino' and destino = '$ciudadOrigen'";
-        $vuelosIda = getVuelos($busquedaVuelosIda, $fechaPartida);
-        $vuelosRegreso = getVuelos($busquedaVuelosRegreso, $fechaRegreso);
-        
-        if (count($vuelosIda) > 0) {
-
-            if (count($vuelosRegreso) > 0) {
-                $_SESSION["vuelosIda"] = $vuelosIda;
-                $_SESSION["vuelosRegreso"] = $vuelosRegreso;
-                header("Location: $statics_path/components/listado_vuelos_ida_regreso.php");
-            } else {
-                $errorNoHayVuelosParaLaFecha = "No hay vuelos entre " . $ciudadDestino . " y " . $ciudadOrigen . " para la fecha " . $fechaRegreso;
-                $anterior = "datos_vuelo.php";
-                $_SESSION['error'] = 'error - No hay vuelos para la fecha seleccionada';
-                header("Location: $statics_path/sections/home.php");
-            }
-
-        } else {
-            
-            $errorNoHayVuelosParaLaFecha = "No hay vuelos entre " . $ciudadOrigen . " y " . $ciudadDestino . " para la fecha " . $fechaPartida;
-            $anterior = "datos_vuelo.php";
-            $_SESSION['error'] = 'error - No hay vuelos para la fecha seleccionada';
-            header("Location: $statics_path/sections/home.php");
-        
-        }
-        break;
+                    {
+                        $errorNoHayVuelosParaLaFecha = "No hay vuelos entre " . $ciudadDestino . " y " . $ciudadOrigen . " para la fecha " . $fechaRegreso;
+                        $anterior = "$server_root$statics_path/sections/home.php";
+                        $error = "$server_root$statics_path/components/error.php";
+                        header("Location: ". $error . "?mensaje=$errorNoHayVuelosParaLaFecha&anterior=$anterior");
+                    }
+                }
+                else
+                {
+                    $errorNoHayVuelosParaLaFecha = "No hay vuelos entre " . $ciudadOrigen . " y " . $ciudadDestino . " para la fecha " . $fechaPartida;
+                    $anterior = "$server_root$statics_path/sections/home.php";
+                    $error = "$server_root$statics_path/components/error.php";
+                    header("Location: ". $error . "?mensaje=$errorNoHayVuelosParaLaFecha&anterior=$anterior");
+                }
+                break;
     }
 ?>

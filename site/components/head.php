@@ -24,13 +24,13 @@
 <!--[if IE 7]>  <html class="no-js  lt-ie10 lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
 <!--[if IE 8]>  <html class="no-js lt-ie10 lt-ie9 ie8" lang="en"> <![endif]-->
 <!--[if IE 9]>  <html class="no-js lt-ie10 ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="es"> <!--<![endif]-->
-
+<!--[if gt IE 8]><!-->  <!--<![endif]-->
+<html class="no-js" lang="es">
     <head>
 
         <title>Sistema de reservas</title>
         <meta name="author" content="Godoy Lorena, Santucho Walter, Marchioni Santiago">
-        <meta charset="utf-8">
+        <meta charset="ISO-8859-15">
         
         <!-- CSS -->
         <link href="<?php echo $statics_path; ?>/css/reset.css" type="text/css" rel="stylesheet">
@@ -40,8 +40,8 @@
         <link href="<?php echo $statics_path; ?>/css/jquery-ui.css" type="text/css" rel="stylesheet"/>
                     
         <?php 
-            // Si se envían datos de los recursos que se necesitan cargar especialmente para 
-            // un componente o sección, 
+            // Si se envian datos de los recursos que se necesitan cargar especialmente para 
+            // un componente o seccion, 
             if (isset($_SESSION["resources"])) {
                 // obtenemos dichos recursos
                 $_resources = $_SESSION["resources"];

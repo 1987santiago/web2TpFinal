@@ -48,7 +48,7 @@
 
                         <input name="statics_path" value="<?php echo $statics_path; ?>" type="hidden" />
 
-                        <label for="reservationCode">Ingrese su código de reserva: </label>
+                        <label for="reservationCode">Ingrese su codigo de reserva: </label>
                         <input id="reservationCode" name="reservation_code" type="text" />
 
                         <input type="submit" value="Verificar" disabled="disabled"/>

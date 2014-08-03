@@ -2,8 +2,8 @@
  * checkIn.js
  */
 
-var form = document.querySelector('#checkIn form'),
-    reservationCode = form.reservationCode,
+var form = document.querySelector('#checkIn form');
+    reservationCode = form.reservationCode;
 
 reservationCode.onchange = function(event) {
 
@@ -38,4 +38,4 @@ reservationCode.onchange = function(event) {
 
     window.skynet.request.getDocument(params);
 
-}; 
+} 

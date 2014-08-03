@@ -1,37 +1,54 @@
 <?php
-	session_start();
-    $base_path = $_SESSION["base_path"];
+    session_start();
+    
     // guardamos la url de los recursos estaticos
+    $base_path = $_SESSION["base_path"];
     $statics_path = $_SESSION["statics_path"];
+    // se guarda la ruta al servidor
+    $server_root = $_SESSION["server_root"];
+    
+    // Si existen errores se guardan e informan
+    $hasError = false;
 
-    $estaEnEspera = (isset($_GET["estaEnEspera"])? $_GET["estaEnEspera"] : '' );
-    $_SESSION["estaEnEspera"] = $estaEnEspera;
-
+    if (isset($_SESSION['error'])) {
+        $hasError = true;
+        $errorMsg = $_SESSION['error'];
+    }
+    
     // se incluye el inicio del html <!doctype html>...</head>
-    // $_SESSION["resources"] = array(
-    //     "css"  => array()
-    // ); 
-    require "$base_path$statics_path/components/head.php"; 
+    $_SESSION["resources"] = array(
+        "css"  => array("datosVuelo", "offExclusiv", "pagoSinInt", "forms"),
+        "js" => array("datos_pasajero")
+    ); 
+    
+    require "$base_path$statics_path/components/head.php";
 ?>
-
     <body>
 
         <div class="wrapper">
-    
+
             <!-- se incluye el <header> -->
             <?php require "$base_path$statics_path/components/header.php"; ?> 
 
-            <main id="main" role="main" class="contenedor-formulario-favorito">
+            <main role="main"><!-- ex: center -->
 
-                <!-- se incluye la barra lateral de navegación -->
+                <!-- se incluye la barra lateral de navegacion -->
                 <?php require "$base_path$statics_path/components/navLateral.php"; ?>
 
-                <!-- se incluye el formulario de ingreso de datos del pasajero -->
-                <div class="col">
-
-                    <form class="data-form" action="guardar_pasajero_reserva.php" method="post" onsubmit="return validarDatosPasajero()">
+                <!-- se incluye el formulario de busqueda de vuelos disponibles para reservar -->
+                <div class="col left-col">
+                    <?php
+                        // Si hay un erro lo imprimimos en la pagina
+                        if ($hasError) { 
+                            echo "<div class='box box-error'>$errorMsg</div>";
+                            // Una vez mostrado el error, reseteamos la variable
+                            $_SESSION['error'] = null;
+                        }
+                    ?>
+                    <form class="data-form" action="<?php echo "$server_root$statics_path"; ?>/components/guardar_pasajero_reserva.php" method="post" onsubmit="return validarDatosPasajero()">
+                        <legend>Datos del pasajero</legend>
                         <fieldset>
-                            <legend>Datos del pasajero</legend>
+                            
                             <div>
                                 <label for="dni">DNI</label>
                                 <input type="text" id="dni" name="dni" value="<?php if (isset($_SESSION['dni'])){ echo $_SESSION['dni']; } ?>"/>
@@ -65,39 +82,36 @@
                         <?php 
                             $tipoDeViaje=$_SESSION["tipoDeViaje"];
                             if ($tipoDeViaje == 1) { 
-                                echo "<a href='listado_vuelos_ida.php' name='anterior'>Anterior</a>";
-                            } else {
-                                echo "<a href='listado_vuelos_ida_regreso.php' name='anterior'>Anterior</a>";
+                                $anterior = "$server_root$statics_path/components/listado_vuelos_ida.php";
+                                echo "<a href=$anterior name='anterior'>Anterior</a>";
+                            }
+                            else {
+                                $anterior = "$server_root$statics_path/components/listado_vuelos_ida_regreso.php";
+                                echo "<a href=$anterior name='anterior'>Anterior</a>";
                             }    
-                    	?> 
+                        ?> 
                         <input type="submit" name="siguiente" value="Siguiente"/>
 
-                    </form>
+                    </form> 
+                </div>
+			
+            </main>
 
-                </div><!-- [END] col -->
-
-            </main><!-- [END] main -->
+            <?php include "$base_path$statics_path/components/offExclusiv.php"; ?>
+     
+            <?php require "$base_path$statics_path/components/pagoSinInt.php"; ?>
 
         </div><!-- [END] wrapper -->
 
-        <!-- se incluye el <header> -->
-        <?php require "$base_path$statics_path/components/footer.php"; ?>
-
-        <!-- Incluir este js para agregar funcionalidad en browsers < IE8 
-            <script type="text/javascript" src="js/components/seatSelection.js"></script> 
-        -->
+        <?php require "$base_path$statics_path/components/footer.php"; ?>    
         
-        <script>
-            $(function() {
-                $("#fechaNac").datepicker({
-                showOn: "button",
-                buttonImage: "../images/calendar.gif",
-                buttonImageOnly: true,
-                firstDay: 0
-                });
+        <script type="text/javascript">
+           $(function() {
+            $("#fechaNac").datepicker({
+            showOn: "button",
+            buttonImage: "../images/calendar.gif",
+            buttonImageOnly: true,
+            firstDay: 0
             });
         </script>
-
     </body>
-
-</html>

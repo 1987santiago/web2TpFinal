@@ -1,5 +1,5 @@
 <?php
-    session_start(); 
+    session_start();
     // guardamos la url de los recursos estaticos
     $statics_path = $_SESSION["statics_path"];
     // guardamos la ruta base
@@ -15,7 +15,7 @@
 
     // se incluye el inicio del html <!doctype html>...</head>
     $_SESSION["resources"] = array(
-        "css"  => array("datosVuelo","offExclusiv", "pagoSinInt", "wowSlider", "engine1/style")
+        "css"  => array("datosVuelo", "offExclusiv", "pagoSinInt", "wowSlider", "engine1/style", "engine1/style.mod", "forms"),
     ); 
     require "$base_path$statics_path/components/head.php"; 
 ?>
@@ -63,9 +63,10 @@
         <!-- Scripts necesarios para Wow Slider -->
         <script type="text/javascript" src="<?php echo "$statics_path"; ?>/wow/engine1/wowslider.js"></script>
         <script type="text/javascript" src="<?php echo "$statics_path"; ?>/wow/engine1/script.js"></script>
-        <script type="text/javascript" src="<?php echo "$statics_path"; ?>/js/datos_vuelo.js"></script>
+        <script type="text/javascript" src="<?php echo "$statics_path"; ?>/wow/engine1/wowslider.mod.js"></script>
         <!-- [END] Scripts necesarios para Wow Slider -->
-
+        
+        <script type="text/javascript" src="<?php echo "$statics_path"; ?>/js/datos_vuelo.js"></script>
     </body>
 
 </html>
