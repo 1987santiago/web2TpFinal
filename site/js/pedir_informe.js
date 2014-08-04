@@ -25,7 +25,22 @@ function fechaInicialValida()
         }
         else
         {
+<<<<<<< HEAD
             return (true);
+=======
+            var dHoy = new Date();
+            // se formatea la fecha de dd/mm/aaaa a aaaa-mm-dd
+            var fechaInicialFormateada = formatearFecha(fechaInicial);
+            var dFechaInicial = new Date(fechaInicialFormateada);
+            if (dFechaInicial <= dHoy)
+            {
+                alert("Error en fecha inicial: debe ser posterior a la fecha de hoy");
+                document.getElementById("fechaInicial").focus();
+                return (false);
+            }
+            else
+                return (true);
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
         }
     }
 }

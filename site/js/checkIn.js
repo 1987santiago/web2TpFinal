@@ -3,16 +3,21 @@
  */
 
 var form = document.querySelector('#checkIn form');
+<<<<<<< HEAD
     reservationCode = form.reservationCode;
+=======
+var reservationCode = form.reservationCode;
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
 
-reservationCode.onchange = function(event) {
+reservationCode.onchange = function(event) 
+    {
 
     // datos que le pasamos al achivo que valida el codigo
     var data = {
             reservationCode : reservationCode.value
         },
         
-        // parametros que necesitamos para hacerl el request por ajax
+        // parametros que necesitamos para hacer el request por ajax
         params = {
             data : data,
             url : STATICS_PATH + "/processors/validateReservationStatus.php",

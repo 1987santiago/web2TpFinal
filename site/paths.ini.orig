@@ -1,0 +1,18 @@
+; ========================================================
+; Paths.ini
+; En este archivo se configuran las rutas de la aplicacion
+; ========================================================
+
+; guardamos la url de los recursos estaticos
+<<<<<<< HEAD
+base_path = "/xampp/htdocs"
+statics_path = "/web2TpFinal/site"
+; guardamos la ruta para ejecutar los php
+; ****** INCLUIR EN PATHS.INI MERGEADO LA SENTENCIA DE ABAJO  *******
+http_path = "http://localhost:80/web2TpFinal/site"
+=======
+statics_path   = "/unlam/web2/tpFinal/web2TpFinal/site"
+base_path = "/Applications/XAMPP/xamppfiles/htdocs"
+; guardamos la url base del server
+server_root = "http://localhost" 
+>>>>>>> master

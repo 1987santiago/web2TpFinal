@@ -1,5 +1,4 @@
 <?php
-    session_start();
     // guardamos la url de los recursos estaticos
     $base_path = $_SESSION["base_path"];
     $statics_path = $_SESSION["statics_path"];
@@ -74,7 +73,11 @@
                 else
                 {
                     $errorNoHayVuelosParaLaFecha = "No hay vuelos entre " . $ciudadOrigen . " y " . $ciudadDestino . " para la fecha " . $fechaPartida;
+<<<<<<< HEAD
                     $anterior = "$server_root$statics_path/sections/home.php";
+=======
+                    $anterior = "$server_root$statics_path/components/datos_vuelo.php";
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
                     $error = "$server_root$statics_path/components/error.php";
                     header("Location: ". $error . "?mensaje=$errorNoHayVuelosParaLaFecha&anterior=$anterior");
                 }
@@ -102,7 +105,11 @@
 
                     {
                         $errorNoHayVuelosParaLaFecha = "No hay vuelos entre " . $ciudadDestino . " y " . $ciudadOrigen . " para la fecha " . $fechaRegreso;
+<<<<<<< HEAD
                         $anterior = "$server_root$statics_path/sections/home.php";
+=======
+                        $anterior = "$server_root$statics_path/components/datos_vuelo.php";
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
                         $error = "$server_root$statics_path/components/error.php";
                         header("Location: ". $error . "?mensaje=$errorNoHayVuelosParaLaFecha&anterior=$anterior");
                     }
@@ -110,7 +117,11 @@
                 else
                 {
                     $errorNoHayVuelosParaLaFecha = "No hay vuelos entre " . $ciudadOrigen . " y " . $ciudadDestino . " para la fecha " . $fechaPartida;
+<<<<<<< HEAD
                     $anterior = "$server_root$statics_path/sections/home.php";
+=======
+                    $anterior = "$server_root$statics_path/components/datos_vuelo.php";
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
                     $error = "$server_root$statics_path/components/error.php";
                     header("Location: ". $error . "?mensaje=$errorNoHayVuelosParaLaFecha&anterior=$anterior");
                 }

@@ -21,7 +21,11 @@
 
     //Se define el grafico
     $grafico4 = new PieGraph(450,300);
+<<<<<<< HEAD
     $grafico4->img->SetAntiAliasing();
+=======
+    //$grafico4->img->SetAntiAliasing();
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
     
     //Definimos el titulo
     $titulo = "Reservas caidas por dia entre " . $fechaInicial . " y " . $fechaFinal; 
@@ -30,7 +34,11 @@
     //Añadimos el titulo y la leyenda
     $p1 = new PiePlot($datos);
     $p1->SetLegends($leyenda);
+<<<<<<< HEAD
     $p1->SetCenter(0.4);
+=======
+    //$p1->SetCenter(0.4);
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
  
     $grafico4->Add($p1);
     

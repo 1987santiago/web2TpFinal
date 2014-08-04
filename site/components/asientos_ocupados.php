@@ -78,8 +78,12 @@
 
     // Se define una serie
     $bp1 = new BarPlot($asientos);
+<<<<<<< HEAD
     $bp1->SetCenter(0.4);
     
+=======
+    //$bp1->SetCenter(0.4);
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
     // Se asigna la leyenda para la serie
     $bp1->SetLegend("Asientos ocupados");
 

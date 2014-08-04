@@ -53,7 +53,7 @@ INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SACC', '
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SACO', 'Aeropuerto Internacional Ingeniero Ambrosio Taravella', 'Cordoba', 'Cordoba');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SACP', 'Aeropuerto Chepes', 'Chepes', 'La Rioja');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SACT', 'Aeropuerto Gobernador Gordillo', 'Chamical', 'La Rioja');
-INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SADD', 'Aerodromo de Don TorcuatoÂ (Cerrado)', 'Don Torcuato', 'Buenos Aires');
+INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SADD', 'Aerodromo de Don Torcuato (Cerrado)', 'Don Torcuato', 'Buenos Aires');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SADF', 'Aeropuerto Internacional de San Fernando', 'San Fernando', 'Buenos Aires');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SADJ', 'Aeropuerto Mariano Moreno', 'Jose C. Paz', 'Buenos Aires');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SADL', 'Aeropuerto de La Plata', 'La Plata', 'Buenos Aires');
@@ -92,7 +92,7 @@ INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SARI', '
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SARL', 'Aeropuerto Internacional de Paso de los Libres', 'Paso de los Libres', 'Corrientes');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SARM', 'Aeropuerto de Monte Caseros', 'Monte Caseros', 'Corrientes');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SARP', 'Aeropuerto Internacional Libertador General Jose de San Martin', 'Posadas', 'Misiones');
-INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SASA', 'Aeropuerto de Presidencia Roque Saenz PeÃ±a', 'Presidencia Roque Saenz PeÃ±a', 'Chaco');
+INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SASA', 'Aeropuerto de Presidencia Roque Saenz Peña', 'Presidencia Roque Saenz Peña', 'Chaco');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SASJ', 'Aeropuerto Internacional Gobernador Horacio Guzman', 'Perico', 'Jujuy');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SASO', 'Aero Club Oran', 'San Ramon de la Nueva Oran', 'Salta');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAST', 'Aeropuerto de Tartagal', 'Tartagal', 'Salta');
@@ -110,7 +110,7 @@ INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAVR', '
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAVT', 'Aeropuerto Almirante Marco Andres Zar', 'Trelew', 'Chubut');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAVV', 'Aeropuerto Gobernador Edgardo Castello', 'Viedma', 'Rio Negro');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAVY', 'Aeropuerto El Tehuelche', 'Puerto Madryn', 'Chubut');
-INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAWA', 'Aeropuerto de Lago ArgentinoÂ (Cerrado)', 'El Calafate', 'Santa Cruz');
+INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAWA', 'Aeropuerto de Lago Argentino (Cerrado)', 'El Calafate', 'Santa Cruz');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAWC', 'Aeropuerto Comandante Armando Tola', 'El Calafate', 'Santa Cruz');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAWD', 'Aeropuerto Puerto Deseado', 'Puerto Deseado', 'Santa Cruz');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAWE', 'Aeropuerto Internacional Gob. Ramon Trejo Noel', 'Rio Grande', 'Tierra del Fuego');
@@ -130,7 +130,7 @@ INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAZH', '
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAZI', 'Aeropuerto de Bolivar', 'Bolivar', 'Buenos Aires');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAZL', 'Aeropuerto de Santa Teresita', 'Santa Teresita', 'Buenos Aires');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAZM', 'Aeropuerto Internacional Astor Piazolla', 'Mar del Plata', 'Buenos Aires');
-INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAZN', 'Aeropuerto Internacional Presidente PerÃ³n', 'Neuquen', 'Neuquen');
+INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAZN', 'Aeropuerto Internacional Presidente Perón', 'Neuquen', 'Neuquen');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAZO', 'Aeropuerto Edgardo Hugo Yelpo', 'Necochea', 'Buenos Aires');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAZP', 'Aeropuerto Comodoro P. Zanni', 'Pehuajo', 'Buenos Aires');
 INSERT INTO aeropuerto (codigo_oaci, nombre, ciudad, provincia) VALUES('SAZR', 'Aeropuerto de Santa Rosa', 'Santa Rosa', 'La Pampa');
@@ -408,8 +408,8 @@ INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(42, 'Malargue', 'Tartagal', 2197, 2702.31, 95, 'SAMM', 'SAST', 1);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(43, 'Mar del Plata', 'San Ramon de la Nueva Oran', 1358, 1670.34, 32, 'SAZM', 'SASO', 1);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(44, 'Mendoza', 'Perico', 895, 1100.85, 14, 'SAME', 'SASJ', 4);
-INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(45, 'Merlo', 'Presidencia Roque Saenz PeÃ±a', 847, 1041.81, 17, 'SAOS', 'SASA', 4);
-INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(46, 'Miramar', 'Presidencia Roque Saenz PeÃ±a', 2045, 2515.35, 85, 'SAEM', 'SASA', 2);
+INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(45, 'Merlo', 'Presidencia Roque Saenz Peña', 847, 1041.81, 17, 'SAOS', 'SASA', 4);
+INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(46, 'Miramar', 'Presidencia Roque Saenz Peña', 2045, 2515.35, 85, 'SAEM', 'SASA', 2);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(47, 'Monte Caseros', 'Posadas', 1109, 1364.07, 38, 'SARM', 'SARP', 3);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(48, 'Moron', 'Monte Caseros', 1763, 2168.49, 111, 'SADM', 'SARM', 2);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(49, 'Necochea', 'Paso de los Libres', 1665, 2047.95, 45, 'SAZO', 'SARL', 1);
@@ -426,7 +426,7 @@ INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(60, 'Puerto Madryn', 'Ceres', 870, 1070.1, 4, 'SAVY', 'SANW', 4);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(61, 'Puerto San Julian', 'San Juan', 2166, 2664.18, 8, 'SAWJ', 'SANU', 2);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(62, 'Puerto Santa Cruz', 'San Miguel de Tucuman', 1173, 1442.79, 66, 'SAWU', 'SANT', 3);
-INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(63, 'Presidencia Roque Saenz PeÃ±a', 'Termas de Rio Hondo', 2001, 2461.23, 95, 'SASA', 'SANR', 2);
+INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(63, 'Presidencia Roque Saenz Peña', 'Termas de Rio Hondo', 2001, 2461.23, 95, 'SASA', 'SANR', 2);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(64, 'Reconquista', 'Chilecito', 2217, 2726.91, 47, 'SATR', 'SANO', 1);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(65, 'Resistencia', 'La Rioja', 2334, 2870.82, 68, 'SARE', 'SANL', 1);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(66, 'Rio Cuarto', 'Santiago del Estero', 2014, 2477.22, 50, 'SAOC', 'SANE', 1);
@@ -434,7 +434,7 @@ INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(68, 'Rio Grande', 'San Rafael', 2269, 2790.87, 7, 'SAWE', 'SAMR', 1);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(69, 'Rio Turbio', 'Malargue', 2205, 2712.15, 90, 'SAWT', 'SAMM', 2);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(70, 'Rosario', 'Mendoza', 1097, 1349.31, 17, 'SAAR', 'SAME', 1);
-INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(71, 'Presidencia Roque Saenz PeÃ±a', 'General Alvear', 989, 1216.47, 19, 'SASA', 'SAMA', 1);
+INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(71, 'Presidencia Roque Saenz Peña', 'General Alvear', 989, 1216.47, 19, 'SASA', 'SAMA', 1);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(72, 'San Fernando', 'Zapala', 2357, 2899.11, 1, 'SADF', 'SAHZ', 3);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(73, 'San Fernando del Valle de Catamarca', 'General Roca', 1716, 2110.68, 74, 'SANC', 'SAHR', 4);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(74, 'San Juan', 'Caviahue', 1387, 1706.01, 61, 'SANU', 'SAHE', 4);
@@ -518,7 +518,7 @@ INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(152, 'Buenos Aires', 'Puerto Madryn', 952, 1170.96, 72, 'SABE', 'SAVY', 1);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(153, 'Buenos Aires', 'Puerto San Julian', 834, 1025.82, 48, 'SABE', 'SAWJ', 4);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(154, 'Buenos Aires', 'Puerto Santa Cruz', 2372, 2917.56, 33, 'SABE', 'SAWU', 3);
-INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(155, 'Buenos Aires', 'Presidencia Roque Saenz PeÃ±a', 1249, 1536.27, 88, 'SABE', 'SASA', 1);
+INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(155, 'Buenos Aires', 'Presidencia Roque Saenz Peña', 1249, 1536.27, 88, 'SABE', 'SASA', 1);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(156, 'Buenos Aires', 'Reconquista', 1951, 2399.73, 120, 'SABE', 'SATR', 2);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(157, 'Buenos Aires', 'Resistencia', 1767, 2173.41, 71, 'SABE', 'SARE', 3);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(158, 'Buenos Aires', 'Rio Cuarto', 918, 1129.14, 119, 'SABE', 'SAOC', 2);
@@ -526,7 +526,7 @@ INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(160, 'Buenos Aires', 'Rio Grande', 1437, 1767.51, 90, 'SABE', 'SAWE', 3);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(161, 'Buenos Aires', 'Rio Turbio', 1450, 1783.5, 99, 'SABE', 'SAWT', 4);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(162, 'Buenos Aires', 'Rosario', 933, 1147.59, 22, 'SABE', 'SAAR', 2);
-INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(163, 'Buenos Aires', 'Presidencia Roque Saenz PeÃ±a', 1140, 1402.2, 120, 'SABE', 'SASA', 1);
+INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(163, 'Buenos Aires', 'Presidencia Roque Saenz Peña', 1140, 1402.2, 120, 'SABE', 'SASA', 1);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(164, 'Buenos Aires', 'San Fernando', 2264, 2784.72, 85, 'SABE', 'SADF', 4);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(165, 'Buenos Aires', 'San Fernando del Valle de Catamarca', 2404, 2956.92, 57, 'SABE', 'SANC', 1);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(166, 'Buenos Aires', 'San Juan', 1166, 1434.18, 25, 'SABE', 'SANU', 1);
@@ -589,7 +589,7 @@ INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(223, 'Cordoba', 'Puerto Madryn', 2374, 2920.02, 125, 'SACO', 'SAVY', 4);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(224, 'Cordoba', 'Puerto San Julian', 2477, 3046.71, 91, 'SACO', 'SAWJ', 3);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(225, 'Cordoba', 'Puerto Santa Cruz', 1020, 1254.6, 123, 'SACO', 'SAWU', 2);
-INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(226, 'Cordoba', 'Presidencia Roque Saenz PeÃ±a', 1045, 1285.35, 40, 'SACO', 'SASA', 1);
+INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(226, 'Cordoba', 'Presidencia Roque Saenz Peña', 1045, 1285.35, 40, 'SACO', 'SASA', 1);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(227, 'Cordoba', 'Reconquista', 1484, 1825.32, 96, 'SACO', 'SATR', 3);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(228, 'Cordoba', 'Resistencia', 1846, 2270.58, 72, 'SACO', 'SARE', 3);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(229, 'Cordoba', 'Rio Cuarto', 2054, 2526.42, 43, 'SACO', 'SAOC', 2);
@@ -597,7 +597,7 @@ INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(231, 'Cordoba', 'Rio Grande', 1687, 2075.01, 38, 'SACO', 'SAWE', 4);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(232, 'Cordoba', 'Rio Turbio', 959, 1179.57, 103, 'SACO', 'SAWT', 2);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(233, 'Cordoba', 'Rosario', 1147, 1410.81, 50, 'SACO', 'SAAR', 4);
-INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(234, 'Cordoba', 'Presidencia Roque Saenz PeÃ±a', 2302, 2831.46, 57, 'SACO', 'SASA', 3);
+INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(234, 'Cordoba', 'Presidencia Roque Saenz Peña', 2302, 2831.46, 57, 'SACO', 'SASA', 3);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(235, 'Cordoba', 'San Fernando', 2399, 2950.77, 43, 'SACO', 'SADF', 3);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(236, 'Cordoba', 'San Fernando del Valle de Catamarca', 1572, 1933.56, 73, 'SACO', 'SANC', 2);
 INSERT INTO vuelo (numero_vuelo, origen, destino, tarifa_economy, tarifa_primera, dias_vuelo, oaci_origen, oaci_destino, codigo_avion) VALUES(237, 'Cordoba', 'San Juan', 1361, 1674.03, 51, 'SACO', 'SANU', 1);

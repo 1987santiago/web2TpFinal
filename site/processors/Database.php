@@ -12,7 +12,10 @@
         private $user;
         private $pass;
         private $connection;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
         private $response; // guarda la respuesta de la ultima query ejecutada
 
         public function Database() {
@@ -22,6 +25,10 @@
             $this->user = "root";
             $this->pass = "";
             $this->connect();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
         }
 
         /**
@@ -80,10 +87,17 @@
          */
         public function executeIDU($sql) {
 
+<<<<<<< HEAD
             $res = mysql_query($sql);
             $this->response = $res;
 
             if ($res) {
+=======
+            $response = mysql_query($sql);
+            $this->response = $response;
+
+            if ($response) {
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
                     return true;
             } else {
                     return false;
@@ -98,8 +112,13 @@
          */
         public function executeSelect($sql) {
 
+<<<<<<< HEAD
             $res = mysql_query($sql);
             $this->response = $res;
+=======
+            $response = mysql_query($sql);
+            $this->response = $response;
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
 
             return $this->resultToArray();
 
@@ -133,10 +152,10 @@
 
         // Acepta una transaccion
         public function commit() {
-        
+
             mysql_query("COMMIT");
             mysql_query("SET AUTOCOMMIT=1");
-        
+
         }
 
         // Vuelve al estado anterior en una transaccion
@@ -144,9 +163,13 @@
 
             mysql_query("ROLLBACK");
             mysql_query("SET AUTOCOMMIT=1");
-        
+
         }
+<<<<<<< HEAD
 	
     }
+=======
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
 
+    }
 ?>

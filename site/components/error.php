@@ -1,6 +1,9 @@
 <?php   
+<<<<<<< HEAD
     session_start();
     
+=======
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
     $mensaje = $_GET["mensaje"];
     $anterior = $_GET["anterior"];
     
@@ -10,6 +13,7 @@
     // se guarda la ruta al servidor
     $server_root = $_SESSION["server_root"];
     
+<<<<<<< HEAD
     // Si existen errores se guardan e informan
     $hasError = false;
 
@@ -65,5 +69,15 @@
         <?php require "$base_path$statics_path/components/footer.php"; ?>    
         
     </body>    
+=======
+    $_SESSION["resources"] = array(
+        "css"  => array("forms")
+    );   
+?>
+    <form>
+        <?php echo $mensaje;?>
+        <a href="<?php echo $anterior;?>" name="anterior"/>Anterior</a>
+    </form>
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
     
 

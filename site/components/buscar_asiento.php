@@ -1,6 +1,9 @@
 <?php
+<<<<<<< HEAD
     session_start();
     
+=======
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
     // guardamos la url de los recursos estaticos
     $base_path = $_SESSION["base_path"];
     $statics_path = $_SESSION["statics_path"];
@@ -44,7 +47,11 @@
             $totalAsientos = intval($asientos[0]["asientos"]);
             $reservasHechas = "SELECT count(*) as reservas
                                FROM reserva
+<<<<<<< HEAD
                                WHERE numero_vuelo = $vuelo and id_categoria = $categoria and (estado = 0 or estado = 1)";
+=======
+                               WHERE numero_vuelo = $vuelo and id_categoria = $categoria and estado = 0";
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
             $reservas = $skynet->executeSelect($reservasHechas);
             $totalReservas = intval($reservas[0]["reservas"]);
 

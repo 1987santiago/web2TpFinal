@@ -20,9 +20,15 @@
 		</div>
 		<div class="ws_bullets">
 			<div>
+<<<<<<< HEAD
 				<a href="#" title="Valle Lunar"><img src="<?php echo "$statics_path"; ?>/wow/data1/tooltips/valle_lunar_san_juan.jpg" alt="Valle Lunar"/>1</a>
 				<a href="#" title="Peninsula de Valdes"><img src="<?php echo "$statics_path"; ?>/wow/data1/tooltips/peninsulavaldes.jpg" alt="Peninsula de Valdes"/>2</a>
 				<a href="#" title="Puente del Inca "><img src="<?php echo "$statics_path"; ?>/wow/data1/tooltips/puente_del_incamendoza.jpg" alt="Puente del Inca"/>3</a>
+=======
+				<a href="#" title="Valle Lunar"><img src="<?php echo "$statics_path"; ?>/wow/data1/tooltips/valle_lunar_san_juan.jpg" alt="Valle Lunar "/>1</a>
+				<a href="#" title="Peninsula de Valdes"><img src="<?php echo "$statics_path"; ?>/wow/data1/tooltips/peninsulavaldes.jpg" alt="Peninsula de Valdes"/>2</a>
+				<a href="#" title="Puente del Inca "><img src="<?php echo "$statics_path"; ?>/wow/data1/tooltips/puente_del_incamendoza.jpg" alt="Puente del Inca "/>3</a>
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
 				<a href="#" title="Jujuy"><img src="<?php echo "$statics_path"; ?>/wow/data1/tooltips/jujuy.jpg" alt="Jujuy"/>4</a>
 				<a href="#" title="Payunia"><img src="<?php echo "$statics_path"; ?>/wow/data1/tooltips/payuniamendoza.jpg" alt="Payunia"/>5</a>
 			</div>

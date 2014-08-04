@@ -1,5 +1,8 @@
 <?php 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
     // guardamos la url de los recursos estaticos
     $base_path = $_SESSION["base_path"];
     $statics_path = $_SESSION["statics_path"];
@@ -14,8 +17,13 @@
 
     
     <form class="data-form datos-vuelo" method="post" action="<?php echo "$server_root$statics_path"; ?>/components/buscar_vuelo.php" onsubmit="return validarDatosVuelo()">
+<<<<<<< HEAD
         <legend>Consultar vuelo</legend>
         <fieldset>
+=======
+        <fieldset>
+            <legend>Consultar vuelo</legend>
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
             <div>
                 <label for="ciudadOrigen">Ciudad origen</label>
                 <select id="ciudadOrigen" name="ciudadOrigen" required="required">

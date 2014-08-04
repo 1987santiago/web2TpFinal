@@ -29,13 +29,13 @@
 
             <main role="main"><!-- ex: center -->
 
-                <!-- se incluye la barra lateral de navegación -->
+                <!-- se incluye la barra lateral de navegacion -->
                 <?php require "$base_path$statics_path/components/navLateral.php"; ?>
 
                 <!-- se incluye el formulario de busqueda de vuelos disponibles para reservar -->
                 <div class="col left-col">
                     <?php
-                        // Si hay un erro lo imprimimos en la página
+                        // Si hay un error lo imprimimos en la pagina
                         if ($hasError) { 
                             echo "<div class='box box-error'>$errorMsg</div>";
                             // Una vez mostrado el error, reseteamos la variable

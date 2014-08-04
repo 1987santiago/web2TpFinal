@@ -2,11 +2,11 @@
     session_start();
 
     /*
-     * en este archivo se el cliente ingresa un código de reserva, 
+     * en este archivo se el cliente ingresa un codigo de reserva, 
      * el mismo se valida con la base de datos
-     * una vez checkeado el código se sigue el siguiente flujo:
+     * una vez checkeado el codigo se sigue el siguiente flujo:
      *      A - VALIDA: se habilita el boton submit que lleva a elegir el asiento (seatSelection.php)
-     *      B - NO VALIDA: se notifica visualmente que el código es inválido y no se habilita el boton
+     *      B - NO VALIDA: se notifica visualmente que el codigo es invalido y no se habilita el boton
      */
 
     // guardamos la url de los recursos estaticos
