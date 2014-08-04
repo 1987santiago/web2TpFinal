@@ -30,7 +30,13 @@
 
             <main role="main"><!-- ex: center -->
 
-                <form class="data-form login" action="<?php echo "$statics_path/sections/home.php" ?>" method="post">
+                <?php if($hasError) { ?>
+                    <div class="box box-error"><?php echo $errorMsg; ?></div>
+                <?php 
+                    }  
+                    $_SESSION['error'] = null;
+                ?>
+                <form class="data-form login" action="<?php echo "$statics_path/processors/authUser.php" ?>" method="post">
 
                     <div>
                         <label for="adminName">Usuario: </label>
@@ -38,7 +44,7 @@
                     </div>
                     <div>
                         <label for="adminPass">Contraseña: </label>
-                        <input id="adminPass" type="password" />
+                        <input id="adminPass" name="adminPass" type="password" />
                     </div>
                     <input value="Ingresar" type="submit" />
 

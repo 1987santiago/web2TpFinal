@@ -20,7 +20,7 @@
 
     // se incluye el inicio del html <!doctype html>...</head>
     $_SESSION["resources"] = array(
-        "css"  => array("datosVuelo", "wowSlider", "engine1/style")
+        "css"  => array("engine1/style")
     ); 
     require_once "$base_path$statics_path/components/head.php"; 
 ?>

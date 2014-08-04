@@ -35,7 +35,6 @@
         <!-- CSS -->
         <link href="<?php echo $statics_path; ?>/css/reset.css" type="text/css" rel="stylesheet">
         <link href="<?php echo $statics_path; ?>/css/global.css" type="text/css" rel="stylesheet">
-        <link href="<?php echo $statics_path; ?>/css/styles.css" type="text/css" rel="stylesheet">
         <link href="<?php echo $statics_path; ?>/css/jquery-ui.css" type="text/css" rel="stylesheet"/>
                     
         <?php 

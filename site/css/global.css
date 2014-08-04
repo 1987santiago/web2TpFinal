@@ -304,6 +304,7 @@ textarea {
     border: 1px solid #999;
     border-radius: 4px;
     color: #000;
+    line-height: 1.4em;
     padding: 0 .5em;
 }
 
@@ -313,4 +314,18 @@ textarea {
 .pago{
   margin-top: 2%;
   border-top: 1px solid #CF3131;
+}
+
+/* Tables 
+--------------------------------------------------*/
+table {}
+td, th {
+    border: 1px solid #EDEDED;
+    padding: 0 1em;
+}
+th {
+    font-weight: bold;
+}
+td {
+    text-align: right;
 }

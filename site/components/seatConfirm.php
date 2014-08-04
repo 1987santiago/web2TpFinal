@@ -128,13 +128,14 @@
                         <dd><?php echo $save_seat_data['columna']; ?></dd>
                     </dl>
 
-                    <p><a id="saveSeat" href='../processors/saveSeat.php'>Confirmar y reservar asiento</a></p>
-                    <p><a id="changeSeatBtn" href='seatSelection.php'>Cambiar asiento</a></p>
+                    <p><a class="link-button" id="saveSeat" href='<?php echo "$statics_path/processors/saveSeat.php"; ?>'>Confirmar y reservar asiento</a></p>
+                    <p><a class="link-button" id="changeSeatBtn" href='<?php echo "$statics_path/components/seatSelection.php"; ?>'>Cambiar asiento</a></p>
 
-                    <form action="seatSelectionCancel.php" method="post">
+                    <p><a id="cancelSeatBtn" href='<?php echo "$statics_path/components/seatSelectionCancel.php"; ?>'>Cancelar</a></p>
+<!--                     <form action="seatSelectionCancel.php" method="post">
                         <input type="submit" value="Cancelar" />
                     </form>
-
+ -->
                     <div id="boardingPass"></div>
 
                 </section>
@@ -185,7 +186,7 @@
                             '<div class="box box-success">' +
                             '<h3>Reserva Existosa</h3>' +
                             '<p>Ahora puede imprimir su boleto clickeando en este botón: ' + 
-                            '<a class="link-button" href="' + printBoardingPassUrl + '">Imprimir Boleto</a></p>' + 
+                            '<a href="' + printBoardingPassUrl + '">Imprimir Boleto</a></p>' + 
                             '</div>';
 
                     } else {

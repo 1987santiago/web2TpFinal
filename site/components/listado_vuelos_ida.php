@@ -41,11 +41,10 @@
                                 <th>Vuelo seleccionado</th>
                             </tr>
                             <?php 
-                                
                                 if (isset($_SESSION["vuelosIda"])) {
 
                                     $vuelos = $_SESSION["vuelosIda"];
-                                    
+                                        
                                     echo "<tr>";
 
                                     foreach ($vuelos as $vuelo) {
@@ -61,6 +60,8 @@
                                         }
                                         if ($vuelo["asientos_primera"] > 0) {
                                             echo "<td><input type='radio' name='categoria' value='100'/>" . $vuelo["tarifa_primera"] . "</td>"; 
+                                        } else {
+                                            echo "<td>-</td>"; 
                                         }
                                         echo "<td><input type='radio' name='vuelo' value='$idVueloSeleccionado'/></td>";
                                     } 
@@ -71,7 +72,7 @@
                             ?>
                         </table> 
 
-                        <a href="datos_vuelo.php" name="anterior">Anterior</a>
+                        <a href="<?php echo "$statics_path/sections/home.php"; ?>" name="anterior">Anterior</a>
                         <input type="submit" name="siguiente" value="Siguiente"/>
 
                     </form>

@@ -9,7 +9,7 @@ var skynet = window.skynet || {};
 skynet.navigation = skynet.navigation || function() {
     'use strict';
 
-    var navigation = skynet.navigation || {};
+    var navigation = skynet.navigation || {};
 
     // save <a> elements
     var links = document.getElementsByTagName('a'),

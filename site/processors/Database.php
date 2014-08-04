@@ -116,10 +116,15 @@
             $lista = array();
             $i = 0;
 
-            while ($fila = mysql_fetch_assoc($this->response)) {
-                $lista[$i] = $fila;
-                $i = $i + 1;
-            }
+			if($this->response) {
+
+	            while ($fila = mysql_fetch_assoc($this->response)) {
+	                $lista[$i] = $fila;
+	                $i = $i + 1;
+	            }
+
+			}
+
             return $lista;
 		
 		}
