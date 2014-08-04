@@ -93,24 +93,19 @@
             
             if ($asientosLibresIda > 0) {
             
-                $reservaIdaEnEspera = false;
+                $estadoReservaIda = 0;
                 $reservaIdaPermitida = true;
             
+            } else if ($reservasEsperaIda < EXCEDENTE) {
+
+                    $estadoReservaIda = -1; 
+                    $reservaIdaPermitida = true;
+
             } else {
                 
-                if ($reservasEsperaIda < EXCEDENTE) {
-
-                    $reservaIdaEnEspera = true; 
-                    $reservaIdaPermitida = true;
-                
-                } else {
-                
-                    if ($reservasEsperaIda < EXCEDENTE) {
-                        $estadoReservaIda = -1; 
-                        $reservaIdaPermitida = true;
-                    }
-
-                }
+                $_SESSION['error'] = 'No hay asientos disponibles para el vuelo seleccionado';
+                header("Location: $server_root$statics_path/sections/home.php");
+            
             }
                 
             if ($reservaIdaPermitida) {
@@ -144,24 +139,19 @@
             
             if ($asientosLibresIda > 0) {
             
-                $reservaIdaEnEspera = false;
+                $estadoReservaIda = 0;
                 $reservaIdaPermitida = true;
             
-            } else {
+            } else if ($reservasEsperaIda < EXCEDENTE) {
 
-                if ($reservasEsperaIda < EXCEDENTE) {
-
-                    $reservaIdaEnEspera = true;
+                    $estadoReservaIda = -1;
                     $reservaIdaPermitida = true;
                 
-                } else {
-                    
-                    if ($reservasEsperaIda < EXCEDENTE) {
-                        $estadoReservaIda = -1;
-                        $reservaIdaPermitida = true;
-                    }
-
-                }
+            } else {
+                
+                $_SESSION['error'] = 'No hay asientos disponibles para el vuelo seleccionado';
+                header("Location: $server_root$statics_path/sections/home.php");
+            
             }
                 
             // vuelo regreso
@@ -178,13 +168,16 @@
                 $estadoReservaRegreso = 0;
                 $reservaRegresoPermitida = true;
             
-            } else {
-                
-                if ($reservasEsperaRegreso < EXCEDENTE) {
+            } else if ($reservasEsperaRegreso < EXCEDENTE) {
+
                     $estadoReservaRegreso = -1;
                     $reservaRegresoPermitida = true;
-                }
 
+            } else {
+                
+                $_SESSION['error'] = 'No hay asientos disponibles para el vuelo seleccionado';
+                header("Location: $server_root$statics_path/sections/home.php");
+            
             }
             
             if ($reservaIdaPermitida && $reservaRegresoPermitida) {

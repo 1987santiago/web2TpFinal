@@ -17,7 +17,7 @@
     
      // se incluye el inicio del html <!doctype html>...</head>
     $_SESSION["resources"] = array(
-        "css"  => array("datosVuelo", "offExclusiv", "pagoSinInt", "forms")
+        "css"  => array("forms")
     );
     
     require "$base_path$statics_path/components/head.php";

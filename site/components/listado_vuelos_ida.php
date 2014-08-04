@@ -18,7 +18,7 @@
     
     // se incluye el inicio del html <!doctype html>...</head>
     $_SESSION["resources"] = array(
-        "css"  => array("datosVuelo", "offExclusiv", "pagoSinInt", "forms"),
+        "css"  => array("forms"),
         "js" => array("listado_vuelos_ida")
     ); 
  
@@ -85,9 +85,6 @@
                                         } else {
                                             echo "<td>-</td>"; 
                                         }
-                                        else {
-                                            echo "<td></td>";
-                                        } 
                                         echo "<td><input type='radio' name='vuelo' value='$idVueloSeleccionado'/></td>";
                                     } 
 

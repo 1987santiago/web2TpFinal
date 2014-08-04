@@ -25,7 +25,7 @@
 
                     <h2 class="reserva">Abona tu pasaje</h2>
 
-                    <form data-component="pay" class="data-form" action ="<?php echo "$statics_path/sections/confirmaPago.php"; ?>" method="post">
+                    <form data-component="pay" action ="<?php echo "$statics_path/sections/confirmaPago.php"; ?>" method="post">
 
                         <label>Ingresa tu codigo de reserva: </label>
                         <!-- <input type="text" name="codReserva" id="codReserva" /> -->
@@ -37,6 +37,10 @@
                 </section>
 
             </main>
+
+            <?php include "$base_path$statics_path/components/offExclusiv.php"; ?>
+     
+            <?php require "$base_path$statics_path/components/pagoSinInt.php"; ?>
         
         </div><!-- [END] wrapper -->
 

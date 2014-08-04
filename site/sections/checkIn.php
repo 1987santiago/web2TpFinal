@@ -59,6 +59,10 @@
 
             </main><!-- [end] main -->
 
+            <?php include "$base_path$statics_path/components/offExclusiv.php"; ?>
+     
+            <?php require "$base_path$statics_path/components/pagoSinInt.php"; ?>
+
         </div><!-- [end] wrapper -->
 
         <!-- se incluye el <footer> -->

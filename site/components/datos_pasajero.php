@@ -10,19 +10,22 @@
     // Si existen errores se guardan e informan
     $hasError = false;
 
-    $reservaIdaEnEspera = (isset($_SESSION["reservaIdaEnEspera"])? $_SESSION["reservaIdaEnEspera"] : false );
-    $reservaRegresoEnEspera = (isset($_SESSION["reservaRegresoEnEspera"])? $_SESSION["reservaRegresoEnEspera"] : false );
+    $estadoReservaIda = (isset($_SESSION["estadoReservaIda"])? $_SESSION["estadoReservaIda"] : false );
+    $estadoReservaRegreso = (isset($_SESSION["estadoReservaRegreso"])? $_SESSION["estadoReservaRegreso"] : false );
     $msg = '';
 
-    if ($reservaIdaEnEspera) {
-        $_SESSION["codigoReservaIdaEnEspera"] = -1;
+    if ($estadoReservaIda) {
+        $_SESSION["codigoestadoReservaIda"] = -1;
         $msg .= '<p>Su reserva para el vuelo de ida se encuentra "en espera", podrá hacer el check-in únicamente si se desocupa un asiento 24hs antes de la partida del vuelo.</p></p>En dicho caso usted recibirá un mail notificando dicha oportunidad.</p>';
     } 
-    if ($reservaRegresoEnEspera) {
-        $_SESSION["codigoReservaRegresoEnEspera"] = -1;
+    if ($estadoReservaRegreso) {
+        $_SESSION["codigoestadoReservaRegreso"] = -1;
         $msg .= '<p>Su reserva para el vuelo de regreso se encuentra "en espera", podrá hacer el check-in únicamente si se desocupa un asiento 24hs antes de la partida del vuelo.</p></p>En dicho caso usted recibirá un mail notificando dicha oportunidad.</p>';
     }
 
+    $_SESSION["resources"] = array(
+        "js" => array("datos_pasajero")
+    ); 
     require "$base_path$statics_path/components/head.php"; 
 ?>
     <body>
@@ -41,7 +44,7 @@
                 <div class="col">
                     <?php
                         // Si una de las reservas está en espera se notifica al usuario
-                        if ($reservaIdaEnEspera || $reservaIdaEnEspera) { 
+                        if ($estadoReservaIda || $estadoReservaRegreso) { 
                             echo "<div class='box box-info'>$msg</div>";
                         }
                     ?>
@@ -81,14 +84,18 @@
                         </fieldset>
 
                         <?php 
-                            $tipoDeViaje=$_SESSION["tipoDeViaje"];
+                            $tipoDeViaje = $_SESSION["tipoDeViaje"];
+                            
                             if ($tipoDeViaje == 1) { 
+                            
                                 $anterior = "$server_root$statics_path/components/listado_vuelos_ida.php";
                                 echo "<a href=$anterior name='anterior'>Anterior</a>";
-                            }
-                            else {
+                            
+                            } else {
+                            
                                 $anterior = "$server_root$statics_path/components/listado_vuelos_ida_regreso.php";
                                 echo "<a href=$anterior name='anterior'>Anterior</a>";
+                            
                             }    
                         ?> 
                         <input type="submit" name="siguiente" value="Siguiente"/>
@@ -108,11 +115,12 @@
         
         <script type="text/javascript">
            $(function() {
-            $("#fechaNac").datepicker({
-            showOn: "button",
-            buttonImage: "../images/calendar.gif",
-            buttonImageOnly: true,
-            firstDay: 0
+                $("#fechaNac").datepicker({
+                showOn: "button",
+                buttonImage: "../images/calendar.gif",
+                buttonImageOnly: true,
+                firstDay: 0
+                });
             });
         </script>
     </body>
