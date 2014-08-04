@@ -222,7 +222,7 @@
         $seconds = strtotime($starting_date) - strtotime($current_date);
         $hours_remaining = $seconds / 60 / 60;
 
-        return ($hours_remaining <= 24);
+        return ($hours_remaining <= 24 && $hours_remaining >= 0);
 
     }
 
@@ -351,7 +351,7 @@
                             <form action="<?php echo "$statics_path/processors/disableReservation.php"; ?>" method="post">
                                 <fieldset>
                                     <legend>Reservas sin pagar <span><?php echo count($reservations_status['reservations_unpaid']); ?></span></legend>
-                                    <?php printData($reservations_status['reservations_unpaid'], true); ?>
+                                    <?php printData($reservations_status['reservations_unpaid'], $enable_standby_reserves); ?>
                                     <div><input type="submit" value="Dar de baja"></div>
                                 </fieldset>
                             </form>
