@@ -3,11 +3,9 @@
  */
 
 var form = document.querySelector('#checkIn form');
-<<<<<<< HEAD
-    reservationCode = form.reservationCode;
-=======
+
 var reservationCode = form.reservationCode;
->>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
+
 
 reservationCode.onchange = function(event) 
     {

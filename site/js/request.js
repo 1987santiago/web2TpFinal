@@ -7,11 +7,8 @@
 (function(window, $) {
     'use strict';
 
-<<<<<<< HEAD
-    var request = skynet.request || {}; 
-=======
     var request = skynet.request || {}; 
->>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
+
 
 
     /**

@@ -18,7 +18,6 @@
     
     switch ($informe) {
         case 1: 
-<<<<<<< HEAD
                 // se guarda el nombre del pdf
                 $_SESSION["pdf"] = "pasajes_vendidos.pdf";
                 $_SESSION["php"] = "pasajes_vendidos.php";
@@ -41,21 +40,6 @@
                 $_SESSION["pdf"] = "reservas_caidas.pdf";
                 $_SESSION["php"] = "reservas_caidas.php";
                 header("Location: " . "$server_root$statics_path/components/mostrar_informe.php");
-=======
-                header("Location: " . "$server_root$statics_path/components/mostrar_pasajes_vendidos.php");
-                break;
-
-        case 2: 
-                header("Location: " . "$server_root$statics_path/components/mostrar_pasajes_vendidos_categoria.php");
-                break;
-            
-        case 3: 
-                header("Location: " . "$server_root$statics_path/components/mostrar_asientos_ocupados.php");
-                break;
-        
-        case 4: 
-                header("Location: " . "$server_root$statics_path/components/mostrar_reservas_caidas.php");
->>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
                 break;
     }
 ?>  

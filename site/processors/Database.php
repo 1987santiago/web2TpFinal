@@ -12,10 +12,6 @@
         private $user;
         private $pass;
         private $connection;
-<<<<<<< HEAD
-
-=======
->>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
         private $response; // guarda la respuesta de la ultima query ejecutada
 
         public function Database() {
@@ -25,10 +21,7 @@
             $this->user = "root";
             $this->pass = "";
             $this->connect();
-<<<<<<< HEAD
-=======
 
->>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
         }
 
         /**
@@ -87,20 +80,13 @@
          */
         public function executeIDU($sql) {
 
-<<<<<<< HEAD
             $res = mysql_query($sql);
             $this->response = $res;
 
             if ($res) {
-=======
-            $response = mysql_query($sql);
-            $this->response = $response;
-
-            if ($response) {
->>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
-                    return true;
+                return true;
             } else {
-                    return false;
+                return false;
             }
 
         }
@@ -112,15 +98,10 @@
          */
         public function executeSelect($sql) {
 
-<<<<<<< HEAD
             $res = mysql_query($sql);
             $this->response = $res;
-=======
-            $response = mysql_query($sql);
-            $this->response = $response;
->>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
 
-            return $this->resultToArray();
+            return $this->resultToArray($res);
 
         }
 
@@ -129,12 +110,12 @@
          * y obtiene un Array associativo
          * @return Associative Array()
          */
-        private function resultToArray() {
+        private function resultToArray($res) {
 
             $lista = array();
             $i = 0;
 
-            while ($fila = mysql_fetch_assoc($this->response)) {
+            while ($fila = mysql_fetch_assoc($res)) {
                 $lista[$i] = $fila;
                 $i = $i + 1;
             }
@@ -165,11 +146,5 @@
             mysql_query("SET AUTOCOMMIT=1");
 
         }
-<<<<<<< HEAD
-	
-    }
-=======
->>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
-
     }
 ?>

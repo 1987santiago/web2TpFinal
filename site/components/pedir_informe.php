@@ -1,8 +1,4 @@
 <?php
-<<<<<<< HEAD
-=======
-    session_start();
->>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
     // guardamos la url de los recursos estaticos
     $base_path = $_SESSION["base_path"];
     $statics_path = $_SESSION["statics_path"];
@@ -11,24 +7,13 @@
     
     $_SESSION["resources"] = array(
         "css"  => array("forms"),
-<<<<<<< HEAD
-    );
-?>
-
-  
-    <form method="post" action="<?php echo "$server_root$statics_path/components/procesar_informe.php"; ?>" onsubmit="return validarFechas()" class="data-form">
-        <legend>Informes</legend>
-        <fieldset>    
-=======
         "js" => array("pedir_informe")
     );
-
 ?>
     
     <form method="post" action="<?php echo "$server_root$statics_path/components/procesar_informe.php"; ?>" onsubmit="return validarFechas()" class="data-form">
         <fieldset>
             <legend>Informes</legend>
->>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
             <div>
                 <label for="fechaInicial">Fecha inicial [dd/mm/aaaa]</label>
                 <!-- Aqui se enlaza el datepicker al cuadro de texto -->
