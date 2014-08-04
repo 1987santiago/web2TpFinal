@@ -1,8 +1,14 @@
  <?php
     session_start();
+
+    // guardamos la url de los recursos estaticos
+    $base_path = $_SESSION["base_path"];
+    $statics_path = $_SESSION["statics_path"];
+    // se guarda la ruta al servidor
+    $server_root = $_SESSION["server_root"];
     
-    require_once '../processors/Database.php';
-    require_once 'library.php';
+    require_once "$base_path$statics_path/processors/Database.php";
+    require_once "$base_path$statics_path/components/library.php";
     	
     function getMonto($numeroVuelo, $categoria) 
     {
@@ -24,7 +30,7 @@
         }
         return $monto;
     }
-	
+  
     // Se prepara el pasajero a guardar
     $dni = $_POST["dni"];
     $apellido = $_POST["apellido"];
@@ -81,16 +87,18 @@
                         {
                             $skynet->executeIDU($insertPasajero);
                         }
-                        $skynet->executeIDU($insertReserva);
+                        $skynet->executeIDU($insertReservaIda);
                         $skynet->commit();
-                        header("Location: mostrar_codigo_reserva.php");
+                        $siguiente = "$server_root$statics_path/components/mostrar_codigo_reserva.php";
+                        header("Location: " . $siguiente);
                     } 
                     catch (Exception $e) 
                     {
                         $skynet->rollBack();
                         $errorInsercion = $e->getMessage();
-                        $anterior="datos_pasajero.php";
-                        header("Location: error.php?mensaje=$errorInsercion&anterior=$anterior");
+                        $anterior = "$server_root$statics_path/components/datos_pasajero.php";
+                        $error = "$server_root$statics_path/components/error.php";
+                        header("Location: " . $error. "?mensaje=$errorInsercion&anterior=$anterior");
                     }
                     break;
             case 2: // Viaje ida y vuelta
@@ -100,7 +108,7 @@
                     /* Se prepara el registro de la reserva a guardar*/
                     $codigoReservaIda = getCodigoUnicoReserva();
                     $datFechaReservaIda = new DateTime("", new DateTimeZone("America/Buenos_Aires"));
-                    $fechaReservaIda=$datFechaReservaIda->format('Y-m-d H:i:s');
+                    $fechaReservaIda = $datFechaReservaIda->format('Y-m-d H:i:s');
                     $datFechaPartida = new DateTime(getFechaFormateada($_SESSION["fechaPartida"]) . " 8:00:00", new DateTimeZone("America/Buenos_Aires"));
                     $fechaPartida=$datFechaPartida->format('Y-m-d H:i:s');
                     $codigoReservaIdaEnEspera = $_SESSION["codigoReservaIdaEnEspera"];
@@ -111,7 +119,7 @@
                     /* Se prepara el registro de la reserva de regreso a guardar*/
                     $codigoReservaRegreso = getCodigoUnicoReserva();
                     $datFechaReservaRegreso = new DateTime("", new DateTimeZone("America/Buenos_Aires"));
-                    $fechaReservaRegreso=$datFechaReservaRegreso->format('Y-m-d H:i:s');
+                    $fechaReservaRegreso = $datFechaReservaRegreso->format('Y-m-d H:i:s');
                     $datFechaRegreso = new DateTime(getFechaFormateada($_SESSION["fechaRegreso"]) . " 8:00:00", new DateTimeZone("America/Buenos_Aires"));
                     $fechaRegreso=$datFechaRegreso->format('Y-m-d H:i:s');
                     $codigoReservaRegresoEnEspera = $_SESSION["codigoReservaRegresoEnEspera"];
@@ -134,14 +142,16 @@
                         $skynet->executeIDU($insertReservaIda);
                         $skynet->executeIDU($insertReservaRegreso);
                         $skynet->commit();
-                        header("Location: mostrar_codigo_reserva.php");
+                        $siguiente = "$server_root$statics_path/components/mostrar_codigo_reserva.php";
+                        header("Location: " . $siguiente);
                     } 
                     catch (Exception $e) 
                     {
                         $skynet->rollBack();
                         $errorInsercion = $e->getMessage();
-                        $anterior="datos_pasajero.php";
-                        header("Location: error.php?mensaje=$errorInsercion&anterior=$anterior");
+                        $anterior = "$server_root$statics_path/components/datos_pasajero.php";
+                        $error = "$server_root$statics_path/components/error.php";
+                        header("Location: " . $error. "?mensaje=$errorInsercion&anterior=$anterior");
                     }
                     break;
         }

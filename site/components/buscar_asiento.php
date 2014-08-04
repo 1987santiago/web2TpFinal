@@ -1,6 +1,15 @@
 <?php
     session_start();
-    require_once '../processors/Database.php';
+    
+
+    // guardamos la url de los recursos estaticos
+    $base_path = $_SESSION["base_path"];
+    $statics_path = $_SESSION["statics_path"];
+    /// se guarda la ruta al servidor
+    $server_root = $_SESSION["server_root"];
+    
+    require_once "$base_path$statics_path/processors/Database.php";
+
     define("EXCEDENTE", 10); // constante
         
     function getAsientosLibres($vuelo, $categoria) 
@@ -14,22 +23,22 @@
             switch ($categoria) {
 
                 case 100:   // primera
-                    $asientosCategoria = 
-                    "SELECT asientos_primera as asientos FROM avion
-                    WHERE codigo_avion =  (
-                        SELECT codigo_avion  
-                        FROM vuelo 
-                        WHERE numero_vuelo = $vuelo)";
-                break;   
+                            $asientosCategoria =    "SELECT asientos_primera as asientos 
+                                                    FROM avion
+                                                    WHERE codigo_avion =  (
+                                                        SELECT codigo_avion  
+                                                        FROM vuelo 
+                                                        WHERE numero_vuelo = $vuelo)";
+                             break;   
                 
                 case 200:   // economy
-                    $asientosCategoria = 
-                    "SELECT asientos_economy as asientos FROM avion
-                    WHERE codigo_avion =  (
-                        SELECT codigo_avion  
-                        FROM vuelo 
-                        WHERE numero_vuelo = $vuelo)";
-                break;
+                            $asientosCategoria =    "SELECT asientos_economy as asientos 
+                                                    FROM avion
+                                                    WHERE codigo_avion =  (
+                                                        SELECT codigo_avion  
+                                                        FROM vuelo 
+                                                        WHERE numero_vuelo = $vuelo)";
+                            break;
             }
 
             $asientos = $skynet->executeSelect($asientosCategoria);
@@ -93,22 +102,33 @@
 
                     $reservaIdaEnEspera = true; 
                     $reservaIdaPermitida = true;
+                
+                } else {
+                
+                    if ($reservasEsperaIda < EXCEDENTE) {
+                        $estadoReservaIda = -1; 
+                        $reservaIdaPermitida = true;
+                    }
+
                 }
             }
-
+                
             if ($reservaIdaPermitida) {
 
-                header("Location: datos_pasajero.php");
-                $_SESSION["reservaIdaEnEspera"] = $reservaIdaEnEspera;
+                $siguiente = "$server_root$statics_path/components/datos_pasajero.php";
+                $_SESSION["estadoReservaIda"] = $estadoReservaIda;
+                header("Location: " . $siguiente);
             
-            } else {    
-            
-                $errorNoHayAsientos = "No hay asientos para el vuelo de ida entre " . $_SESSION["ciudadOrigen"] . 
-                                      " y " . $_SESSION["ciudadDestino"] . " en la categoria " . $_SESSION["categoriaIdaElegida"];
-                $anterior = "listado_vuelos_ida.php";
-                header("Location: error.php?mensaje=$errorNoHayAsientos&anterior=$anterior");
-            }
+            } else {
 
+                $errorNoHayAsientos = "No hay asientos para el vuelo de ida entre " 
+                                      . $_SESSION["ciudadOrigen"] . 
+                                      " y " . $_SESSION["ciudadDestino"] . " en la categoria " 
+                                      . $_SESSION["categoriaIdaElegida"];
+                $error = "$server_root$statics_path/components/error.php";
+                $anterior = "$server_root$statics_path/components/listado_vuelos_ida.php";
+                header("Location: " . $error . "?mensaje=$errorNoHayAsientos&anterior=$anterior");
+            }
             break;
 
         case 2: 
@@ -133,10 +153,17 @@
 
                     $reservaIdaEnEspera = true;
                     $reservaIdaPermitida = true;
+                
+                } else {
+                    
+                    if ($reservasEsperaIda < EXCEDENTE) {
+                        $estadoReservaIda = -1;
+                        $reservaIdaPermitida = true;
+                    }
 
                 }
             }
-
+                
             // vuelo regreso
             $categoriaRegreso = (int) $_POST["categoriaRegreso"];
             $vueloRegreso = (int) $_POST["vueloRegreso"];
@@ -147,45 +174,52 @@
             $reservaRegresoPermitida = false;
             
             if ($asientosLibresRegreso > 0) {
-
-                $reservaRegresoEnEspera = false;
+                
+                $estadoReservaRegreso = 0;
                 $reservaRegresoPermitida = true;
             
             } else {
                 
                 if ($reservasEsperaRegreso < EXCEDENTE) {
-
-                    $reservaRegresoEnEspera = true;
+                    $estadoReservaRegreso = -1;
                     $reservaRegresoPermitida = true;
-
                 }
-            }
 
+            }
+            
             if ($reservaIdaPermitida && $reservaRegresoPermitida) {
             
-                header("Location: datos_pasajero.php");
-                $_SESSION["reservaIdaEnEspera"] = $reservaIdaEnEspera;
-                $_SESSION["reservaRegresoEnEspera"] = $reservaRegresoEnEspera;
+                $_SESSION["estadoReservaIda"] = $estadoReservaIda;
+                $_SESSION["estadoReservaRegreso"] = $estadoReservaRegreso;
+                $siguiente = "$server_root$statics_path/components/datos_pasajero.php";
+                header("Location: ". $siguiente);
             
             } else { 
-
+                
                 if (!$reservaIdaPermitida) {
-            
+
                     $errorNoHayAsientos = "No hay asientos para el vuelo de ida entre " . $_SESSION["ciudadOrigen"] . 
                                           " y " . $_SESSION["ciudadDestino"] . " en la categoria " . $_SESSION["categoriaIdaElegida"];
-                    $anterior = "listado_vuelos_ida_regreso.php";
-                    header("Location: error.php?mensaje=$errorNoHayAsientos&anterior=$anterior");
-                    die();
+                    $error = "$server_root$statics_path/components/error.php";
+                    $anterior = "$server_root$statics_path/components/listado_vuelos_ida_regreso.php";
+                    header("Location: " . $error . "?mensaje=$errorNoHayAsientos&anterior=$anterior");
 
-                } if (!$reservaRegresoPermitida) {
-                    
+                    die();
+                
+                } 
+
+                if (!$reservaRegresoPermitida) {
+
                     $errorNoHayAsientosRegreso = "No hay asientos para el vuelo de regreso entre " . $_SESSION["ciudadDestino"] . 
                                                  " y " . $_SESSION["ciudadOrigen"] . " en la categoria " . $_SESSION["categoriaRegresoElegida"];
-                    $anterior = "listado_vuelos_ida_regreso.php";
-                    header("Location: error.php?mensaje=$errorNoHayAsientosRegreso&anterior=$anterior");
+
+                    $error = "$server_root$statics_path/components/error.php";
+                    $anterior = "$server_root$statics_path/components/listado_vuelos_ida_regreso.php";
+                    header("Location: " . $error . "?mensaje=$errorNoHayAsientosRegreso&anterior=$anterior");
                     die();
                 }
             } 
             break;    
+            
     }
 ?>

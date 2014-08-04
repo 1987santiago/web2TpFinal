@@ -5,7 +5,7 @@
 <header>
     
     <!-- Logo -->
-    <img alt="Sky Net Sistema de Reservas Online de Pasajes Aéreos" src="<?php echo "$statics_path"; ?>/images/header/logo.png" /> 
+    <img alt="Sky Net Sistema de Reservas Online de Pasajes Aereos" src="<?php echo "$statics_path"; ?>/images/header/logo.png" /> 
     <img class="isologotipo" alt="Volamos al mejor precio siempre" src="<?php echo "$statics_path"; ?>/images/header/volando.png" />
 
     <!-- Principal navigation bar -->
@@ -16,10 +16,9 @@
         
         <?php 
             if ( isset($_SESSION['admin_logged']) && $_SESSION['admin_logged'] ) {
-                echo "<li><a href='$statics_path/sections/estadisticas.php' data-section='estadisticas' title='estadisticas'>Estadisticas</a></li>";
+                echo "<li><a href='$statics_path/sections/informes.php' data-component='informes' title='Informes'>Informes</a></li>";
             }
         ?>
-
         </ul>
 
     <?php 

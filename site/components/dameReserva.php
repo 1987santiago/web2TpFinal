@@ -159,11 +159,11 @@
             <input id="birthDay" name="birthday" type="text" value="<?php echo $traveler_data['fecha_nac']; ?>">
         </div>
         <div>
-            <label for="phone">Teléfono</label>
+            <label for="phone">Telefono</label>
             <input id="phone" name="phone" type="text" value="<?php echo $traveler_data['telefono']; ?>">
         </div>
         <div>    
-            <label for="email">email</label>
+            <label for="email">Email</label>
             <input id="email" name="email" type="text" value="<?php echo $traveler_data['email']; ?>">
         </div>
     </fieldset>
@@ -183,7 +183,7 @@
             <dt>Fecha de vuelo: </dt>
                 <dd><?php echo $reservation_data[0]['fecha_partida']; ?></dd>
                 <input name="startingDate" type="hidden" value="<?php echo $reservation_data[0]['fecha_partida']; ?>" />
-            <dt>Avión: </dt>
+            <dt>Avion: </dt>
                 <dd><?php echo $plane_data['marca'] . ' ' . $plane_data['modelo']; ?></dd>
                 <input name="price" type="hidden" value="<?php echo $plane_data['marca'] . ' ' . $plane_data['modelo']; ?>" />
         <dl>
@@ -192,7 +192,7 @@
     <fieldset>
         <legend>Seleccione un medio de pago</legend>
         <div>    
-            <label>Tarjeta de Crédito<span>(*)</span></label>
+            <label>Tarjeta de Credito<span>(*)</span></label>
             <select name="card">
                 <option value="visa">Visa</option>
                 <option value="mastercard">Mastercard</option>

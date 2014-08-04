@@ -110,7 +110,7 @@
         // Si la consulta fue exitosa entra
         if ($flight_data) { 
 
-            // si el registro está vacío retornamos falso 
+            // si el registro esta vacio retornamos falso 
             if (!$flight_data) {
                 return false;
             }
@@ -365,12 +365,12 @@
 
                 <article class="col seat-selection">
 
-                    <h3>Selección de asiento</h3>
+                    <h3>Seleccion de asiento</h3>
 
                     <form id="seatSelection" action="seatConfirm.php" method="post">
 
-                        <input name="flightNumber" type="hidden" value='<?php echo "$flight_data[numero_vuelo]"; ?>'>
-                        <input name="travelerDoc" type="hidden" value='<?php echo "$reservation_data[dni]"; ?>'>
+                        <input name="flightNumber" type="hidden" value="<?php echo $flight_data[0]['numero_vuelo']; ?>"/>
+                        <input name="travelerDoc" type="hidden" value="<?php echo $reservation_data[0]['dni']; ?>"/>
 
                         <fieldset>
 

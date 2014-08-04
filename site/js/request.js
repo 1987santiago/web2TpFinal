@@ -9,7 +9,6 @@
 
     var request = skynet.request || {}; 
 
-
     /**
      * @param component {JSON} with
      *

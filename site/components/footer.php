@@ -1,13 +1,13 @@
 <footer>
     <dl>
         <dt>Sobre Skynet<dt>
-        <dd><a href="<?php echo "$statics_path"; ?>/sections/nosortros.php" data-section="nosotros" title="Nosotros">Nosotros</a></dd>
+        <dd><a href="<?php echo "$statics_path"; ?>/sections/nosotros.php" data-section="nosotros" title="Nosotros">Nosotros</a></dd>
         <dd><a href="<?php echo "$statics_path"; ?>/sections/prensa.php" data-section="prensa" title="Prensa">Prensa</a></dd>
         <dd><a href="<?php echo "$statics_path"; ?>/sections/trabajo.php" data-section="trabajo" title="Trabajo">Trabaje en Skynet</a></dd>
     </dl>
 
     <dl>
-        <dt>Información<dt>
+        <dt>Informacion<dt>
         <dd><a href="<?php echo "$statics_path"; ?>/sections/destinos.php" data-section="destinos" title="Servicios">Destinos</a></dd>
         <dd><a href="<?php echo "$statics_path"; ?>/sections/condiciones.php" data-section="condiciones" title="Condiciones">Condiciones de transporte</a></dd>
         <dd><a href="<?php echo "$statics_path"; ?>/sections/documentos.php" data-section="documentos" title="Documentos">Documentos importantes</a></dd>
@@ -18,13 +18,13 @@
         <dt>Servicios adicionales<dt>
         <dd><a href="<?php echo "$statics_path"; ?>/sections/parqueo.php" data-section="parqueo" title="Parqueo">Parqueo</a></dd>
         <dd><a href="<?php echo "$statics_path"; ?>/sections/taxis.php" data-section="taxis" title="Taxis">Taxis</a></dd>
-        <dd><a href="<?php echo "$statics_path"; ?>/sections/alquiler.php" data-section="alquiler" title="Alquiler de vehículos">Alquiler de vehículos</a></dd>
+        <dd><a href="<?php echo "$statics_path"; ?>/sections/alquiler.php" data-section="alquiler" title="Alquiler de vehiculos">Alquiler de vehiculos</a></dd>
     </dl>
 
     <dl>
         <dt>Legales<dt>
-        <dd><a href="<?php echo "$statics_path"; ?>/sections/destinos.php" data-section="destinos" title="Destinos">Términos de uso</a></dd>
-        <dd><a href="<?php echo "$statics_path"; ?>/sections/politica.php" data-section="política" title="Politica">Política de privacidad</a></dd>
+        <dd><a href="<?php echo "$statics_path"; ?>/sections/destinos.php" data-section="destinos" title="Destinos">Terminos de uso</a></dd>
+        <dd><a href="<?php echo "$statics_path"; ?>/sections/politica.php" data-section="politica" title="Politica">Politica de privacidad</a></dd>
     </dl>
 
 	<div class="datafiscal">

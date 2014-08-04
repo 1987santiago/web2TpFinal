@@ -1,0 +1,59 @@
+/*
+ * @name: forms.css
+ * @date: 2014.07.07
+ * @description: Aqui se definen los estilos que dibujan los formularios
+ */
+
+label 
+{
+    display: inline-block;
+    min-width: 200px;
+    text-align: right;
+    width: 30%;
+}
+
+.centrar
+{
+    margin-left: 35%;
+    margin-top: 10%;
+}
+
+.invisible
+{
+    visibility: hidden;
+}
+
+.visible
+{
+    visibility: visible;
+}
+
+.anchoCuadroTexto
+{
+    width: 80%;
+}
+
+.anchoFecha 
+{
+    width: 50%;
+}
+
+.contenedor 
+{
+    height: 100%;
+    width: 100%;
+}
+
+.grafico 
+{
+    float: left;
+    height: 100%;
+    width: 50%;
+}
+
+.datos 
+{
+    float: left;
+    height: 100%;
+    width: 50%;
+}

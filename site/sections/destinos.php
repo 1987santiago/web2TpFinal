@@ -18,8 +18,13 @@
 
         <section>
             <article> 
-                <strong>Argentina</strong> es un país ubicado en la costa este de Sudamérica, frente al Océano Atlántico. Su capital es Buenos Aires y se encuentra dividido en 23 provincias, que a su vez albergan  interesantes lugares turísticos como: Buenos Aires,  Córdoba,  Bariloche y Mendoza. 
-                Si estás pensando en viajar por Sudamérica, compra tus pasajes a Argentina en LAN.com y viaja a conocer maravillosos lugares turísticos situados en medio de la Pampa, los valles, el desierto y la Patagonia argentina
+<<<<<<< HEAD
+                <strong>Argentina</strong> es un pais ubicado en la costa este de Sudamerica, frente al Oceano Atlantico. Su capital es Buenos Aires y se encuentra dividido en 23 provincias, que a su vez albergan  interesantes lugares turisticos como: Buenos Aires, Cordoba,  Bariloche y Mendoza. 
+                Si estas pensando en viajar por Sudamerica compra tus pasajes a la Argentina en LAN.com y viaja a conocer maravillosos lugares turisticos situados en medio de la pampa, los valles, el desierto y la Patagonia argentina
+=======
+                <strong>Argentina</strong> es un pais ubicado en la costa este de Sudamerica, frente al Oceano Atlantico. Su capital es Buenos Aires y se encuentra dividido en 23 provincias, que a su vez albergan  interesantes lugares turisticos como: Buenos Aires,  Cordoba,  Bariloche y Mendoza. 
+                Si estas pensando en viajar por Sudamerica, compra tus pasajes a Argentina en LAN.com y viaja a conocer maravillosos lugares turisticos situados en medio de la Pampa, los valles, el desierto y la Patagonia argentina
+>>>>>>> 34403359e05cc68427652620c73d8c0ec32573d6
             </article>
         </section>
         

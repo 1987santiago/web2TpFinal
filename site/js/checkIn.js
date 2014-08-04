@@ -2,17 +2,20 @@
  * checkIn.js
  */
 
-var form = document.querySelector('#checkIn form'),
-    reservationCode = form.reservationCode,
+var form = document.querySelector('#checkIn form');
 
-reservationCode.onchange = function(event) {
+var reservationCode = form.reservationCode;
+
+
+reservationCode.onchange = function(event) 
+    {
 
     // datos que le pasamos al achivo que valida el codigo
     var data = {
             reservationCode : reservationCode.value
         },
         
-        // parametros que necesitamos para hacerl el request por ajax
+        // parametros que necesitamos para hacer el request por ajax
         params = {
             data : data,
             url : STATICS_PATH + "/processors/validateReservationStatus.php",
@@ -38,4 +41,4 @@ reservationCode.onchange = function(event) {
 
     window.skynet.request.getDocument(params);
 
-}; 
+} 

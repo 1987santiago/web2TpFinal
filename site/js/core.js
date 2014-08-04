@@ -1,6 +1,5 @@
 /**
  * @name Core.js
- * @author smarchioni
  * @date 2014/07/05 (AAAA/DD/MM)
  * @namespace skynet
  */

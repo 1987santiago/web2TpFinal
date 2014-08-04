@@ -1,17 +1,30 @@
 <?php
-    session_start(); 
-    // guardamos la url de los recursos estaticos
-    $statics_path = $_SESSION["statics_path"];
-    // guardamos la ruta base
-    $base_path = $_SESSION["base_path"];
 
+    session_start();
+    
+    // guardamos la url de los recursos estaticos
+    $base_path = $_SESSION["base_path"];
+    $statics_path = $_SESSION["statics_path"];
+    // se guarda la ruta al servidor
+    $server_root = $_SESSION["server_root"];
+    
+    // Si existen errores se guardan e informan
+    $hasError = false;
+
+    if (isset($_SESSION['error'])) {
+        $hasError = true;
+        $errorMsg = $_SESSION['error'];
+    }
+    
     // se incluye el inicio del html <!doctype html>...</head>
     $_SESSION["resources"] = array(
-        "js"  => array("listado_vuelos_ida")
+        "css"  => array("datosVuelo", "offExclusiv", "pagoSinInt", "forms"),
+        "js" => array("listado_vuelos_ida")
     ); 
-    require "$base_path$statics_path/components/head.php"; 
+ 
+    require "$base_path$statics_path/components/head.php";
 ?>
-   
+    
     <body>
 
         <div class="wrapper">
@@ -21,16 +34,22 @@
 
             <main role="main"><!-- ex: center -->
 
-                <!-- se incluye la barra lateral de navegación -->
+                <!-- se incluye la barra lateral de navegacion -->
                 <?php require "$base_path$statics_path/components/navLateral.php"; ?>
 
                 <!-- se incluye el formulario de busqueda de vuelos disponibles para reservar -->
-                <div class="col">
-                
-                    <form action="buscar_asiento.php" method="post" onsubmit="return validarVueloSeleccionado()">
-                        
+                <div class="col left-col">
+                    <?php
+                        // Si hay un erro lo imprimimos en la pagina
+                        if ($hasError) { 
+                            echo "<div class='box box-error'>$errorMsg</div>";
+                            // Una vez mostrado el error, reseteamos la variable
+                            $_SESSION['error'] = null;
+                        }
+                    ?>
+  
+                    <form action="<?php echo "$server_root$statics_path"; ?>/components/buscar_asiento.php" method="post" onsubmit="return validarVueloSeleccionado()">
                         <label>Fecha de partida:  <?php  echo $_SESSION["fechaPartida"]; ?></label>
-
                         <table>
                             <tr>
                                 <th>Numero de vuelo</th>
@@ -44,13 +63,12 @@
                                 if (isset($_SESSION["vuelosIda"])) {
 
                                     $vuelos = $_SESSION["vuelosIda"];
-                                        
                                     echo "<tr>";
 
                                     foreach ($vuelos as $vuelo) {
-                                        
+
                                         $idVueloSeleccionado = $vuelo["numero_vuelo"];                                        
-                                        
+
                                         echo "<td>" . $vuelo["numero_vuelo"] . "</td>";
                                         echo "<td>" . $vuelo["oaci_origen"] . "-" . $vuelo["origen"] . "</td>";
                                         echo "<td>" . $vuelo["oaci_destino"] . "-" . $vuelo["destino"] . "</td>";
@@ -58,27 +76,32 @@
                                         if ($vuelo["asientos_economy"] > 0) {
                                             echo "<td><input type='radio' name='categoria' value='200'/>" . $vuelo["tarifa_economy"] . "</td>";
                                         }
+                                        else {
+                                            echo "<td></td>";
+                                        } 
+                                            
                                         if ($vuelo["asientos_primera"] > 0) {
                                             echo "<td><input type='radio' name='categoria' value='100'/>" . $vuelo["tarifa_primera"] . "</td>"; 
                                         } else {
                                             echo "<td>-</td>"; 
                                         }
+                                        else {
+                                            echo "<td></td>";
+                                        } 
                                         echo "<td><input type='radio' name='vuelo' value='$idVueloSeleccionado'/></td>";
                                     } 
 
                                     echo "</tr>"; 
-
                                 }
                             ?>
                         </table> 
 
                         <a href="<?php echo "$statics_path/sections/home.php"; ?>" name="anterior">Anterior</a>
                         <input type="submit" name="siguiente" value="Siguiente"/>
+                    </form>    
+                
+                </div>
 
-                    </form>
-
-                </div><!-- [END] col -->
-            
             </main>
 
             <?php include "$base_path$statics_path/components/offExclusiv.php"; ?>
@@ -87,14 +110,8 @@
 
         </div><!-- [END] wrapper -->
 
-        <?php require "$base_path$statics_path/components/footer.php"; ?>
-
-        <!-- Scripts necesarios para Wow Slider -->
-        <script type="text/javascript" src="<?php echo "$statics_path"; ?>/wow/engine1/wowslider.js"></script>
-        <script type="text/javascript" src="<?php echo "$statics_path"; ?>/wow/engine1/script.js"></script>
-        <script type="text/javascript" src="<?php echo "$statics_path"; ?>/js/datos_vuelo.js"></script>
-        <!-- [END] Scripts necesarios para Wow Slider -->
-
+        <?php require "$base_path$statics_path/components/footer.php"; ?>    
+    
     </body>
 
-</html>
+

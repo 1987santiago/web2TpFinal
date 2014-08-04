@@ -10,7 +10,7 @@ skynet.navigation = skynet.navigation || function() {
     'use strict';
 
     var navigation = skynet.navigation || {};
-
+    
     // save <a> elements
     var links = document.getElementsByTagName('a'),
         $links = $(links),

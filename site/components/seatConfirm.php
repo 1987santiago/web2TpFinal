@@ -115,10 +115,10 @@
                     
                     <h2>Check In</h2>
 
-                    <p>Sr/a. <?php echo $traveler_data['nombre'] . ' ' . $traveler_data['apellido']; ?> usted a realizado la siguiente elección de asiento:</p>
+                    <p>Sr/a. <?php echo $traveler_data['nombre'] . ' ' . $traveler_data['apellido']; ?> usted a realizado la siguiente eleccion de asiento:</p>
                     
                     <dl>
-                        <dt>Categoría del asiento: </dt>
+                        <dt>Categoria del asiento: </dt>
                         <dd><?php echo $save_seat_data['descripcion']; ?></dd>
                         
                         <dt>Fila: </dt>
